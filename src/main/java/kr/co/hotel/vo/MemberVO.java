@@ -1,8 +1,8 @@
 package kr.co.hotel.vo;
 
 public class MemberVO {
-	private int id, state, admin;
-	private String userid, pwd, name, ymd, phone, email, address,writeday, memo;
+	private int id, state;
+	private String userid, pwd, name, ymd, phone, email,writeday, memo;
 	public int getId() {
 		return id;
 	}
@@ -14,12 +14,6 @@ public class MemberVO {
 	}
 	public void setState(int state) {
 		this.state = state;
-	}
-	public int getAdmin() {
-		return admin;
-	}
-	public void setAdmin(int admin) {
-		this.admin = admin;
 	}
 	public String getUserid() {
 		return userid;
@@ -56,12 +50,6 @@ public class MemberVO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	public String getWriteday() {
 		return writeday;
