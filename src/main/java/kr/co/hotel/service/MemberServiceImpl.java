@@ -163,8 +163,8 @@ public class MemberServiceImpl implements MemberService {
 		 }
 		 else
 		 {
-			 return "redirect:/mypage/myinfo"; //틀릴시 경고창출력 미구현
-		 }
+			 return "redirect:/mypage/member_out?err=1"; 
+	    }
 		 
 	}
 	

@@ -13,6 +13,14 @@
     background:#FFFFC6;
    }
 </style>
+<script>
+ onload=function(){
+	 if(<%=request.getParameter("err")%>=="1")
+	  {
+		 alert("비밀번호가 일치하지않습니다");
+	  }
+ }
+</script>
 </head>
 <body>
  <section>
