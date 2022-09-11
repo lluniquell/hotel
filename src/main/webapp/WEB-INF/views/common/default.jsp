@@ -118,17 +118,18 @@ footer {
 	</div>
 
 	<header> <!--  로고, 로그인, 회원가입 -->
-	<div id="left">?? 호텔 </div>
+	<div id="left"> <a href="../main/index">?? 호텔 </a></div>
 	<div id="right">
 		<c:if test="${userid != null}">
 			${userid}(${name}) 님 반갑습니다  
-			<a href="../member/logout">로그아웃</a> |
-			<a href="../member/myinfo">회원정보</a> 
+			<a href="../logout">로그아웃</a> |
+			<a href="../mypage/myinfo">회원정보</a> 
  		</c:if>
  		<c:if test="${userid == null }">
-		<a href="../member/login">로그인</a> | <a href="../member/member_input">회원가입</a>
+		<a href="/hotel/login/login">로그인</a> | <a href="/hotel/member/member_input">회원가입</a>
 		</c:if>
-
+		
+     <a href="/hotel/admin/member_list"> 회원들 db </a>
 	</div>
 	</header>
 

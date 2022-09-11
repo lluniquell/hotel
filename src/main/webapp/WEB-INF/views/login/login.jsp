@@ -67,11 +67,19 @@ section #err
   <h2 style="color:brown"> 로 그 인 </h2>
   <div>
    <span class="inputName">아이디</span> 
+<<<<<<< HEAD
   <input type="text" name="userid" placeholder="아이디를 입력하세요" value="test12345">
   </div>
    <div>
    <span class="inputName">비밀번호</span> 
   <input type="password" name="pwd" placeholder="비밀번호를 입력하세요" value="test12345">
+
+  <input type="text" name="userid" placeholder="아이디를 입력하세요" value="96myung">
+  </div>
+   <div>
+   <span class="inputName">비밀번호</span> 
+  <input type="password" name="pwd" placeholder="비밀번호를 입력하세요" value="96myung">
+
   </div>
   
   <div> <input type="submit" value="로그인" id="btn"></div>

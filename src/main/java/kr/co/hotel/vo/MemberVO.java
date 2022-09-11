@@ -1,8 +1,8 @@
 package kr.co.hotel.vo;
 
 public class MemberVO {
-	int id, state, admin;
-	String userid, pwd, name, ymd, phone, email, address,writeday, memo;
+	private int id, state, admin;
+	private String userid, pwd, name, ymd, phone, email, address,writeday, memo;
 	public int getId() {
 		return id;
 	}

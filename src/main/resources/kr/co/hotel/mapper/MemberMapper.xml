@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+  <mapper namespace="kr.co.hotel.mapper.MemberMapper">
+  <insert id="member_input_ok" parameterType="kr.co.hotel.vo.MemberVO">
+   insert into member(userid,pwd,name,ymd,phone,email,writeday)
+   values(#{userid},#{pwd},#{name},#{ymd},#{phone},#{email},now())
+  </insert>
+  <select id="check_userid" resultType="Integer">
+   select count(*) from member where userid=#{param1}
+  </select>
   
- <mapper namespace="kr.co.hotel.mapper.MemberMapper">
- 
- </mapper>
+  
+  <select id="get_userid" resultType="String">
+   select userid from member where name=#{param1} and ymd=#{param2} 
+  </select>
+  <select id="get_pwd" resultType="String">
+   select pwd from member where 
+   userid=#{param1} and name=#{param2} and phone=#{param3} 
+  </select>
+  
+  
+  <select id="login_ok" resultType="kr.co.hotel.vo.MemberVO">
+   select * from member where userid=#{userid} and pwd=#{pwd}
+  </select>
+  
+  <select id="myinfo" resultType="kr.co.hotel.vo.MemberVO">
+   select * from member where userid=#{param1}
+  </select>
+  
+   <select id="get_dbpwd" resultType="String">
+   select pwd from member where userid=#{param1} and pwd=#{param2}
+  </select>
+  <update id="pwd_change_ok">
+   update member set pwd=#{param2} where userid=#{param1}
+  </update>
+  
+  <update id="my_update_ok">
+   update member set name=#{name}, ymd=#{ymd},
+   phone=#{phone}, email=#{email} where userid=#{userid}
+  </update>
+  
+  <select id="check_member" resultType="Integer">
+   select count(*) from member where userid=#{param1} and pwd=#{param2}
+  </select>
+  <update id="member_state1">
+   update member set state=1 where userid=#{param1}
+  </update>  
+  </mapper>
+  
