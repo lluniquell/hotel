@@ -19,11 +19,15 @@ public interface MemberService {
 	public String login(HttpServletRequest request,Model model);
 	public String login_ok(MemberVO mvo,HttpSession session);
    
+	// mypage
 	public String myinfo(HttpSession session,Model model);
 	public String pwd_change_ok(HttpServletRequest request,HttpSession session);
 	public String my_update(HttpSession session,Model model);
 	public String my_update_ok(MemberVO mvo,HttpSession session);
-	
-	
 	public String member_out_ok(HttpSession session,HttpServletRequest request);
+	
+	//1:1상담 qna부분
+    public String my_qna(HttpSession session,Model model);
+
+	
 }

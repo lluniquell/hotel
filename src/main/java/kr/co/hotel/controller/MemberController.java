@@ -131,4 +131,12 @@ public class MemberController {
     {
     	return service.member_out_ok(session,request);
     }
+    
+    // qna 관련
+    @RequestMapping("/mypage/my_qna")
+    public String my_qna(HttpSession session,Model model)
+    {
+    	return service.my_qna(session,model);
+    }
+   
 }

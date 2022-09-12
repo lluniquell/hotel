@@ -1,6 +1,7 @@
 package kr.co.hotel.service;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import kr.co.hotel.mapper.MemberMapper;
+import kr.co.hotel.vo.CaskVO;
 import kr.co.hotel.vo.MemberVO;
 
 @Service
@@ -166,6 +168,14 @@ public class MemberServiceImpl implements MemberService {
 			 return "redirect:/mypage/member_out?err=1"; 
 	    }
 		 
+	}
+
+	@Override
+	public String my_qna(HttpSession session, Model model) {
+		String userid=session.getAttribute("userid").toString();
+		 ArrayList<CaskVO> list=mapper.qna_list_cus(userid);
+		   model.addAttribute("list", list);
+		return "/mypage/my_qna";
 	}
 	
 

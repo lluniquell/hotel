@@ -121,7 +121,7 @@ footer {
 	<div id="left"> <a href="../main/index">?? 호텔 </a></div>
 	<div id="right">
 		<c:if test="${userid != null}">
-			${userid}(${name}) 님 반갑습니다  
+			<b style="color:blue">${userid}(${name})</b> 님  
 			<a href="../logout">로그아웃</a> |
 			<a href="../mypage/myinfo">회원정보</a> 
  		</c:if>
@@ -129,7 +129,6 @@ footer {
 		<a href="/hotel/login/login">로그인</a> | <a href="/hotel/member/member_input">회원가입</a>
 		</c:if>
 		
-     <a href="/hotel/admin/member_list"> 회원들 db </a>
 	</div>
 	</header>
 

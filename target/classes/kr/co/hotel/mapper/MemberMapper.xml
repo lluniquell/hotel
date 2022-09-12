@@ -47,5 +47,9 @@
   <update id="member_state1">
    update member set state=1 where userid=#{param1}
   </update>  
+  
+   <select id="qna_list_cus" resultType="kr.co.hotel.vo.CaskVO">
+     select * from cusask where userid=#{param1} order by id desc 
+   </select>
   </mapper>
   
