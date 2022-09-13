@@ -169,7 +169,8 @@ public class MemberServiceImpl implements MemberService {
 	    }
 		 
 	}
-
+ 
+	// qna 부분
 	@Override
 	public String my_qna(HttpSession session, Model model) {
 		String userid=session.getAttribute("userid").toString();
@@ -177,7 +178,17 @@ public class MemberServiceImpl implements MemberService {
 		   model.addAttribute("list", list);
 		return "/mypage/my_qna";
 	}
-	
+	@Override
+	public String qna_content(HttpServletRequest request, Model model) {
+		 String id=request.getParameter("id");
+		 CaskVO cvo=mapper.qna_content(id);
+		 if(cvo.getAnwser() != null)
+		 {
+			 cvo.setAnwser(cvo.getAnwser().replace("\r\n", "<br>")); // 메모내용 띄어쓰기            
+		 }
+		 model.addAttribute("cvo",cvo);
+		return "/mypage/qna_content";
+	}
 
 	
 	

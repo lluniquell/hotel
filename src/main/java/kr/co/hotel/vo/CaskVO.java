@@ -5,6 +5,15 @@ public class CaskVO {
 	private int id, state;
 	private String title, userid, content, writeday, gubun;
 	
+   private String anwser; // 관리자페이지에서 답변한내용 필드
+	
+	
+	public String getAnwser() {
+		return anwser;
+	}
+	public void setAnwser(String anwser) {
+		this.anwser = anwser;
+	}
 	public int getId() {
 		return id;
 	}

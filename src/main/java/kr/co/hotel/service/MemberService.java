@@ -28,6 +28,7 @@ public interface MemberService {
 	
 	//1:1상담 qna부분
     public String my_qna(HttpSession session,Model model);
+    public String qna_content(HttpServletRequest request,Model model);
 
 	
 }

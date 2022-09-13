@@ -106,14 +106,14 @@ section {
      </c:when>
     </c:choose>  
        </td>
-       <td> <a href="../cus_qna/qna_content?id=${qvo.id}"> ${qvo.title} </a> </td>
+       <td> <a href="../mypage/qna_content?id=${qvo.id}"> ${qvo.title} </a> </td>
        <td> ${qvo.writeday} </td>         
     <c:choose> 
-     <c:when test="${qvo.state==0}">
-       <td style="color:#FFA7A7;"> 답변 대기 </td>  
+    <c:when test="${qvo.state==0}">
+       <td><b style="color:#FFA7A7"> 답변 대기 </b> </td>  
      </c:when>
      <c:when test="${qvo.state==1}">
-       <td style="color:#B7F0B1;"> 답변 완료 </td>  
+       <td><b style="color:blue"> 답변 완료</b> </td>  
      </c:when>
     </c:choose>
        </td>   

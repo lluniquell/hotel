@@ -51,5 +51,9 @@
    <select id="qna_list_cus" resultType="kr.co.hotel.vo.CaskVO">
      select * from cusask where userid=#{param1} order by id desc 
    </select>
+   
+   <select id="qna_content" resultType="kr.co.hotel.vo.CaskVO">
+   select * from cusask where id=#{param1}
+ </select>
   </mapper>
   

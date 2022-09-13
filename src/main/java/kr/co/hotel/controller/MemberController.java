@@ -138,5 +138,10 @@ public class MemberController {
     {
     	return service.my_qna(session,model);
     }
+    @RequestMapping("/mypage/qna_content")
+    public String qna_content(HttpServletRequest request,Model model)
+    {
+    	return service.qna_content(request,model);
+    }
    
 }
