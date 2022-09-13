@@ -1,0 +1,9 @@
+create table cusask(
+id int auto_increment primary key,
+title char(100),
+userid varchar(20),
+content text,
+gubun char(50),
+state int default 0,
+writeday date
+);

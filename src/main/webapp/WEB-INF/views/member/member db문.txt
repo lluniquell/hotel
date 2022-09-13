@@ -1,0 +1,11 @@
+create table member(
+    id int auto_increment primary key,
+    userid varchar(20) unique,
+   pwd varchar(20),
+    name varchar(20),
+     ymd varchar(20),
+    phone varchar(20),
+    email varchar(50),
+   memo text,   
+   writeday datetime,
+   state int default 0);
