@@ -1,6 +1,5 @@
 package kr.co.hotel.service;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,15 +20,19 @@ public class BookServiceImpl implements BookService {
 	public BookMapper mapper;
 
 	@Override
-	public String check_restroom(HttpServletRequest request, Model model) {
-		 String[] date=request.getParameter("daterange").split(" - ");
+	public String book1(HttpServletRequest request, Model model) {
+		 String[] date=request.getParameter("date").split("-");
 		 String checkin=date[0];
 		 String checkout=date[1];
 		 String person=request.getParameter("person");
-		 ArrayList<BookVO> list=mapper.check_restroom(checkin,checkout,person);
-		
+		 ArrayList<BookVO> list=mapper.book1(checkin,checkout,person);
+		 System.out.println("book1구현");
 		 model.addAttribute("list",list);
 		 
 		 return "/book/book1";
 	}
+
+	
+
+	
 }

@@ -12,20 +12,17 @@
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script>
 	$(function() {
-		$('input[name="daterange"]').daterangepicker(
-				{
-					opens : 'bottom'
-				},
-				function(start, end, label) {
-					console.log("A new date selection was made: "
-							+ start.format('YYYY-MM-DD') + ' to '
-							+ end.format('YYYY-MM-DD'));
-				});
+		$('input[name="daterange"]').daterangepicker({
+			locale: {
+					format : "YYYYMMDD",
+					opens : "bottom"
+				}
 		
-		
+						
+	})
+	
 	});		
-</script>
-<script>
+
 function view_restroom()
 {
 	document.getElementById("restroom").style.display="table-cell";	
@@ -41,7 +38,7 @@ function check_restroom()
 		//alert(newdate);
 
 	
-	location="check_restroom?date="+newdate+"&person="+person; 
+	location="book1"; 
 }
 
 

@@ -1,7 +1,5 @@
 package kr.co.hotel.controller;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +23,16 @@ public class BookController {
 		return "/book/book";
 	}
 	
-	@RequestMapping("/book/check_restroom")
-	public void check_restroom(HttpServletRequest request, Model model)
+	@RequestMapping("/book/book1")
+	public String book1(HttpServletRequest request, Model model)
 	{
-		service.check_restroom(request, model);
+		System.out.println("book1컨트럴러");
+		return "/book/book1";
 	}
+	
+	/*@RequestMapping("/book/book1")
+	public String book1()
+	{
+		return "/book/book1";
+	}*/
 }
