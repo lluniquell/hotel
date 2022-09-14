@@ -1,6 +1,7 @@
 package kr.co.hotel.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -51,6 +52,14 @@ public class BookServiceImpl implements BookService {
 		String userid=session.getAttribute("userid").toString();
 		bvo.setUserid(userid);
 		//salescode
+		/*Date date=new Date();
+		String Y=date.getYear()+1900;
+		String M=date.getMonth()+1;
+		String D=date.getDate();
+		String YMD=Y+M+D;*/
+		
+		//mapper.get_salescode();
+		
 		mapper.book3(bvo);
 		return null;
 	}

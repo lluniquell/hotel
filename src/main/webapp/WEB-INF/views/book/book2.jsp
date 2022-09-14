@@ -10,13 +10,13 @@
 		document.getElementsByName("totalprice")[0].innerText=(num+room_price)+"원";
 	}
 	
-	function pay_state(n){
+	function pay_state(n){		
 		document.getElementById("str").innerText="";
-		document.getElementById("str").InnerHtml="<input type='hidden' name='pay_state' value='n'>"		
+		document.getElementById("str").innerHTML="<input type=hidden name=pay_state value="+n+">";		
 	}
 window.onload= function(){
 	breakfast_price();
-	pay_state(0);
+	pay_state(n);
 }
 </script>
 
