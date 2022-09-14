@@ -38,7 +38,7 @@ function check_restroom()
 		//alert(newdate);
 
 	
-	location="book1"; 
+	location="book1?date="+newdate+"&person="+person; 
 }
 
 

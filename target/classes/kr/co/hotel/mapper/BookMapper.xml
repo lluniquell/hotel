@@ -4,7 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="kr.co.hotel.mapper.BookMapper">
- 	<select id="check_restroom" resultType="kr.co.hotel.vo.BookVO">
+ 	<select id="book1" resultType="kr.co.hotel.vo.RoomVO">
  		select * from room
- 	</select> 
+ 	</select>
+ 	
+ 	 <select id="book2" resultType="kr.co.hotel.vo.RoomVO">
+ 		select * from room where name=#{room}
+ 	</select>
+ 	
+ 	<insert id="book3" parameterType="kr.co.hotel.vo.BookVO">
+ 		insert into book(person,room,breakfast,totalprice,salescode,userid,checkin,checkout,add_needs,name,pay_method,pay_state,writeday)
+ 		values(#{person},#{room},#{breakfast},#{totalprice},#{salescode},#{userid},#{checkin},#{checkout},#{add_needs},#{name},#{pay_method},#{pay_state},now())
+ 	</insert>
+ 	 
  </mapper>
