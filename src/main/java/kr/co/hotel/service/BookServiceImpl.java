@@ -28,9 +28,10 @@ public class BookServiceImpl implements BookService {
 		 String checkin=date[0];
 		 String checkout=date[1];
 		 String person=request.getParameter("person");
-		 ArrayList<BookVO> list=mapper.book1(checkin,checkout,person);
-	
-		 model.addAttribute("list",list);
+		/* ArrayList<RoomVO> rlist=mapper.book1();*/
+		 ArrayList<RoomVO> blist=mapper.exceptroom(checkin,checkout,person);
+		 model.addAttribute("blist",blist);	
+		/* model.addAttribute("rlist",rlist);*/
 		 model.addAttribute("checkin",checkin);
 		 model.addAttribute("checkout",checkout);
 		 model.addAttribute("person",person);
@@ -52,16 +53,23 @@ public class BookServiceImpl implements BookService {
 		String userid=session.getAttribute("userid").toString();
 		bvo.setUserid(userid);
 		//salescode
-		/*Date date=new Date();
-		String Y=date.getYear()+1900;
-		String M=date.getMonth()+1;
-		String D=date.getDate();
-		String YMD=Y+M+D;*/
+		String sales=bvo.getCheckin();
+		Integer code=mapper.getCode(sales);
+		code=code+1;
+		String code1="";
+		if((int)(Math.log10(code)+1)==1) {
+			code1="0"+code;
+		} else {
+			code1=code.toString();
+		}
+		String salsecode=sales+code1;
+		bvo.setSalescode(Integer.parseInt(salsecode));
+		mapper.makebook(bvo);
+		bvo=mapper.book3(salsecode);
+	
+		model.addAttribute("bvo",bvo);
 		
-		//mapper.get_salescode();
-		
-		mapper.book3(bvo);
-		return null;
+		return "/book/book3";
 	}
 
 	

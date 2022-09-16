@@ -1,7 +1,13 @@
 package kr.co.hotel.vo;
 
 public class RoomVO {
-	int id, maxperson,price,grade;
+	int id, maxperson,price,grade, chk;
+	public int getChk() {
+		return chk;
+	}
+	public void setChk(int chk) {
+		this.chk = chk;
+	}
 	String name;
 	public int getId() {
 		return id;

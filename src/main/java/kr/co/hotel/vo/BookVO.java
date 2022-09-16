@@ -2,6 +2,7 @@ package kr.co.hotel.vo;
 
 public class BookVO {
 	int id, person, room, breakfast, totalprice, salescode;
+
 	String userid, checkin, checkout, add_needs, name, pay_method, pay_state, writeday;
 	public int getId() {
 		return id;
