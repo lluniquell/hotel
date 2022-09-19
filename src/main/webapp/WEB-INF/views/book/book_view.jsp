@@ -22,7 +22,7 @@ th, td {
 <section>
 	<table align="center">
 		<caption>
-			<h2>예약 완료</h2>
+			<h2>예약 내역</h2>
 		</caption>
 		<tr>
 			<td>예약 번호</td>

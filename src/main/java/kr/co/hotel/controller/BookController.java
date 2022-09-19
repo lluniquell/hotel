@@ -26,10 +26,10 @@ public class BookController {
 	}
 	
 	@RequestMapping("/book/book1")
-	public String book1(HttpServletRequest request, Model model)
+	public String book1(HttpServletRequest request, Model model, HttpSession session)
 	{
 	
-		return service.book1(request, model);
+		return service.book1(request, model,session);
 	}
 	
 	@RequestMapping("/book/book2")
@@ -44,6 +44,27 @@ public class BookController {
 	{
 	
 		return service.book3(bvo, model, session);
+	}
+	
+	@RequestMapping("/book/list")
+	public String list(Model model, HttpSession session)
+	{
+	
+		return service.list(model, session);
+	}
+	
+	@RequestMapping("/book/book_view")
+	public String book_view(HttpServletRequest request, Model model)
+	{
+	
+		return service.book_view(request, model);
+	}
+	
+	@RequestMapping("/book/book_cancel")
+	public String book_cancel(HttpServletRequest request)
+	{
+	
+		return service.book_cancel(request);
 	}
 	
 }

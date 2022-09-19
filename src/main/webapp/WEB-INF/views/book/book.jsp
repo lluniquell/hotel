@@ -13,35 +13,40 @@
 <script>
 	$(function() {
 		$('input[name="daterange"]').daterangepicker({
-			locale: {
-					format : "YYYYMMDD",
-					opens : "bottom"
-				}
-		
-						
-	})
-	
-	});		
+			locale : {
+				format : "YYYYMMDD",
+				opens : "bottom"
+			}
 
-function view_restroom()
-{
-	document.getElementById("restroom").style.display="table-cell";	
-}
+		})
 
+	});
 
-function check_restroom()
-{
-	var date=document.getElementsByName("daterange")[0].value;
-	var person=document.getElementsByName("person")[0].value;
-	var newdate=date.replace(/\s+/g,'');
-		newdate=newdate.replace(/[/]/g,'');
+	function view_restroom() {
+		document.getElementById("restroom").style.display = "table-cell";
+	}
+
+	function book1() {
+		var date = document.getElementsByName("daterange")[0].value;
+		var person = document.getElementsByName("person")[0].value;
+		var newdate = date.replace(/\s+/g, '');
+		newdate = newdate.replace(/[/]/g, '');
 		//alert(newdate);
 
-	
-	location="book1?date="+newdate+"&person="+person; 
-}
+		location = "book1?date=" + newdate + "&person=" + person;
+	}
 
+	function outline_view(n)
+	{	
+		
+		/* document.getElementsByClass("outline")[n].style.outline-style = "solid"; 
+		document.getElementsByClass("outline")[n].outline-color = "RGB(52, 112, 223)";
+		document.getElementsByClass("outline")[n].outline-width = "1px)";  */
+	}
 
+	function outline_hide(n) {
+		/* document.getElementsByClassName("outline")[n].outline = "none"; */
+	}
 </script>
 <style>
 section {
@@ -49,49 +54,76 @@ section {
 	height: 600px;
 	margin: auto;
 	text-align: center;
-	display:table;
-	table-layout:fixed;
+	display: table;
+	table-layout: fixed;
+	font-family: roboto;
 }
 
-#person_add{
-	 display:none; 
+section div {
+	margin-top: 80px;
+}
+
+input[name="daterange"] {
+	display: block;
+	width: 144px;
+	height: 51px;
+	border: 1px solid #1E1852;
+	border-radius: 4px;
+}
+
+select[name="person"] {
+	display: block;
+	width: 144px;
+	height: 51px;
+	border: 1px solid #1E1852;
+	border-radius: 4px;
+}
+
+#button {
+	font-size: 16px;
+	color:white;
+	line-heigth:24px;
+	text-decoration: none solid RGB(255, 255, 255);
+	text-align: center;
+	background-color: #068484;
+	heigth: 58x;
+	width: 144px;
+	display: block;
+	width: 144px;
+	height: 51px;
+	border: 1px solid #1E1852;
+	border-radius: 30px;
+}
+
+section td {
+	text-align: left;
 }
 </style>
 
 <section>
 	<div>
-		<table width=500px>
+		<table width="500px" align="center" border="1px">
 			<tr>
-				<td>체크인 / 체크아웃</td>				
-				<td>인원</td>
+				<td>체크인 / 체크아웃</td>
+				<td>투숙 인원</td>
+				<td></td>
 			</tr>
 			<tr>
-				<td><input type="text" name="daterange"
-					value="<fmt:formatNumber value='${today}'/>"></td>
-				<td>
-					<select name="person">
+				<td><input type="text" class="outline"
+					onmouseover="outline_view(0)" onmouseout="outline_hide(0)"
+					name="daterange" value="<fmt:formatNumber value='${today}'/>"></td>
+				<td><select name="person" class="outline"
+					onmouseover="outline_view(1)" onmouseout="outline_hide(1)">
 						<option>1</option>
 						<option selected>2</option>
 						<option>3</option>
 						<option>4</option>
-					</select>
-				</td>				
+				</select></td>
+				<td><input type="button" id="button" class="outline"
+					onmouseover="outline_view(2)" onmouseout="outline_hide(2)"
+					onclick="book1()" value="검색하기"></td>
+
 			</tr>
-			<tr>
-				<td colspan="3">
-					<input type="button" value="검색" onclick="check_restroom()">
-				</td>
-			</tr>		
 		</table>
-		<div id="restroom">
-			<table width=500px>				
-				<tr>
-					<td>객실명</td>
-					<td>등급</td>
-					<td>최대인원</td>
-					<td>가격</td>												
-				</tr>					
-			</table>		
-		</div>
 	</div>
 </section>
