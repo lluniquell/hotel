@@ -26,9 +26,7 @@ th, td {
 		</caption>
 		<tr>
 			<td>예약 번호</td>
-			<td>${bvo.salescode}</td>
-			<td>예약자명</td>
-			<td>${bvo.name}</td>
+			<td colspan="3">${bvo.salescode}</td>			
 		</tr>
 		<tr>
 			<td>체크인</td>

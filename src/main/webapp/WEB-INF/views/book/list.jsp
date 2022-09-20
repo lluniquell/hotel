@@ -2,21 +2,20 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script>
-	function book_cancel(salescode)
-	{
+	function book_cancel(salescode) {
 		alert("예약 취소 : " + salescode);
-		location=""
+		location = ""
 	}
-	
-	function review_write(salescode)
-	{
+
+	function review_write(salescode) {
 		alert("예약 취소 : " + salescode);
 	}
 </script>
 <style>
 section {
-	height:800px;
+	height: 800px;
 }
+
 table {
 	border-top: 2px solid #DADADD;
 	border-bottom: 2px solid #DADADD;
@@ -42,7 +41,6 @@ input {
 	border-radius: 30px;
 }
 
-	}
 </style>
 <section>
 	<table align="center">
@@ -60,22 +58,22 @@ input {
 		</tr>
 		<c:forEach items="${blist}" var="bvo">
 			<tr>
-				
+
 				<td><a href="book_view?salescode=${bvo.salescode}">${bvo.salescode}</a></td>
-				<td><a href="book_view?salescode=${bvo.salescode}">${bvo.checkin} | ${today}
-				
-				
-				</a></td>
+				<td><a href="book_view?salescode=${bvo.salescode}">${bvo.checkin}
+						| ${today} </a></td>
 				<td><a href="book_view?salescode=${bvo.salescode}">${bvo.checkout}</a></td>
 				<td><a href="book_view?salescode=${bvo.salescode}">${bvo.room}</a></td>
-				
+
 				<td>${bvo.pay_state}</td>
-				<td><input type="button" value="예약 취소" onclick="book_cancel('${bvo.salescode}')"></td>
-				<td><input type="button" value="리뷰 쓰기" onclick="review_write('${bvo.salescode}')"></td>
-				
-			
-			
-			
+				<td><input type="button" value="예약 취소"
+					onclick="book_cancel('${bvo.salescode}')"></td>
+				<td><input type="button" value="리뷰 쓰기"
+					onclick="review_write('${bvo.salescode}')"></td>
+
+
+
+
 			</tr>
 		</c:forEach>
 	</table>

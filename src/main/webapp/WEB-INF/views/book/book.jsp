@@ -11,15 +11,28 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script>
+
+function toYYYYMMDD(d){
+    var yyyy = d.getFullYear().toString();
+    var mm = (d.getMonth() + 101).toString().slice(-2); /* 월은 0이 1월 */
+    var dd = (d.getDate() + 100).toString().slice(-2);
+    
+    return yyyy + mm + dd; 
+}
+	var startDate=toYYYYMMDD(new Date());
+	var endDate=(parseInt(startDate)+1).toString();
+
 	$(function() {
 		$('input[name="daterange"]').daterangepicker({
-			locale : {
+			startDate:startDate,			
+			endDate:endDate,
+			minDate:toYYYYMMDD(new Date()),
+			
+		 	locale : {
 				format : "YYYYMMDD",
 				opens : "bottom"
 			}
-
 		})
-
 	});
 
 	function view_restroom() {
@@ -63,21 +76,7 @@ section div {
 	margin-top: 80px;
 }
 
-input[name="daterange"] {
-	display: block;
-	width: 144px;
-	height: 51px;
-	border: 1px solid #1E1852;
-	border-radius: 4px;
-}
 
-select[name="person"] {
-	display: block;
-	width: 144px;
-	height: 51px;
-	border: 1px solid #1E1852;
-	border-radius: 4px;
-}
 
 #button {
 	font-size: 16px;
