@@ -190,6 +190,24 @@ public class MemberServiceImpl implements MemberService {
 		return "/mypage/qna_content";
 	}
 
+	// 장바구니  ,wish
+	@Override
+	public String wish(HttpSession session, Model model) {
+		 String userid=session.getAttribute("userid").toString();
+		 model.addAttribute("wlist",mapper.wish(userid));
+		return "/mypage/wish";
+	}
+
+	@Override
+	public String cart(HttpSession session, Model model) {
+		 
+		String userid=session.getAttribute("userid").toString();
+		 
+		return "mypage/cart";
+	}
+
+
 	
 	
+	 
 }

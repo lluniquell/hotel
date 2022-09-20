@@ -22,7 +22,8 @@ section {
  .myTab{
  margin-top:50px;
  margin-left:0px;
- width:700px;
+  margin:auto;
+ width:100%;
   position:relative;
  
   }
@@ -73,7 +74,7 @@ section {
 <section>
  <div class="myTab">
   <ul class="main">
-   <li class="sub1"><a href="myinfo">회원정보수정</a></li><li class="sub2"><a href="../book/list">예약조회</a></li><li class="sub3"><a href="my_qna">문의내역</a></li>
+   <li class="sub1"><a href="myinfo">회원정보수정</a></li><li class="sub2"><a href="../book/list">예약조회</a></li><li class="sub3"><a href="my_qna">문의내역</a></li><li class="sub4"><a href="wish">나의 찜한 상품</a></li><li class="sub5"><a href="cart">나의 장바구니</a></li>
   </ul>
   </div>
  <div id="tb"> 

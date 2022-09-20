@@ -31,4 +31,7 @@ public interface MemberService {
     public String qna_content(HttpServletRequest request,Model model);
 
 	
+    public String wish(HttpSession session,Model model);
+    public String cart(HttpSession session,Model model);
+
 }

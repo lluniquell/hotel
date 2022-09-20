@@ -2,6 +2,7 @@ package kr.co.hotel.mapper;
 
 import java.util.ArrayList;
 
+import kr.co.hotel.vo.CartwishVO;
 import kr.co.hotel.vo.CaskVO;
 import kr.co.hotel.vo.MemberVO;
 
@@ -27,4 +28,6 @@ public interface MemberMapper {
     public ArrayList<CaskVO> qna_list_cus(String userid);
 	public CaskVO qna_content(String id);
 
+	//wish 장바구니
+	public ArrayList<CartwishVO> wish(String userid);
 }

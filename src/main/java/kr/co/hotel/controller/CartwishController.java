@@ -9,6 +9,6 @@ import kr.co.hotel.service.CartwishService;
 public class CartwishController {
 	
 	@Autowired
-	@Qualifier("as")
+	@Qualifier("cs")
 	private CartwishService service;
 }

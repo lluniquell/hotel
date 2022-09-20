@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+
+.cartadd {
+	font-weight:bold;
+	text-decoration:none;
+	font-family:고딕체;
+	box-shadow:inset #ffffff 0px 2px 0px -1px,#d2d3d4 0px 1px 3px;
+	o-box-shadow:inset #ffffff 0px 2px 0px -1px,#d2d3d4 0px 1px 3px;
+	-moz-box-shadow:inset #ffffff 0px 2px 0px -1px,#d2d3d4 0px 1px 3px;
+	-webkit-box-shadow:inset #ffffff 0px 2px 0px -1px,#d2d3d4 0px 1px 3px;
+	background:#bfecff;
+	background:-o-linear-gradient(90deg, #bfecff, #d4f2ff);
+	background:-moz-linear-gradient( center top, #bfecff 5%, #d4f2ff 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bfecff), color-stop(1, #d4f2ff) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bfecff', endColorstr='#d4f2ff');
+	background:-webkit-linear-gradient(#bfecff, #d4f2ff);
+	background:-ms-linear-gradient(#bfecff, #d4f2ff);
+	background:linear-gradient(#bfecff, #d4f2ff);
+	text-indent:0px;
+	line-height:0px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:12px;
+	color:#395863;
+	width:83px;
+	height:0px;
+	padding:13px;
+	text-shadow:#ade6ff 0px 1px 0px;
+	border-color:#59a9c6;
+	border-width:1px;
+	border-style:solid;
+}
+
+.cartadd:active {
+	box-shadow:inset #ffffff 0px 2px 0px -1px,#d2d3d4 0px 0 3px;
+	o-box-shadow:inset #ffffff 0px 2px 0px -1px,#d2d3d4 0px 0 3px;
+	-moz-box-shadow:inset #ffffff 0px 2px 0px -1px,#d2d3d4 0px 0 3px;
+	-webkit-box-shadow:inset #ffffff 0px 2px 0px -1px,#d2d3d4 0px 0 3px;
+	position:relative;
+	top:1px
+}
+
+.cartadd:hover {
+	background:#d4f2ff;
+	background:-o-linear-gradient(90deg, #d4f2ff, #bfecff);
+	background:-moz-linear-gradient( center top, #d4f2ff 5%, #bfecff 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d4f2ff), color-stop(1, #bfecff) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d4f2ff', endColorstr='#bfecff');
+	background:-webkit-linear-gradient(#d4f2ff, #bfecff);
+	background:-ms-linear-gradient(#d4f2ff, #bfecff);
+	background:linear-gradient(#d4f2ff, #bfecff);
+}
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ  */
+
+.wishdel {
+	font-weight:bold;
+	text-decoration:none;
+	font-family:굴림체;
+	box-shadow:inset #fafafa 0px -19px 8px -1px,#a8a8a8 0px 4px 0px;
+	o-box-shadow:inset #fafafa 0px -19px 8px -1px,#a8a8a8 0px 4px 0px;
+	-moz-box-shadow:inset #fafafa 0px -19px 8px -1px,#a8a8a8 0px 4px 0px;
+	-webkit-box-shadow:inset #fafafa 0px -19px 8px -1px,#a8a8a8 0px 4px 0px;
+	background:#eeeeee;
+	background:-o-linear-gradient(90deg, #eeeeee, #e1e1e1);
+	background:-moz-linear-gradient( center top, #eeeeee 5%, #e1e1e1 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #eeeeee), color-stop(1, #e1e1e1) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#e1e1e1');
+	background:-webkit-linear-gradient(#eeeeee, #e1e1e1);
+	background:-ms-linear-gradient(#eeeeee, #e1e1e1);
+	background:linear-gradient(#eeeeee, #e1e1e1);
+	text-indent:0px;
+	line-height:0px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:12px;
+	color:#696969;
+	width:83px;
+	height:0px;
+	padding:10px;
+	border-color:#e1e1e1;
+	border-width:1px;
+	border-style:solid;
+}
+
+.wishdel:active {
+	box-shadow:inset #fafafa 0px -19px 8px -1px,#a8a8a8 0px 0 0px;
+	o-box-shadow:inset #fafafa 0px -19px 8px -1px,#a8a8a8 0px 0 0px;
+	-moz-box-shadow:inset #fafafa 0px -19px 8px -1px,#a8a8a8 0px 0 0px;
+	-webkit-box-shadow:inset #fafafa 0px -19px 8px -1px,#a8a8a8 0px 0 0px;
+	position:relative;
+	top:4px
+}
+
+.wishdel:hover {
+	background:#e1e1e1;
+	background:-o-linear-gradient(90deg, #e1e1e1, #eeeeee);
+	background:-moz-linear-gradient( center top, #e1e1e1 5%, #eeeeee 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e1e1e1), color-stop(1, #eeeeee) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e1e1e1', endColorstr='#eeeeee');
+	background:-webkit-linear-gradient(#e1e1e1, #eeeeee);
+	background:-ms-linear-gradient(#e1e1e1, #eeeeee);
+	background:linear-gradient(#e1e1e1, #eeeeee);
+}
+
+

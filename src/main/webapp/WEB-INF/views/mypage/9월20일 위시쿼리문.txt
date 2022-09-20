@@ -1,0 +1,11 @@
+선생님거
+ select p.title,p.pimg,p.price,w.writeday,w.id,w.pcode from product as p , wish as w  where w.pcode=p.pcode and userid=#{param1}; 
+내꺼
+select g.timg, g.title, g.price, c.* from goods as g, cartwish as c where g.goodscode=c.goodscode and userid='test12345';
+
+
+작성
+insert into cartwish(userid,goodscode,writeday,state) values('test12345','p010101',now(),0);
+
+insert into goods(title,price,goodscode,writeday) values('시그니엘케이크',40000,'p010102',now());
+insert into goods(title,price,goodscode,writeday) values('신라호텔디너쇼',120000,'p010103',now());

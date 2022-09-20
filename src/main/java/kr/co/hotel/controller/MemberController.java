@@ -143,5 +143,17 @@ public class MemberController {
     {
     	return service.qna_content(request,model);
     }
-   
+    
+    // 장바구니 , 위시 관련
+    
+    @RequestMapping("/mypage/wish")
+    public String wish(HttpSession session,Model model)
+    {
+    	return service.wish(session,model);
+    }
+    @RequestMapping("/mypage/cart")
+    public String cart(HttpSession session,Model model)
+    {
+    	return service.cart(session,model);
+    }
 }
