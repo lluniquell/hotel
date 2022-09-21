@@ -5,4 +5,17 @@
   
  <mapper namespace="kr.co.hotel.mapper.CartwishMapper">
  
+  <delete id="wish_del">
+   delete from cartwish where id=#{param1}
+  </delete>
+  
+
+  <update id="move_cart">
+   update cartwish set state=1 where userid=#{param1} and goodscode=#{param2}
+  </update>
+  
+  <select id="cart" resultType="kr.co.hotel.vo.GoodsVO">
+  select g.*,c.id as cid,c.qty as cqty from goods as g,cartwish as c 
+  where g.goodscode=c.goodscode and userid=#{param1} and state=1 
+  </select>
  </mapper>

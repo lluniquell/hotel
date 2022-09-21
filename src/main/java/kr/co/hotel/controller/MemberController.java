@@ -151,9 +151,5 @@ public class MemberController {
     {
     	return service.wish(session,model);
     }
-    @RequestMapping("/mypage/cart")
-    public String cart(HttpSession session,Model model)
-    {
-    	return service.cart(session,model);
-    }
+   
 }

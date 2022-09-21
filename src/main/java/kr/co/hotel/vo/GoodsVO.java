@@ -3,6 +3,23 @@ package kr.co.hotel.vo;
 public class GoodsVO {
 	private int id, price, qty, deliveryday, deliveryfee;
 	private String title, timg, mimg, goodscode, writeday;
+	
+	// cartwish 테이블필드
+	 private int cid,cqty;
+	 
+	
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public int getCqty() {
+		return cqty;
+	}
+	public void setCqty(int cqty) {
+		this.cqty = cqty;
+	}
 	public int getId() {
 		return id;
 	}
