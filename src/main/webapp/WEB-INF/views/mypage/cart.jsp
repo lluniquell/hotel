@@ -15,10 +15,14 @@
  
  }
  section table{
-  text-align:center;
+ text-align: center;
  }
   section table tr:first-child td{
   height:50px;
+   text-align:center;
+ }
+  section table td:first-child{
+   text-align:center;
  }
  section table td{
   height:100px;
@@ -29,24 +33,41 @@
      section .left{
      width:130px;
      height:100px;
-     background:red;
      float:left;
      }
      section .right{
-      width:450px;
+      width:500px;
      height:100px;
-     background:green;
       float:right;
      }
      section .top{
      width:100%;
-     height:50px;
-     background:;
+     height:20px;
+     padding-top:15px;
+     text-aling:left;
+     font-size:18px;
+     font-weight: bold;
      }
      section .bot{
-    width:100%;
-     height:50px;
-     background:pink;
+     width:100%;
+     height:40px;
+     margin-top:10px;
+     padding-top:10px;
+     border-top:2px solid #eeeeee;  
+    
+     }
+     .spinner{
+     width:50px;
+      text-align:right;
+      height:10px;
+     }
+     .bleft{
+     float:left;
+     width:40%;
+     }
+     .bright{
+       width:60%;
+     float:right;
      }
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -119,7 +140,38 @@ function maincheck(ck) // ck=> true, false
 		   document.getElementById("mainchk").checked=false;
 	   }
  }
-  
+ 
+ function sel_del()
+ {
+	  // 체크된 상품을 삭제
+	   var len=document.getElementsByClassName("subchk").length;
+	   var str="";
+	   for(i=0;i<len;i++)
+	   {
+		   if(document.getElementsByClassName("subchk")[i].checked) // 삭제체크가 되었다면
+		      str=str+document.getElementsByClassName("subchk")[i].value+",";
+	   }
+	  location="cart_del?id="+str;    // delid=삭제할id 
+ }
+ function gumae()
+ {
+	   //선택되어진 상품의 pcode, 수량을 콤마로 구분하여 하나의 문자열로 완성
+	   var gcode="";
+	   var qty="";
+	   
+	   var subchk=document.getElementsByClassName("subchk");
+	   var len=subchk.length; // 상품의 리스트 갯수
+	   for(i=0;i<len;i++)
+		   {
+		   if(subchk[i].checked)
+		    {
+			   gcode=gcode+document.getElementsByClassName("goodscode")[i].value+",";
+		        qty=qty+document.getElementsByClassName("spinner")[i].value+",";
+		    }
+		   }
+	  
+     location="../mypage/goods_order?gchk=2&goodscode="+gcode+"&qty="+qty;
+ }
 </script>
 </head>
 <body>
@@ -128,32 +180,43 @@ function maincheck(ck) // ck=> true, false
    <caption><h2>나의 장바구니</h2></caption>
    <tr>
     <td width="120"><input id="mainchk" type="checkbox" onclick="maincheck(this.checked)"> 전체선택 </td>
-    <td width="600">상품정보</td>
-    <td width="120">상품금액</td>
-    <td width="120">배송비</td>
+    <td width="650">상품정보</td>
+    <td width="100">상품금액</td>
+    <td width="80">배송비</td>
    </tr>
   <c:forEach items="${list}" var="gvo">
+   <input type="hidden" class="goodscode" value="${gvo.goodscode}">
    <tr>
     <td><input type="checkbox" class="subchk" onclick="subcheck()" value="${gvo.cid}"></td>
     <td id="second">
     
-     <div class="left">상품사진</div>
+     <div class="left"><img src="${gvo.timg}" width="120" height="100"></div>
      <div class="right">
        <div class="top">${gvo.title }</div>
         
         <c:set var="qty_price" value="${gvo.cqty*gvo.price}"/> <!-- 수량 x 상품단가 = qty_price -->
       
        <div class="bot">
-        ${gvo.deliveryday}일 도착보장      
-              수량:<input type="text" class="spinner" value="${gvo.cqty}" readonly> | 
-      <b class="price"> <fmt:formatNumber value="${gvo.price*gvo.cqty}"/>원</b>
+       
+      <div class="bleft">${gvo.deliveryday}일 도착보장</div>
+      <div class="brigt">      
+      <fmt:formatNumber value="${gvo.price}"/>원 &nbsp;<input type="text" class="spinner" value="${gvo.cqty}" readonly> 
+      </div>
        </div>
      </div>
     </td>
-    <td>${gvo.price}</td>
+    <td><b class="price"> <fmt:formatNumber value="${gvo.price*gvo.cqty}"/>원</b></td>
     <td>${gvo.deliveryfee}</td>
-   </tr>
+   </tr> 
   </c:forEach>
+  <tr>
+  
+     <td colspan="4" align="left"> 
+     <span ><input id="mainchk" type="checkbox" onclick="maincheck(this.checked)"> 전체선택 
+     |<span onclick="sel_del()">선택삭제</span>
+     |<span onclick="gumae()"> 상품구매 </span>
+     </td>
+    </tr>
   </table>
 </section>
 </body>

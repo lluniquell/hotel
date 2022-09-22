@@ -13,6 +13,9 @@ import org.springframework.ui.Model;
 import kr.co.hotel.mapper.AdminMapper;
 import kr.co.hotel.mapper.CartwishMapper;
 import kr.co.hotel.vo.GoodsVO;
+import kr.co.hotel.vo.MemberVO;
+
+
 
 @Service
 @Qualifier("cs")
@@ -59,6 +62,50 @@ public class CartwishServiceImpl implements CartwishService{
 	       model.addAttribute("str",str); //10000,20000,33333,23444, .. 이런형식
 	    model.addAttribute("list",list);
 	     return "/mypage/cart";
+	}
+
+	@Override
+	public String cart_del(HttpServletRequest request) {
+		
+		 String[] id=request.getParameter("id").split(",");
+	     for(int i=0;i<id.length;i++)
+		 {
+	    	 mapper.cart_del(id[i]);
+		 }
+		 return "redirect:/mypage/cart";
+	}
+
+	
+	// 상품구매    관련
+	
+
+	@Override
+	public String goods_order(HttpServletRequest request, Model model, HttpSession session) {
+		
+		 // 해당상품의 정보를 뷰에 전달
+				String[] gcode=request.getParameter("goodscode").split(",");
+				String[] qty=request.getParameter("qty").split(",");
+				String gchk=request.getParameter("gchk"); // gchk=1이면 wish통해서온것, 2이면 cart에서온것
+				
+				ArrayList<GoodsVO> list=new ArrayList<GoodsVO>();
+				for(int i=0;i<gcode.length;i++)
+				{
+					GoodsVO pvo=mapper.goods_order(gcode[i]);	
+				    pvo.setQty(Integer.parseInt(qty[i]));
+					list.add(pvo);
+				}
+				model.addAttribute("gchk",gchk);
+				model.addAttribute("list",list);
+			
+				
+				// 회원정보
+				String userid=session.getAttribute("userid").toString();
+				MemberVO mvo=mapper.getmember(userid);
+				model.addAttribute("mvo",mvo);
+				
+				// 배송지 정보 나중에 추가할것★
+				
+				return "/mypage/goods_order";
 	}
 	
 }

@@ -30,7 +30,17 @@ public class CartwishController {
 	@RequestMapping("mypage/cart")
 	public String cart(HttpSession session,Model model)
 	{
-		return service.cart(session,model);
-				
+		return service.cart(session,model);				
+	}
+	@RequestMapping("mypage/cart_del")
+	public String cart_del(HttpServletRequest request)
+	{
+		return service.cart_del(request);				
+	}
+	
+	@RequestMapping("/mypage/goods_order")
+	public String goods_order(HttpServletRequest request,Model model,HttpSession session)
+	{
+		return service.goods_order(request,model,session);
 	}
 }

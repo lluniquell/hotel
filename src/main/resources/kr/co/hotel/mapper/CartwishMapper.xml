@@ -18,4 +18,16 @@
   select g.*,c.id as cid,c.qty as cqty from goods as g,cartwish as c 
   where g.goodscode=c.goodscode and userid=#{param1} and state=1 
   </select>
+  
+  <delete id="cart_del">
+   delete from cartwish where id=#{param1}
+  </delete>
+ 
+  <select id="goods_order" resultType="kr.co.hotel.vo.GoodsVO">
+    select * from goods where goodscode=#{param1}
+  </select>
+  
+  <select id="getmember" resultType="kr.co.hotel.vo.MemberVO">
+    select * from member where userid=#{param1}
+  </select>
  </mapper>
