@@ -104,7 +104,7 @@ function maincheck(ck) // ck=> true, false
  <input type="hidden" class="gcode" value="${wish.goodscode}">
  <tr>
  <td width="80"><input type="checkbox" class="subchk" onclick="subcheck()" value="${wish.id}"></td>
- <td width="140"><img src="${wish.timg}" width="135" height="95"></td>
+ <td width="140"><img src="../resources/img/${wish.timg}" width="135" height="95"></td>
  <td width="680">${wish.title}<br>${wish.price}</td>
  <td width="200">
  <div class="cartadd"><a href="move_cart?goodscode=${wish.goodscode}">장바구니 담기</a></div><p>

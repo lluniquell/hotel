@@ -190,7 +190,7 @@ function maincheck(ck) // ck=> true, false
     <td><input type="checkbox" class="subchk" onclick="subcheck()" value="${gvo.cid}"></td>
     <td id="second">
     
-     <div class="left"><img src="${gvo.timg}" width="120" height="100"></div>
+     <div class="left"><img src="../resources/img/${gvo.timg}" width="120" height="100"></div>
      <div class="right">
        <div class="top">${gvo.title }</div>
         

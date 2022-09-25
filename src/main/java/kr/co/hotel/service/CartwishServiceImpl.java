@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import kr.co.hotel.mapper.AdminMapper;
 import kr.co.hotel.mapper.CartwishMapper;
+import kr.co.hotel.vo.DeliveryVO;
 import kr.co.hotel.vo.GoodsVO;
 import kr.co.hotel.vo.MemberVO;
 
@@ -90,9 +91,9 @@ public class CartwishServiceImpl implements CartwishService{
 				ArrayList<GoodsVO> list=new ArrayList<GoodsVO>();
 				for(int i=0;i<gcode.length;i++)
 				{
-					GoodsVO pvo=mapper.goods_order(gcode[i]);	
-				    pvo.setQty(Integer.parseInt(qty[i]));
-					list.add(pvo);
+					GoodsVO gvo=mapper.goods_order(gcode[i]);	
+				    gvo.setQty(Integer.parseInt(qty[i]));
+					list.add(gvo);
 				}
 				model.addAttribute("gchk",gchk);
 				model.addAttribute("list",list);
@@ -107,5 +108,24 @@ public class CartwishServiceImpl implements CartwishService{
 				
 				return "/mypage/goods_order";
 	}
+
+	@Override
+	public String delivery_list(HttpSession session, Model model) {
+		String userid=session.getAttribute("userid").toString();
+		ArrayList<DeliveryVO> dlist=mapper.delivery_list(userid);
+		model.addAttribute("dlist",dlist);
+		return "/mypage/delivery_list";
+	}
+
+	@Override
+	public String del_add_ok(DeliveryVO dvo, HttpSession session) {
+		
+		String userid=session.getAttribute("userid").toString();
+		dvo.setUserid(userid);
+		
+		mapper.del_add_ok(dvo);
+		return "redirect:/mypage/delivery_list";
+	}
+
 	
 }

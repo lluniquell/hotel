@@ -47,6 +47,14 @@
   text-align: left;
   }
  </style>
+ <script>
+  function del_add()
+   {
+	 window.open("delivery_list","배송설정" , "width=600, height=600, top=100, left=300"); 
+   }
+  
+ </script>
+ 
 </head>
 <body>
  <section>
@@ -65,7 +73,7 @@
     </tr>
     <c:forEach items="${list}" var="gvo">
      <tr>
-      <td><img src="${gvo.timg}" width="135" height="95"></td>
+      <td><img src="../resources/img/${gvo.timg}" width="135" height="95"></td>
       <td>${gvo.title}</td>
       <td>${gvo.price}</td>
       <td>${gvo.qty}</td>
@@ -73,9 +81,17 @@
       ${gvo.deliveryfee}<br>
            배송일출력
       </td>    
-      <td>\ ${(gvo.price*gvo.qty)+gvo.deliveryfee}원</td>
+      <c:set var="chong_price" value="${(gvo.price*gvo.qty)+gvo.deliveryfee}"/>
+      <td>\ ${chong_price}원</td>
+      <c:set var="total_price" value="${total_price+(gvo.price*gvo.qty)}"/> <!-- total_price=상품금액 x 수량 (배송비제외)-->
+      <c:set var="total_pay" value="${total_pay+chong_price}"/> <!-- 배송비포함 소비자가 지불할 총 금액 -->
+      <c:set var="total_delivery" value="${total_delivery+gvo.deliveryfee}"/> <!-- 모든 배송비의 총합  -->
      </tr>
     </c:forEach>
+     
+    
+    </table>
+    
     
     <table id="tb_member" width="800" align="center">
     <caption><h2>구매자 정보</h2></caption>
@@ -91,8 +107,41 @@
    </table>
    
    <table width="800" align="center">
-    <caption><h2>받는사람 정보</h2></caption>
+    <caption><h2>받는사람 정보</h2> <span onclick="del_add()">배송지추가</span></caption>
    </table>
+   
+  
+  <!-- 결제정보 -->
+   <table width="800" align="center">
+    <caption><h2>결제정보</h2></caption>
+    <tr>
+     <td>총상품가격</td> <td>\ ${total_price}원</td>
+    </tr>
+   
+    <tr>
+     <td>배송비</td> <td>\ ${total_delivery}원</td>
+    </tr>
+   
+     <tr>
+     <td>총 결제비용</td> <td>\ ${total_pay}원</td>
+    </tr>
+    
+    <tr>
+     <td>결제방법</td>
+     <td>
+                카드 <input type="radio" name="pay_method" value="0" checked>
+               핸드폰 <input type="radio" name="pay_method" value="1">
+               계좌이체 <input type="radio" name="pay_method" value="2">
+     </td>
+    </tr> 
+    
+    <tr>
+     <td colspan="2" align="center">
+      <input type="submit" value="결제하기">
+     </td>
+    </tr>
+   </table> 
+  
  </section>
 </body>
 </html>

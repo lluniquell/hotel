@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
+import kr.co.hotel.vo.DeliveryVO;
+
 public interface CartwishService {
 
 	public String wish_del(HttpServletRequest request);
@@ -15,6 +17,10 @@ public interface CartwishService {
 
 	//구매관련
 	public String goods_order(HttpServletRequest request,Model model,HttpSession session);
+	
+	//배송
+	public String delivery_list(HttpSession session,Model model);
+	public String del_add_ok(DeliveryVO dvo,HttpSession session);
 
 
 }

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.hotel.service.CartwishService;
+import kr.co.hotel.vo.DeliveryVO;
 
 @Controller
 public class CartwishController {
@@ -42,5 +43,15 @@ public class CartwishController {
 	public String goods_order(HttpServletRequest request,Model model,HttpSession session)
 	{
 		return service.goods_order(request,model,session);
+	}
+	@RequestMapping("/mypage/delivery_list")
+	public String delivery_list(HttpSession session,Model model)
+	{
+		return service.delivery_list(session,model);
+	}
+	@RequestMapping("/mypage/del_add_ok")
+	public String del_add_ok(DeliveryVO dvo,HttpSession session)
+	{
+		return service.del_add_ok(dvo,session);
 	}
 }

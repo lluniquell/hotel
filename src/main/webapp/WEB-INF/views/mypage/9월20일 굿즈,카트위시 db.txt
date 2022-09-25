@@ -1,10 +1,10 @@
 create table cartwish(
-    -> id int auto_increment primary key,
-    -> userid varchar(20),
-    -> goodscode char(10),
-    -> qty int,
-    -> writeday date,
-    -> state int);
+    id int auto_increment primary key,
+    userid varchar(20),
+     goodscode char(10),
+     qty int default 1,
+    writeday date,
+   state int);
 
 
 create table goods(
@@ -18,3 +18,15 @@ qty int,
 writeday date,
 deliveryday int,
 deliveryfee int);
+
+create table delivery(
+id int auto_increment primary key,
+name char(10),
+zip char(10),
+juso varchar(100),
+juso_etc varchar(100),
+phone char(20),
+userid char(20),
+state int,
+sel int default 0
+);

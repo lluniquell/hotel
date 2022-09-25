@@ -30,4 +30,15 @@
   <select id="getmember" resultType="kr.co.hotel.vo.MemberVO">
     select * from member where userid=#{param1}
   </select>
+  
+  
+  
+  <select id="delivery_list" resultType="kr.co.hotel.vo.DeliveryVO">
+   select * from delivery where userid=#{param1}
+  </select>
+  <insert id="del_add_ok">
+   insert into delivery(name,zip,juso,juso_etc,phone,userid,state) 
+   values(#{name},#{zip},#{juso},#{juso_etc},#{phone},#{userid},#{state})
+  </insert>
+  
  </mapper>
