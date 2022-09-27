@@ -30,3 +30,21 @@ userid char(20),
 state int,
 sel int default 0
 );
+
+
+
+create table orderlist(
+userid varchar(20),
+goodscode char(10),
+qty int,
+writeday date,
+ordercode char(10),
+address text,
+phone varchar(20),
+name varchar(20),
+pay_method int,
+state int,
+delivery varchar(20),
+totalprice int,
+memo1 text
+);

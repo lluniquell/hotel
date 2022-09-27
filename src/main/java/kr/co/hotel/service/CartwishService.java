@@ -21,6 +21,6 @@ public interface CartwishService {
 	//배송
 	public String delivery_list(HttpSession session,Model model);
 	public String del_add_ok(DeliveryVO dvo,HttpSession session);
-
+	public String delivery_update(HttpServletRequest request,Model model);
 
 }

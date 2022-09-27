@@ -104,7 +104,8 @@ public class CartwishServiceImpl implements CartwishService{
 				MemberVO mvo=mapper.getmember(userid);
 				model.addAttribute("mvo",mvo);
 				
-				// 배송지 정보 나중에 추가할것★
+				// 배송지 정보 
+				model.addAttribute("dvo",mapper.getDelivery(userid));
 				
 				return "/mypage/goods_order";
 	}
@@ -125,6 +126,14 @@ public class CartwishServiceImpl implements CartwishService{
 		
 		mapper.del_add_ok(dvo);
 		return "redirect:/mypage/delivery_list";
+	}
+
+	@Override
+	public String delivery_update(HttpServletRequest request, Model model) {
+		  
+		String id=request.getParameter("id");
+		model.addAttribute("dvo",mapper.delivery_update(id));  
+		return "/mypage/delivery_update";
 	}
 
 	

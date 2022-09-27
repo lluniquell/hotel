@@ -54,4 +54,9 @@ public class CartwishController {
 	{
 		return service.del_add_ok(dvo,session);
 	}
+	@RequestMapping("/mypage/delivery_update")
+	public String delivery_update(HttpServletRequest request,Model model)
+	{
+		return service.delivery_update(request,model);
+	}
 }

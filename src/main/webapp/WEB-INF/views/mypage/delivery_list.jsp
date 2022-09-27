@@ -139,21 +139,34 @@ width:100px;
  border-bottom:1px solid black;
 }
  </style>
+ <script>
+ function change(n) // 현재 창의 주소를 부모창의 배송주소로 이동
+ { 
+	   // 앞에 oppener만 붙혀주면 부모창 ★
+	    // 부모창의 요소 = 현재창의 요소;
+	   opener.document.getElementById("name").innerText=document.getElementsByClassName("name")[n].innerText;
+	   opener.document.getElementById("juso").innerText=document.getElementsByClassName("juso")[n].innerText;
+	   opener.document.getElementById("phone").innerText=document.getElementsByClassName("phone")[n].innerText;
+	   opener.document.getElementById("state").innerText=document.getElementsByClassName("state")[n].innerText;
+	   self.close();
+ }
+ </script>
 </head>
 <body>
    <div id="first">배송지선택</div> 
    <c:forEach items="${dlist}" var="dvo">
+    <c:set var="i" value="0"/>
     <div class="del_tb">
     <table>
      <h3 align="left" id="cap">${dvo.name}</h3>
      <tr>
-      <td>이 름</td> <td>${dvo.name}</td>
+      <td>이 름</td> <td class="name">${dvo.name}</td>
      </tr>
      <tr>
-      <td>배송주소</td> <td>${dvo.juso} / ${dvo.juso_etc}</td>
+      <td>배송주소</td> <td class="juso">${dvo.juso} / ${dvo.juso_etc}</td>
      </tr>
      <tr>
-      <td>연락처</td> <td>${dvo.phone}</td>
+      <td>연락처</td> <td class="phone">${dvo.phone}</td>
      </tr>
      <tr>
       <td>배송 요청사항</td> 
@@ -169,15 +182,16 @@ width:100px;
        <c:if test="${dvo.state==3}">
         <c:set var="state" value="기타사항"/>       
        </c:if>
-      <td>${state}</td>
+      <td class="state">${state}</td>
      </tr>
      
      <tr height="40"><td colspan="2" align="center">
-     <span class="left">수정</span>
-     <span class="right">선택</span>
+     <span class="left" onclick="location='delivery_update?id=${dvo.id}'">수정</span>
+     <span class="right" onclick="change(${i})">선택</span>
      </td></tr>
     </table>
     </div>
+    <c:set var="i" value="${i+1}"/>
    </c:forEach>
    <div id="add"><div id="add_btn" onclick="form_view()">└ 배송지 추가</div>
    
