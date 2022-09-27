@@ -41,7 +41,7 @@
 		</tr>
 
 		<c:forEach items="${blist}" var="bvo">
-		<%-- 	<c:if test="${bvo.chk==0}"> --%>
+		<c:if test="${bvo.chk==0}"> 
 				<form method="post" action="book2">
 				<tr>
 
@@ -72,7 +72,7 @@
 						
 				</tr>
 				</form>
-	<%-- 		</c:if> --%>
+			</c:if>
 
 		</c:forEach>
 
