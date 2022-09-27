@@ -20,5 +20,7 @@
     insert into orderlist(userid,goodscode,qty,writeday,ordercode,pay_method,delivery_id,totalprice)
     values(#{userid},#{goodscode},#{qty},now(),#{ordercode},#{pay_method},#{delivery_id},#{totalprice})
     </insert>
-
+   <delete id="cartwish_del">
+    delete from cartwish where goodscode=#{param1} and userid=#{param2}
+   </delete>
  </mapper>

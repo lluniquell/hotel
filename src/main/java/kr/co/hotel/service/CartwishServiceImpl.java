@@ -87,6 +87,8 @@ public class CartwishServiceImpl implements CartwishService{
 		 // 해당상품의 정보를 뷰에 전달
 				String[] gcode=request.getParameter("goodscode").split(",");
 				String[] qty=request.getParameter("qty").split(",");
+				
+				
 				String gchk=request.getParameter("gchk"); // gchk=1이면 wish통해서온것, 2이면 cart에서온것
 				
 				ArrayList<GoodsVO> list=new ArrayList<GoodsVO>();
@@ -98,8 +100,7 @@ public class CartwishServiceImpl implements CartwishService{
 				}
 				model.addAttribute("gchk",gchk);
 				model.addAttribute("list",list);
-			
-				
+			   
 				// 회원정보
 				String userid=session.getAttribute("userid").toString();
 				MemberVO mvo=mapper.getmember(userid);

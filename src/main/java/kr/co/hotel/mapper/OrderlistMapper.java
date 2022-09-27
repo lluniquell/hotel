@@ -10,4 +10,5 @@ public interface OrderlistMapper {
 
 	public Integer getOrdercode(String id);
 	public void goods_order_ok(OrderlistVO ovo);
+	public void cartwish_del(String gcode,String userid);
 }

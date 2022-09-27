@@ -175,9 +175,7 @@
      <input type="hidden" name="goodscode" value="${total_gcode}">
      <input type="hidden" name="imsi_qty" value="${imsi_qty}">
      <input type="hidden" name="delivery_id" value="${dvo.id}">
-   
- <div> ${total_pay}<br>${total_gcode}<br>${imsi_qty}<br>${dvo.id}</div>
-   
+ 
      <td colspan="2" align="center">
       <input type="submit" value="결제하기">
      </td>

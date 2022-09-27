@@ -158,6 +158,7 @@ function maincheck(ck) // ck=> true, false
 	   //선택되어진 상품의 pcode, 수량을 콤마로 구분하여 하나의 문자열로 완성
 	   var gcode="";
 	   var qty="";
+	 
 	   
 	   var subchk=document.getElementsByClassName("subchk");
 	   var len=subchk.length; // 상품의 리스트 갯수
@@ -166,7 +167,7 @@ function maincheck(ck) // ck=> true, false
 		   if(subchk[i].checked)
 		    {
 			   gcode=gcode+document.getElementsByClassName("goodscode")[i].value+",";
-		        qty=qty+document.getElementsByClassName("spinner")[i].value+",";
+		        qty=qty+document.getElementsByClassName("spinner")[i].value+",";      
 		    }
 		   }
 	  

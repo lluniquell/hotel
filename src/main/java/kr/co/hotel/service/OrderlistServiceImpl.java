@@ -67,8 +67,7 @@ public class OrderlistServiceImpl implements OrderlistService {
 		//      ordercode=   yyyy + mm + dd + num; 
 		ovo.setOrdercode(ordercode);
          
-		// 송장번호
-		
+		// 송장번호 (아직안만듬)
 		
          
 		String[] gcode=ovo.getGoodscode().split(",");
@@ -80,6 +79,9 @@ public class OrderlistServiceImpl implements OrderlistService {
             ovo.setQty(Integer.parseInt(imsi_qty[i]));
             ovo.setTotalprice(Integer.parseInt(imsi_price[i]));
 		    mapper.goods_order_ok(ovo);
+		    
+		    //cartwish에서 데이터 삭제
+		    mapper.cartwish_del(gcode[i],userid);
 		}
 		
 		return "redirect:/main/index";
