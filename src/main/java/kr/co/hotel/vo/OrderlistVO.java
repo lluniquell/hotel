@@ -1,8 +1,35 @@
 package kr.co.hotel.vo;
 
 public class OrderlistVO {
-	private int id, qty, pay_method, state, totalprice;
-	private String userid, goodscode, writeday, ordercode, address, phone, name, delivery, memo1, memo2;
+	private int id, qty, pay_method, state, totalprice,delivery,delivery_id;
+	private String userid, goodscode, writeday, ordercode, address, phone, name, memo1, memo2;
+	
+	private String imsi_qty,imsi_price;
+	
+	public int getDelivery() {
+		return delivery;
+	}
+	public void setDelivery(int delivery) {
+		this.delivery = delivery;
+	}
+	public String getImsi_price() {
+		return imsi_price;
+	}
+	public void setImsi_price(String imsi_price) {
+		this.imsi_price = imsi_price;
+	}
+	public String getImsi_qty() {
+		return imsi_qty;
+	}
+	public void setImsi_qty(String imsi_qty) {
+		this.imsi_qty = imsi_qty;
+	}
+	public int getDelivery_id() {
+		return delivery_id;
+	}
+	public void setDelivery_id(int delivery_id) {
+		this.delivery_id = delivery_id;
+	}
 	public int getId() {
 		return id;
 	}
@@ -75,12 +102,7 @@ public class OrderlistVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDelivery() {
-		return delivery;
-	}
-	public void setDelivery(String delivery) {
-		this.delivery = delivery;
-	}
+	
 	public String getMemo1() {
 		return memo1;
 	}

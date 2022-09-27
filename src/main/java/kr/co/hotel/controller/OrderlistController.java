@@ -28,4 +28,10 @@ public class OrderlistController {
 	{
 		return service.content(ovo, model);
 	}
+	
+	@RequestMapping("/mypage/goods_order_ok")
+	public String goods_order_ok(OrderlistVO ovo,HttpSession session)
+	{
+		return service.goods_order_ok(ovo,session);
+	}
 }

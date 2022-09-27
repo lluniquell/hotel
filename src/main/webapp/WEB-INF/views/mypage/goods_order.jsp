@@ -10,7 +10,7 @@
  <style>
   section{
    width:1000px;
-   height:1200px;
+   height:1500px;
    margin:auto;
    /* background: yellow; */
   }
@@ -89,14 +89,16 @@
       <c:set var="total_pay" value="${total_pay+chong_price}"/> <!-- 배송비포함 소비자가 지불할 총 금액 -->
       <c:set var="total_delivery" value="${total_delivery+gvo.deliveryfee}"/> <!-- 모든 배송비의 총합  -->
     
-      <c:set var="total_qty" value="${total_qty+=qvo.qty+=','}"/>
+      <c:set var="total_gcode" value="${total_gcode+=gvo.goodscode+=','}"/> 
+      <c:set var="imsi_qty" value="${imsi_qty+=gvo.qty+=','}"/>
+      <c:set var="imsi_price" value="${imsi_price+=chong_price+=','}"/>
      </tr>
     </c:forEach>
     </table>
-     <input type="hidden" name="totalprice" value="${total_pay}">
-     <input type="hidden" name="totalprice" value="${total_pay}">
     
-    <table id="tb_member" width="800" align="center">
+    
+  
+    <table id="tb_member" width="800" align="center">   
     <caption><h2>구매자 정보</h2></caption>
     <tr>
      <td>이름</td><td>${mvo.name}</td>
@@ -166,9 +168,16 @@
                핸드폰 <input type="radio" name="pay_method" value="1">
                계좌이체 <input type="radio" name="pay_method" value="2">
      </td>
-    </tr> 
-    
+    </tr>   
     <tr>
+    
+     <input type="hidden" name="imsi_price" value="${imsi_price}">
+     <input type="hidden" name="goodscode" value="${total_gcode}">
+     <input type="hidden" name="imsi_qty" value="${imsi_qty}">
+     <input type="hidden" name="delivery_id" value="${dvo.id}">
+   
+ <div> ${total_pay}<br>${total_gcode}<br>${imsi_qty}<br>${dvo.id}</div>
+   
      <td colspan="2" align="center">
       <input type="submit" value="결제하기">
      </td>

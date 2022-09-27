@@ -43,8 +43,8 @@ address text,
 phone varchar(20),
 name varchar(20),
 pay_method int,
-state int,
-delivery varchar(20),
+state int default 1,
+delivery_id int,
 totalprice int,
 memo1 text
 );
