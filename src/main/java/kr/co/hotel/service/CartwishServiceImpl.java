@@ -131,12 +131,30 @@ public class CartwishServiceImpl implements CartwishService{
 	}
 
 	@Override
+	public String delivery_del(HttpServletRequest request,HttpSession session) {
+		String id=request.getParameter("id");
+		String userid=session.getAttribute("userid").toString();
+		mapper.delivery_del(id,userid);
+		return "redirect:/mypage/delivery_list";
+	}
+	
+	@Override
 	public String delivery_update(HttpServletRequest request, Model model) {
 		  
 		String id=request.getParameter("id");
 		model.addAttribute("dvo",mapper.delivery_update(id));  
 		return "/mypage/delivery_update";
 	}
+
+	@Override
+	public String delivery_update_ok(DeliveryVO dvo, HttpSession session) {
+	 	String userid=session.getAttribute("userid").toString();
+		  dvo.setUserid(userid);
+		  mapper.delivery_update_ok(dvo);
+		return "redirect:/mypage/delivery_list";
+	}
+
+	
 
 	
 }

@@ -174,7 +174,8 @@
      <input type="hidden" name="imsi_price" value="${imsi_price}">
      <input type="hidden" name="goodscode" value="${total_gcode}">
      <input type="hidden" name="imsi_qty" value="${imsi_qty}">
-     <input type="hidden" name="delivery_id" value="${dvo.id}">
+     
+     <input id="delivery_id" type="hidden" name="delivery_id" value="${dvo.id}">
  
      <td colspan="2" align="center">
       <input type="submit" value="결제하기">

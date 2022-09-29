@@ -43,8 +43,15 @@
    insert into delivery(name,zip,juso,juso_etc,phone,userid,state) 
    values(#{name},#{zip},#{juso},#{juso_etc},#{phone},#{userid},#{state})
   </insert>
+  <delete id="delivery_del">
+   delete from delivery where id=#{param1} and userid=#{param2}
+  </delete>
   
   <select id="delivery_update" resultType="kr.co.hotel.vo.DeliveryVO">
    select * from delivery where id=#{param1}
   </select>
+  <update id="delivery_update_ok">
+   update delivery set name=#{name}, zip=#{zip}, juso=#{juso}, juso_etc=#{juso_etc},
+   phone=#{phone},userid=#{userid},state=#{state} where id=#{id} and userid=#{userid}
+  </update>
  </mapper>
