@@ -8,17 +8,75 @@
 <style>
  section {
 	width: 1000px;
-	height: 400px;
+	height: 600px;
 	margin: auto;
-    background:#FFFFC6;
    }
- section div{
-  margin-top:20px;
+ section #title{
+  width:80%;
+  height:30px;
+  padding-top:10px;
+  padding-bottom:20px;
+  padding-left:20px;
+  font-size:25px;
+  font-weight:bold;
+  margin: auto;
+  border-bottom: 1px solid black;
  }
+  section #main{
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+ }
+ section .label{
+ margin-top:20px;
+ font-weight: bold;
+ font-size:15px;
+ margin-bottom: 6px;
+}
+section input[type=text],section input[type=password]{
+ height: 40px;
+width: 520px;
+font-size: 18px;
+}
+
  #err{
   color:red;
   font-size:20px;
  }
+ section #btn1{
+  width:100px;
+  height:40px;
+  border-radius: 100px;
+  border:1px solid rgb(30,24,82);
+  font-size: 20px;
+  background:white;
+ }
+  section #btn1:hover{
+   background:rgb(30, 24, 82);
+   color:white;
+  }
+  section #btn2{
+   width:100px;
+   height: 40px;
+  	background-color: rgb(30, 24, 82);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(255, 255, 255);
+	border-radius: 100px;
+	margin-left: 50px;
+	font-size: 20px;
+  }
+   section #btn2:hover{
+   background:skyblue;
+   border:1px solid skyblue;
+  }
+  section #end{
+  width:100%;
+  margin-top:60px;
+   height:50px;
+   text-align: right;
+  }
 </style>
 <script>
 
@@ -69,21 +127,28 @@
 </head>
 <body>
 <section>
- <form name="pom" method="post" action="pwd_change_ok" onsubmit="return check(this)" align="center">
- <caption><h2> 비 밀 번 호 변 경</h2></caption>
-  
-  <div>기존 비밀번호    <input type="password" name="pwd" placeholder="기존 비밀번호"></div>
-  <div>변경할 비밀번호 <input type="password" name="pwd1" placeholder="변경할 비밀번호" ></div>
-  <div>비밀번호 확인  <input type="password" name="pwd2" placeholder="변경할 비밀번호 확인"> </div><p>
+ <div id="title">비밀번호</div>
+ 
+ <div id="main">
+ <form name="pom" method="post" action="pwd_change_ok" onsubmit="return check(this)"> 
+  <div class="label">현재 비밀번호 </div>
+  <div><input type="password" name="pwd" placeholder="기존 비밀번호"></div>
+  <div class="label">변경할 비밀번호</div>
+  <div> <input type="password" name="pwd1" placeholder="변경할 비밀번호" ></div>
+  <div class="label">비밀번호 확인 </div>
+   <div><input type="password" name="pwd2" placeholder="변경할 비밀번호 확인"> </div><p>
    <% 
    if(request.getParameter("err")!=null)
    {   %>
   <b id="err">기존 비밀번호가 일치하지 않습니다</b>
    <%} %>
-  
-  
-  <div><input type="submit" value="변경하기"></div>
+  <div id="end">
+ <input id="btn1" type="button" value="취소" onclick="location='myinfo'">
+ <input id="btn2" type="submit" value="저장">
+ 
+  </div>
  </form>
+ </div>
  </section>
 </body>
 </html>

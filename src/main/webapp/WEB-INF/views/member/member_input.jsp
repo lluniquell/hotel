@@ -6,15 +6,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="<c:url value="/resources/css/util.css" />" rel="stylesheet"> <!--  css 불러오기 -->
 <style>
 section {
-	width: 1000px;
-	height: 600px;
+	width: 80%;
+	height: 800px;
 	margin: auto;	
+
+}
+section #main{
+ margin: auto;
+ width:465px;
+ height:800px;
+ line-height:18px;
+ font-weight:400;
+ text-decoration: none solid rgb(26, 30, 41);
+ font-family: Lato;
+	font-size: 16px;
 	
+max-width: 465px;	
 }
 section div{
-margin-top:3px;
+
 }
  section #input
  {
@@ -22,7 +35,25 @@ margin-top:3px;
  margin:auto;
 
  }
-
+section #main input[type=text],#main input[type=password]
+ {
+  width:465px;
+  height:40px;
+  font-size: 16px;
+ }
+ section .label
+ {
+  font-size:12px;
+  font-family:lato;
+  text-decoration: none solid rgb(26, 30, 41);
+  line-height: 18px;
+  margin-top:8px;
+  padding-top:5px;
+ }
+ section #end{
+  margin-top:50px;
+ }
+ 
 </style>
 <script>
 var uchk=0; //사용자가 아이디의 중복체크 결과값을 가진다 1 =가능 0=불가능
@@ -51,7 +82,7 @@ function check_userid(userid)  // 아이디 입력부분 중복 & 글자수 체�
 			  else
 				  
 				  {
-					  document.getElementById("aa").innerText="이미있는아이디";
+					  document.getElementById("aa").innerText="※ 이미있는아이디";
 					  document.getElementById("aa").style.color="red";
                  uchk=0;
 				 } 
@@ -61,7 +92,7 @@ function check_userid(userid)  // 아이디 입력부분 중복 & 글자수 체�
 	 } /* if종료 */
 	  else
 		 {
-		   document.getElementById("aa").innerText="아이디는 6자이상입니다";
+		   document.getElementById("aa").innerText="※ 아이디는 6자이상입니다";
 		   document.getElementById("aa").style.color="red";
 		 }
 }  
@@ -78,13 +109,13 @@ function check_userid(userid)  // 아이디 입력부분 중복 & 글자수 체�
 	 {
 	  if(pwd.search(/\s/) != -1) // 공백체크
 		   {
-			 bb.innerText="비밀번호는 공백없이 입력하세요";
+			 bb.innerText="※ 비밀번호는 공백없이 입력하세요";
 			 bb.style.color="red";
 			 pchk=0;
 		   }	 
 	   else if(num < 0 || eng < 0)
 		 {
-			 bb.innerText="영문,숫자를 혼합하여 입력하세요";
+			 bb.innerText="※ 영문,숫자를 혼합하여 입력하세요";
 			 bb.style.color="red";
 			 pchk=0;
 		 }
@@ -99,13 +130,13 @@ function check_userid(userid)  // 아이디 입력부분 중복 & 글자수 체�
 			 }
 		      else if(pwd!=pwd2)
 		     {
-		     bb.innerText="비밀번호가 일치하지않습니다";
+		     bb.innerText="※ 비밀번호가 일치하지않습니다";
 		     bb.style.color="red";
 		     pchk=0;
 		     }
 		     else if(pwd2.trim().length<6)
 		     {
-			 bb.innerText="비밀번호는 6글자이상입니다";
+			 bb.innerText="※ 비밀번호는 6글자이상입니다";
 			  bb.style.color="red";
 			 pchk=0;
 		    }
@@ -114,7 +145,7 @@ function check_userid(userid)  // 아이디 입력부분 중복 & 글자수 체�
 	 
 	 else // 비밀번호 6글자 미만
 	 {
-		 bb.innerText="비밀번호는 6글자이상입니다";
+		 bb.innerText="※ 비밀번호는 6글자이상입니다";
 		 bb.style.color="red";
 		 pchk=0;
 	 }
@@ -158,52 +189,48 @@ function check_userid(userid)  // 아이디 입력부분 중복 & 글자수 체�
  
 
 </script>
+
 </head>
 <body>
 <section>
-  
+  <div id="main">
   <form name="pom" method="post" action="member_input_ok" onsubmit="return check(this)">
    
-     <caption><h2> 회 원 가 입</h2></caption>
+     <caption><h1 align="center"> 계정 만들기</h1></caption>
     <b style="color:blue;font-size:10px">*는 필수 입력 항목입니다.</b>
 
-     <div>* 아이디 </div>
-     <div>
-       <input type="text" name="userid" maxlength="10" onkeyup="check_userid(this.value)">
-    <!-- 중복일시 경고창 --><b id="aa"></b>
-    </div>
+     <div class="label">* 아이디 </div>
+     <div> <input type="text" name="userid" maxlength="10" onkeyup="check_userid(this.value)"></div>
+      <!-- 중복일시 경고창 --><div id="aa"></div>
      
      
-     <div>* 비밀번호</div>
+     <div class="label">* 비밀번호</div>
      <div><input type="password" name="pwd" placeholder="비밀번호"></div>    
     
      
-     <div>* 비밀번호확인</div>
-     <div>
-     <input type="password" name="pwd2" placeholder="비밀번호확인" onkeyup="pwd_check(this.value)">
-      <b id="bb"></b>
-     </div>        
+     <div class="label">* 비밀번호확인</div>
+     <div><input type="password" name="pwd2" placeholder="비밀번호확인" onkeyup="pwd_check(this.value)"></div> 
+     <div id="bb"></div>       
      
-     <div>* 이름</div>
+     <div class="label">* 이름</div>
      <div><input type="text" name="name" required></div>
      
-     <div>* 생년월일</div>
+     <div class="label">* 생년월일</div>
      <div>
       <input type="text" name="ymd" placeholder="ex) 19960101" maxlength="8" required> 
      </div>
      
-     <div>* 전화번호</div>
+     <div class="label">* 전화번호</div>
      <div><input type="text" name="phone" placeholder="전화번호"></div>
      
-     <div> 이메일 (선택)</div>
+     <div class="label"> 이메일 (선택)</div>
      <div><input type="text" name="email"></div>
      
     
-    <div><input type="submit" value="가입"></div>
-     
+    <div id="end"><input type="submit" id="loginbtn" value="회원가입"></div>
    
   </form>
-
+</div>
 </section>
 </body>
 </html>
