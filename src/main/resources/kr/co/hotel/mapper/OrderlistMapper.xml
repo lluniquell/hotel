@@ -11,5 +11,16 @@
 	
 	<select id="content" resultType="kr.co.hotel.vo.OrderlistVO">
 		select * from orderlist where ordercode=#{ordercode}
-	</select> 	
+	</select>
+	
+	<select id="getOrdercode" resultType="Integer">
+    select ifnull(max(right(ordercode,4)),0) from orderlist where userid=#{param1}
+    </select>	
+    <insert id="goods_order_ok">
+    insert into orderlist(userid,goodscode,qty,writeday,ordercode,pay_method,delivery_id,totalprice)
+    values(#{userid},#{goodscode},#{qty},now(),#{ordercode},#{pay_method},#{delivery_id},#{totalprice})
+    </insert>
+   <delete id="cartwish_del">
+    delete from cartwish where goodscode=#{param1} and userid=#{param2}
+   </delete>
  </mapper>

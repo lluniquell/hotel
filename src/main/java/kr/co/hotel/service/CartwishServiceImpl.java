@@ -1,5 +1,6 @@
 package kr.co.hotel.service;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -83,9 +84,12 @@ public class CartwishServiceImpl implements CartwishService{
 	@Override
 	public String goods_order(HttpServletRequest request, Model model, HttpSession session) {
 		
+		
 		 // 해당상품의 정보를 뷰에 전달
 				String[] gcode=request.getParameter("goodscode").split(",");
 				String[] qty=request.getParameter("qty").split(",");
+				
+				
 				String gchk=request.getParameter("gchk"); // gchk=1이면 wish통해서온것, 2이면 cart에서온것
 				
 				ArrayList<GoodsVO> list=new ArrayList<GoodsVO>();
@@ -97,14 +101,14 @@ public class CartwishServiceImpl implements CartwishService{
 				}
 				model.addAttribute("gchk",gchk);
 				model.addAttribute("list",list);
-			
-				
+			   
 				// 회원정보
 				String userid=session.getAttribute("userid").toString();
 				MemberVO mvo=mapper.getmember(userid);
 				model.addAttribute("mvo",mvo);
 				
-				// 배송지 정보 나중에 추가할것★
+				// 배송지 정보 
+				model.addAttribute("dvo",mapper.getDelivery(userid));
 				
 				return "/mypage/goods_order";
 	}
@@ -126,6 +130,32 @@ public class CartwishServiceImpl implements CartwishService{
 		mapper.del_add_ok(dvo);
 		return "redirect:/mypage/delivery_list";
 	}
+
+	@Override
+	public String delivery_del(HttpServletRequest request,HttpSession session) {
+		String id=request.getParameter("id");
+		String userid=session.getAttribute("userid").toString();
+		mapper.delivery_del(id,userid);
+		return "redirect:/mypage/delivery_list";
+	}
+	
+	@Override
+	public String delivery_update(HttpServletRequest request, Model model) {
+		  
+		String id=request.getParameter("id");
+		model.addAttribute("dvo",mapper.delivery_update(id));  
+		return "/mypage/delivery_update";
+	}
+
+	@Override
+	public String delivery_update_ok(DeliveryVO dvo, HttpSession session) {
+	 	String userid=session.getAttribute("userid").toString();
+		  dvo.setUserid(userid);
+		  mapper.delivery_update_ok(dvo);
+		return "redirect:/mypage/delivery_list";
+	}
+
+	
 
 	
 }

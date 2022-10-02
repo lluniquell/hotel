@@ -18,8 +18,12 @@ public interface CartwishMapper {
     //구매관련
     public GoodsVO goods_order(String gcode);
     public MemberVO getmember(String userid);
+    public DeliveryVO getDelivery(String userid);
     
     //배송
     public ArrayList<DeliveryVO> delivery_list(String userid);
     public void del_add_ok(DeliveryVO dvo);
+    public void delivery_del(String id,String userid);
+    public DeliveryVO delivery_update(String id);
+    public void delivery_update_ok(DeliveryVO dvo);
 }

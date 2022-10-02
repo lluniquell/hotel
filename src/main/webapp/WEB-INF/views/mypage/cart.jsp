@@ -7,25 +7,56 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="<c:url value="/resources/css/util.css" />" rel="stylesheet"> <!--  css 불러오기 -->
+<c:set var="height" value="${list.size()*120+700}"/> <!-- 래코드 늘어날수록  세로증가 -->
 <style>
- section{
-  width:1000px;
+section {
+    margin-top:50px;
+	width: 1000px;
+	height:${height}px;
+	margin: auto;
+}
+ section a{
+  text-decoration:none;
+  color:black;
+ }
+ .myTab{
   margin:auto;
-  height:800px;
- 
+ width:100%;
+ height:60px;
+ margin-top:50px;
+  }
+
+ .main li{
+  list-style-type:none;
+  display:inline-block;
+  width:180px;
+  height:30px;
+  border:1px solid #cccccc;
+  border-left:0px;
+  margin-left:0px;
+  text-align:center;
+   padding-top:10px;
+    padding-bottom:5px;
+    font-weight:bold;
+ }
+ section #content{
+  margin-top:50px;
  }
  section table{
- text-align: center;
+   border-spacing: 0 10px;
  }
   section table tr:first-child td{
   height:50px;
    text-align:center;
+   background:#eeeeee;
  }
+
   section table td:first-child{
    text-align:center;
  }
  section table td{
-  height:100px;
+  height:120px;
  }
  
  /*  ㅡㅡㅡㅡㅡ*/
@@ -69,11 +100,21 @@
        width:60%;
      float:right;
      }
+     #end{
+     margin-top:20px;
+      heigh:40px;
+      width:100%;
+     }
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
  <script>
+ 
+ onload=function(){
+	  document.getElementsByClassName("categori")[4].style.marginBottom="35px";
+}
+ 
     $(function()
     {
     	 var exprice=[${str}]; //[10000,20000,33333,23444,] .. 이런형식
@@ -158,6 +199,7 @@ function maincheck(ck) // ck=> true, false
 	   //선택되어진 상품의 pcode, 수량을 콤마로 구분하여 하나의 문자열로 완성
 	   var gcode="";
 	   var qty="";
+	 
 	   
 	   var subchk=document.getElementsByClassName("subchk");
 	   var len=subchk.length; // 상품의 리스트 갯수
@@ -166,7 +208,7 @@ function maincheck(ck) // ck=> true, false
 		   if(subchk[i].checked)
 		    {
 			   gcode=gcode+document.getElementsByClassName("goodscode")[i].value+",";
-		        qty=qty+document.getElementsByClassName("spinner")[i].value+",";
+		        qty=qty+document.getElementsByClassName("spinner")[i].value+",";      
 		    }
 		   }
 	  
@@ -176,13 +218,21 @@ function maincheck(ck) // ck=> true, false
 </head>
 <body>
 <section>
-  <table width="950" align="center" border="1">
-   <caption><h2>나의 장바구니</h2></caption>
+
+<div class="myTab">
+  <ul class="main">
+ <li class="categori" onclick="location='../mypage/myinfo'">회원정보수정</li><li class="categori" onclick="location='../book/list'">예약조회</li><li class="categori" onclick="location='../mypage/my_qna'">문의내역</li><li class="categori" onclick="location='../mypage/wish'">나의 찜한 상품</li><li class="categori" onclick="location='../mypage/cart'">나의 장바구니</li>
+</ul>
+  </div>
+
+ <div id="content">
+  <table width="950" align="center">
+   <caption><h2 align="left">쇼 핑 카 트</h2></caption>
    <tr>
     <td width="120"><input id="mainchk" type="checkbox" onclick="maincheck(this.checked)"> 전체선택 </td>
     <td width="650">상품정보</td>
-    <td width="100">상품금액</td>
     <td width="80">배송비</td>
+     <td width="100">상품금액</td>
    </tr>
   <c:forEach items="${list}" var="gvo">
    <input type="hidden" class="goodscode" value="${gvo.goodscode}">
@@ -200,24 +250,25 @@ function maincheck(ck) // ck=> true, false
        
       <div class="bleft">${gvo.deliveryday}일 도착보장</div>
       <div class="brigt">      
-      <fmt:formatNumber value="${gvo.price}"/>원 &nbsp;<input type="text" class="spinner" value="${gvo.cqty}" readonly> 
+      \<fmt:formatNumber value="${gvo.price}"/>원 &nbsp;<input type="text" class="spinner" value="${gvo.cqty}" readonly> 
       </div>
        </div>
      </div>
     </td>
-    <td><b class="price"> <fmt:formatNumber value="${gvo.price*gvo.cqty}"/>원</b></td>
-    <td>${gvo.deliveryfee}</td>
+    <td>\<fmt:formatNumber value="${gvo.deliveryfee}"/>원</td>
+    <td><b class="price"> \<fmt:formatNumber value="${gvo.price*gvo.cqty}"/>원</b></td>
    </tr> 
   </c:forEach>
-  <tr>
+  </table>
+  </div>
   
-     <td colspan="4" align="left"> 
+  <div id="end"> 
      <span ><input id="mainchk" type="checkbox" onclick="maincheck(this.checked)"> 전체선택 
      |<span onclick="sel_del()">선택삭제</span>
      |<span onclick="gumae()"> 상품구매 </span>
-     </td>
-    </tr>
-  </table>
+     </span>
+     </div>
+  
 </section>
 </body>
 </html>
