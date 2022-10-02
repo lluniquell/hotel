@@ -14,7 +14,9 @@
    margin:auto;
    /* background: yellow; */
   }
-
+ section a{
+  text-decoration: none;
+ }
   #c1{
   
    margin-top:50px;
@@ -40,12 +42,28 @@
    section table td{
   border-top:1px solid #eeeeee; 
   }
-   section table tr:first-child td{
+   section #tb_goods tr:first-child td{
   background:#eeeeee; 
   }
   section table caption{
   text-align: left;
   }
+ section #tb2_cap{
+  margin-bottom: 10px;
+ }
+ section #del_add{
+  margin-left: 30px;
+    width:100px;
+  height:20px;
+  padding:8px;
+  padding-top:5px;
+  border-radius:30px;
+  text-align:center;
+  color:white;
+  display:inline-block;
+  background:#068484;
+ }
+
  </style>
  <script>
   function del_add()
@@ -62,7 +80,8 @@
  <form method="post" action="goods_order_ok">
  
    
- <div id="c1"><span class="left">주문/결제</span><span class="right"><a style="color:silver">장바구니</a> ><b>주문결제</b> ><a style="color:silver">주문완료</a> </span></div>
+ <div id="c1"><span class="left">주문/결제</span>
+ <span class="right"><a style="color:silver" href="../mypage/cart">장바구니</a> ><b>주문결제</b> ><a style="color:silver">주문완료</a> </span></div>
    <table id="tb_goods" width="800" align="center">
     <caption><h2>구매상품</h2></caption>  
     <tr>
@@ -77,14 +96,14 @@
      <tr>
       <td><img src="../resources/img/${gvo.timg}" width="135" height="95"></td>
       <td>${gvo.title}</td>
-      <td>${gvo.price}</td>
+      <td><fmt:formatNumber value="${gvo.price}"/></td>
       <td>${gvo.qty}</td>
       <td>
-      ${gvo.deliveryfee}<br>
+      <fmt:formatNumber value="${gvo.deliveryfee}"/>원<br>
            배송일출력
       </td>    
       <c:set var="chong_price" value="${(gvo.price*gvo.qty)+gvo.deliveryfee}"/>
-      <td>\ ${chong_price}원</td>
+      <td>\<fmt:formatNumber value="${chong_price}"/>원</td>
       <c:set var="total_price" value="${total_price+(gvo.price*gvo.qty)}"/> <!-- total_price=상품금액 x 수량 (배송비제외)-->
       <c:set var="total_pay" value="${total_pay+chong_price}"/> <!-- 배송비포함 소비자가 지불할 총 금액 -->
       <c:set var="total_delivery" value="${total_delivery+gvo.deliveryfee}"/> <!-- 모든 배송비의 총합  -->
@@ -112,7 +131,7 @@
    </table>
    
    <table id="tb_del" width="800" align="center">
-    <caption><h2>받는사람 정보</h2> <span onclick="del_add()">배송지추가</span></caption>
+    <caption><div id="tb2_cap"><b style="font-size:25px;">받는사람 정보</b> <div id="del_add" onclick="del_add()">배송지추가</div></div></caption>
     <c:if test="${empty dvo}">
           <tr><td align="center">저장되어 있는 배송지가 없습니다. 배송지를 추가해주세요.</td></tr>
     </c:if>
@@ -150,15 +169,15 @@
    <table width="800" align="center">
     <caption><h2>결제정보</h2></caption>
     <tr>
-     <td>총상품가격</td> <td>\ ${total_price}원</td>
+     <td>총상품가격</td> <td>\ <fmt:formatNumber value="${total_price}"/>원</td>
     </tr>
    
     <tr>
-     <td>배송비</td> <td>\ ${total_delivery}원</td>
+     <td>배송비</td> <td>\ <fmt:formatNumber value="${total_delivery}"/>원</td>
     </tr>
    
      <tr>
-     <td>총 결제비용</td> <td>\ ${total_pay}원</td>
+     <td>총 결제비용</td> <td>\ <fmt:formatNumber value="${total_pay}"/>원</td>
     </tr>
     
     <tr>
