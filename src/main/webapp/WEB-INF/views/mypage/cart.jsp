@@ -261,7 +261,7 @@ function maincheck(ck) // ck=> true, false
     </td>
    <td colspan="4">   
    <div id="box" onclick="sel_del()">선택삭제 </div>  
-    <div id="box" onclick="gumae()">장바구니 담기</div>   
+    <div id="box" onclick="gumae()">상품구매</div>   
     
     </td>
   </tr>

@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="<c:url value="/resources/css/util.css" />" rel="stylesheet"> <!--  css 불러오기 -->
  <style>
   section{
    width:1000px;
@@ -96,8 +97,8 @@
      <tr>
       <td><img src="../resources/img/${gvo.timg}" width="135" height="95"></td>
       <td>${gvo.title}</td>
-      <td><fmt:formatNumber value="${gvo.price}"/></td>
-      <td>${gvo.qty}</td>
+      <td>\<fmt:formatNumber value="${gvo.price}"/>원</td>
+      <td>${gvo.qty}개</td>
       <td>
       <fmt:formatNumber value="${gvo.deliveryfee}"/>원<br>
            배송일출력
@@ -197,12 +198,21 @@
      <input id="delivery_id" type="hidden" name="delivery_id" value="${dvo.id}">
  
      <td colspan="2" align="center">
-      <input type="submit" value="결제하기">
+      <input id="loginbtn" type="submit" value="결제하기">
+      <div id="loginbtn2" onclick="location='../mypage/cart'">취소</div>
      </td>
     </tr>
    </table> 
    </form>
-  
  </section>
+ <style>
+  #loginbtn{
+   margin-top:100px;
+  }
+  #loginbtn2{
+   margin-top:50px;
+  }
+ </style>
 </body>
+
 </html>

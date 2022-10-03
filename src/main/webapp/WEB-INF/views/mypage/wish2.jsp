@@ -135,18 +135,18 @@ function maincheck(ck) // ck=> true, false
  }
  function move_cart()
  {
-	   var id=""; // 하나이상이 존재
+	   var gcode=""; // 하나이상이 존재
 	  
 	   var len=document.getElementsByClassName("subchk").length;
 	   for(i=0;i<len;i++)
 	   {
 		   if(document.getElementsByClassName("subchk")[i].checked)
 			   {
-			   id=id+document.getElementsByClassName("id")[i].value+",";
+			   gcode=gcode+document.getElementsByClassName("gcode")[i].value+",";
 			   }
 	   }	    
 	  
-	   location="move_cart?id="+id;
+	   location="move_cart?goodscode="+gcode;
  }
  
  onload=function(){
@@ -176,7 +176,7 @@ function maincheck(ck) // ck=> true, false
    <td width="200"></td>
   </tr>
  <c:forEach items="${wlist}" var="wish">
- <input type="hidden" class="id" value="${wish.id}">
+ <input type="hidden" class="gcode" value="${wish.goodscode}">
  <tr>
  <td ><input type="checkbox" class="subchk" onclick="subcheck()" value="${wish.id}"></td>
  <td  width="140"><img src="../resources/img/${wish.timg}" width="135" height="95"></td>
@@ -186,7 +186,7 @@ function maincheck(ck) // ck=> true, false
  
  <td>\<fmt:formatNumber value="${wish.price}"/>원</td>
  <td>
- <div class="cartadd" onclick="location='move_cart?id=${wish.id}'">장바구니 담기</div><p>
+ <div class="cartadd" onclick="location='move_cart?goodscode=${wish.goodscode}'">장바구니 담기</div><p>
  <div class="wishdel" onclick="location='wish_del?id=${wish.id}'">삭제</div></td>
  </tr>
   </c:forEach>

@@ -42,11 +42,11 @@ public class CartwishServiceImpl implements CartwishService{
 	public String move_cart(HttpServletRequest request, HttpSession session) {
 		 
 		String userid=session.getAttribute("userid").toString();
-		String[] goodscode=request.getParameter("goodscode").split(",");  
-		for(int i=0;i<goodscode.length;i++)
+		String[] id=request.getParameter("id").split(",");  
+		for(int i=0;i<id.length;i++)
 		{
 			
-			mapper.move_cart(userid,goodscode[i]);
+			mapper.move_cart(userid,id[i]);
 		}
 		return "redirect:/mypage/wish";
 	}

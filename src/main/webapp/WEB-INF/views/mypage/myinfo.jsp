@@ -71,9 +71,12 @@ section {
   height: 50px;
  }
  #end{
+ margin:auto;
+  width:100%;
   font-size: 18px;
   padding-top:20px;
   padding-left:20px;
+
  }
 </style>
 <script>
@@ -120,11 +123,18 @@ section {
   </tr>
   </c:if>
  </table>
- <div id="end"><a href="pwd_change"> 비밀번호변경</a> | 
-   <a href="my_update"> 수정하기 </a>   |  
-   <a href="member_out"> 회원탈퇴 </a></div>
+ <div id="end">
+   <div id="loginbtn" onclick="location='pwd_change'"> 비밀번호변경</div> 
+   <div id="loginbtn" onclick="location='my_update'"> 수정하기 </div> 
+   <div id="loginbtn" onclick="location='member_out'"> 회원탈퇴</div> 
 </div>
-<div>
+</div>
 </section>
+<style>
+ #loginbtn{
+   margin-left:150px;
+   margin-top:30px;
+ }
+</style>
 </body>
 </html>
