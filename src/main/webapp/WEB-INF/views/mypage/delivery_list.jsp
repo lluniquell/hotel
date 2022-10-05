@@ -138,6 +138,11 @@ width:100px;
 #cap{
  border-bottom:1px solid black;
 }
+#del_button{
+ float:right;
+ height:10px;
+ text-decoration: none;
+}
  </style>
  <script>
  function change(n) // 현재 창의 주소를 부모창의 배송주소로 이동
@@ -148,15 +153,28 @@ width:100px;
 	   opener.document.getElementById("juso").innerText=document.getElementsByClassName("juso")[n].innerText;
 	   opener.document.getElementById("phone").innerText=document.getElementsByClassName("phone")[n].innerText;
 	   opener.document.getElementById("state").innerText=document.getElementsByClassName("state")[n].innerText;
-	   self.close();
+	   opener.document.getElementById("delivery_id").value=document.getElementsByClassName("delivery_id")[n].value;
+	   
+	   close();
+ }
+ function delivery_del(id)
+ {
+	if(confirm("배송내역을 삭제하시겠습니까?"))
+	{
+		location="delivery_del?id="+id;
+	}
+	
  }
  </script>
 </head>
 <body>
-   <div id="first">배송지선택</div> 
+   <div id="first">배송지선택</div>  
+   <c:set var="i" value="0"/>
    <c:forEach items="${dlist}" var="dvo">
-    <c:set var="i" value="0"/>
+    <input class="delivery_id" type="hidden" value="${dvo.id}">
+    
     <div class="del_tb">
+    <a id="del_button" onclick="delivery_del(${dvo.id})">X</a>
     <table>
      <h3 align="left" id="cap">${dvo.name}</h3>
      <tr>
@@ -187,7 +205,8 @@ width:100px;
      
      <tr height="40"><td colspan="2" align="center">
      <span class="left" onclick="location='delivery_update?id=${dvo.id}'">수정</span>
-     <span class="right" onclick="change(${i})">선택</span>
+    
+     <span class="right" onclick="change(${i})">선택</span >
      </td></tr>
     </table>
     </div>
@@ -214,5 +233,8 @@ width:100px;
     </form>
    </div>
    
+   
+   
+  
 </body>
 </html>

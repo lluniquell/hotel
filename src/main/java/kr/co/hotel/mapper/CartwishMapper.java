@@ -10,7 +10,7 @@ import kr.co.hotel.vo.MemberVO;
 public interface CartwishMapper {
 
 	public void wish_del(String id);
-	public void move_cart(String userid,String goodscode);
+	public void move_cart(String userid,String id);
   
 	public ArrayList<GoodsVO> cart(String userid);
     public void cart_del(String id);
@@ -23,5 +23,7 @@ public interface CartwishMapper {
     //배송
     public ArrayList<DeliveryVO> delivery_list(String userid);
     public void del_add_ok(DeliveryVO dvo);
+    public void delivery_del(String id,String userid);
     public DeliveryVO delivery_update(String id);
+    public void delivery_update_ok(DeliveryVO dvo);
 }

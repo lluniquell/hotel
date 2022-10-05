@@ -1,5 +1,7 @@
 package kr.co.hotel.service;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +23,9 @@ public interface CartwishService {
 	//배송
 	public String delivery_list(HttpSession session,Model model);
 	public String del_add_ok(DeliveryVO dvo,HttpSession session);
+	public String delivery_del(HttpServletRequest request,HttpSession session);
 	public String delivery_update(HttpServletRequest request,Model model);
+	public String delivery_update_ok(DeliveryVO dvo,HttpSession session);
+
 
 }

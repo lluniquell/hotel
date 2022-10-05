@@ -1,5 +1,6 @@
 package kr.co.hotel.service;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,11 +42,11 @@ public class CartwishServiceImpl implements CartwishService{
 	public String move_cart(HttpServletRequest request, HttpSession session) {
 		 
 		String userid=session.getAttribute("userid").toString();
-		String[] goodscode=request.getParameter("goodscode").split(",");  
-		for(int i=0;i<goodscode.length;i++)
+		String[] id=request.getParameter("id").split(",");  
+		for(int i=0;i<id.length;i++)
 		{
 			
-			mapper.move_cart(userid,goodscode[i]);
+			mapper.move_cart(userid,id[i]);
 		}
 		return "redirect:/mypage/wish";
 	}
@@ -131,12 +132,30 @@ public class CartwishServiceImpl implements CartwishService{
 	}
 
 	@Override
+	public String delivery_del(HttpServletRequest request,HttpSession session) {
+		String id=request.getParameter("id");
+		String userid=session.getAttribute("userid").toString();
+		mapper.delivery_del(id,userid);
+		return "redirect:/mypage/delivery_list";
+	}
+	
+	@Override
 	public String delivery_update(HttpServletRequest request, Model model) {
 		  
 		String id=request.getParameter("id");
 		model.addAttribute("dvo",mapper.delivery_update(id));  
 		return "/mypage/delivery_update";
 	}
+
+	@Override
+	public String delivery_update_ok(DeliveryVO dvo, HttpSession session) {
+	 	String userid=session.getAttribute("userid").toString();
+		  dvo.setUserid(userid);
+		  mapper.delivery_update_ok(dvo);
+		return "redirect:/mypage/delivery_list";
+	}
+
+	
 
 	
 }
