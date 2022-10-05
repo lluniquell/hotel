@@ -57,7 +57,7 @@
  </select>
  
  <select id="wish" resultType="kr.co.hotel.vo.CartwishVO">
- select g.timg, g.title, g.price,g.deliveryfee, c.* from goods as g, cartwish as c 
+ select g.timg, g.title, g.price, c.* from goods as g, cartwish as c 
  where g.goodscode=c.goodscode and userid=#{param1} and state=0;
  </select>
   </mapper>

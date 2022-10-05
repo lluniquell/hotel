@@ -1,6 +1,4 @@
 package kr.co.hotel.controller;
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -56,19 +54,9 @@ public class CartwishController {
 	{
 		return service.del_add_ok(dvo,session);
 	}
-	@RequestMapping("/mypage/delivery_del")
-	public String delivery_del(HttpServletRequest request,HttpSession session)
-	{
-		return service.delivery_del(request,session);
-	}
 	@RequestMapping("/mypage/delivery_update")
 	public String delivery_update(HttpServletRequest request,Model model)
 	{
 		return service.delivery_update(request,model);
-	}
-	@RequestMapping("/mypage/delivery_update_ok")
-	public String delivery_update_ok(DeliveryVO dvo,HttpSession session)
-	{
-		return service.delivery_update_ok(dvo,session);
 	}
 }

@@ -64,11 +64,11 @@ public class OrderlistServiceImpl implements OrderlistService {
 		             num="0"+num;
 		
 		String ordercode=today[0]+today[1]+today[2]+num;
-		//      ordercode=   yyyy + mm + dd + num;
+		//      ordercode=   yyyy + mm + dd + num; 
 		ovo.setOrdercode(ordercode);
          
 		// 송장번호 (아직안만듬)
-		System.out.println(ordercode);
+		
          
 		String[] gcode=ovo.getGoodscode().split(",");
 		String[] imsi_qty=ovo.getImsi_qty().split(",");
