@@ -57,7 +57,7 @@
      </c:when>
     </c:choose>  
        </td>
-       <td> <a href="../cus_qna/qna_content?id=${qvo.id}"> ${qvo.title} </a> </td>
+       <td> <a href="../ad_qna/qna_content?id=${qvo.id}"> ${qvo.title} </a> </td>
        <td> ${qvo.writeday} </td>         
     <c:choose> 
      <c:when test="${qvo.state==0}">
@@ -76,21 +76,21 @@
           ≪
         </c:if>
         <c:if test="${pstart!=1}">
-          <a href="../cus_qna/qna_list?page=${pstart-1}"> ≪ </a>
+          <a href="../ad_qna/qna_list?page=${pstart-1}"> ≪ </a>
         </c:if>
         <c:if test="${pstart==1}">
           ＜
         </c:if>
         <c:if test="${pstart!=1}">
-          <a href="../cus_qna/qna_list?page=${page-1}">＜ </a>
+          <a href="../ad_qna/qna_list?page=${page-1}">＜ </a>
         </c:if>
         
          <c:forEach begin="${pstart}" end="${pend}" var="i">
           <c:if test="${page==i}">
-            <a class="plink" href="../cus_qna/qna_list?page=${i}" style="font-weight:bold;color:#3162C7;">${i}</a>
+            <a class="plink" href="../ad_qna/qna_list?page=${i}" style="font-weight:bold;color:#3162C7;">${i}</a>
           </c:if>
           <c:if test="${page!=i}">
-            <a class="plink" href="../cus_qna/qna_list?page=${i}">${i}</a>
+            <a class="plink" href="../ad_qna/qna_list?page=${i}">${i}</a>
           </c:if>
          </c:forEach>
          
@@ -98,20 +98,15 @@
           ＞
         </c:if>
         <c:if test="${page != chong}">
-          <a href="../cus_qna/qna_list?page=${page+1}">＞ </a>
+          <a href="../ad_qna/qna_list?page=${page+1}">＞ </a>
         </c:if>
         <c:if test="${pend == chong}">
           ≫
         </c:if>
         <c:if test="${pend != chong}">
-          <a href="../cus_qna/qna_list?page=${pend+1}"> ≫ </a>
+          <a href="../ad_qna/qna_list?page=${pend+1}"> ≫ </a>
         </c:if>
        </td>
-     </tr>
-     <tr>
-      <td colspan="4" align="right" height="100">
-        <input type="button" value="문의하기" onclick="location='../cus_qna/qna_write'">
-      </td>
      </tr>
    </table>
    

@@ -1,23 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
 <style>
-  section
-  {
-    margin:auto;
-    margin-top:50px;
-    margin-bottom:100px;
-    width:1000px;
-  }  
- 
-  section #msg_sub  /* 부가 안내말 */
+
+  
+  #msg_sub  /* 부가 안내말 */
   {
     font-size:14px;
     color:#cccccc;
   }
   
-  section #msg_b /* 확인 메세지 바탕 + 중앙정렬 */
+  #msg_b /* 확인 메세지 바탕 + 중앙정렬 */
   {     
      position:absolute;     
      padding:100%;
@@ -29,7 +27,7 @@
      align-items:center;
      visibility:hidden;
   }
-  section #check_msg /* 확인 메세지 */
+  #check_msg /* 확인 메세지 */
   {  
      width:500px;  
      padding:40px;
@@ -38,13 +36,13 @@
      border:1px solid #cccccc;
      margin:auto;     
   } 
-  section #check_msg > input[type=submit] /* 확인 메세지_ 버튼 */
+  #check_msg > input[type=submit] /* 확인 메세지_ 버튼 */
   {
      align-items:center;
      margin-left:200px;     
   }
   
-  section #qna_content /* 문의내용  in 확인 메세지 */
+  #qna_content /* 문의내용  in 확인 메세지 */
   {    
     border:1px solid #cccccc;
     width:477px;
@@ -130,16 +128,10 @@
 	   msg_view();
  }
  </script>
-</head> 
-
 <body>
-
-<section>
-
   <form name="ht" method="post" action="qna_write_ok" >
-  <input type="hidden" name="userid" value="${userid}">  <!-- session생기면 삭제하기 ${userid} -->
+  <input type="hidden" name="userid" value=" ${userid}">
   <input type="hidden" name="gubun">
-  
   <table width="830" align="center">
    <caption> <h1> 문의 하기 </h1> 
    <hr>
@@ -147,11 +139,10 @@
    문의를 남겨주시면 빠른시일내에 담당자가 확인하여 답변해 드리겠습니다.</p>
   <div align="right" style="color:red;font-size:10px;" > ** 모든 항목 선택 및 기재 필수 **</div>  
    </caption> 
-   
     <tr>
       <td align="center" width="150"> 성 명  </td>
       <td>
-        <input id="qna_name" type="text" name="name" value="${name}" readonly> <%-- value="${name}" --%>
+        <input id="qna_name" type="text" name="name" value="${name}" readonly>
       </td>
     </tr>
     <tr>
@@ -198,9 +189,7 @@
       <input type="button" onclick="msg_clo()" value="닫기">
    </div>
   </div>
-  
  </form> 
- 
-</section> 
-
+  
 </body>
+</html>

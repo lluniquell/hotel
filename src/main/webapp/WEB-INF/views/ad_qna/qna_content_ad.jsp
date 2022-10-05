@@ -11,7 +11,7 @@
 <script>  
   function del_chk() /* 삭제시 알림 */
   {	  
-	  if(confirm("아직 문의답변을 받지 않으셨습니다. 문의를 삭제 하시겠습니까?"))
+	  if(confirm("삭제시 복구 할 수 없습니다. 문의를 삭제 하시겠습니까?"))
 	   {
 		  location="qna_delete?id=${qvo.id}";
 	   }
@@ -73,14 +73,13 @@
     </c:choose>
      </tr>
      <tr height="80">
-   <c:if test="${qvo.state == 0}">
+   <c:if test="${qvo.state == 0}"> 
        <td colspan="2" align="center">
          <input type="button" value="목록" onclick="location='qna_list'">
-         <input type="button" value="수정" onclick="location='qna_update?id=${qvo.id}'">
          <input type="button" value="삭제" onclick="del_chk()">
        </td>    
    </c:if>  
-   <c:if test="${qvo.state == 1}">
+   <c:if test="${qvo.state == 1}">  <!-- 문의 답받은 후에는 수정 삭제 불가능 -->
        <td colspan="2" align="center">
          <input type="button" value="목록" onclick="location='qna_list'">
        </td>   
@@ -88,20 +87,47 @@
      </tr>
   </table>
  
-  <c:if test="${qvo.state == 1}"> <!-- 답변이 달렸다면 -->
+ <!-- 답변 작성 및 답글 테이블  --> 
+  <form name="aform" method="post" action="qna_answer_ok"> 
+  <input type="hidden" name="qid" value="${qvo.id}"> <!-- 답글다는 문의글의 id -->
+  <input type="hidden" name="id" disabled> <!-- 문의글의 id => 수정시 필요 --><!--  disabled를 하지않으면  빈값으로 가서 자료형이 안맞음(수정시만 쓸수있게 하기) -->
   <table align="center" width="400" border="1">
+   <tr>   
+    <td colspan="4">  
+     <table width="350" border="1">
+      <tr>
+       <td width="30"> <input type="text" name="userid" value="${userid}" readonly style="border:none;outline:none;"> </td> 
+       <td> <textarea cols="60" rows="4" name="content" placeholder="답변을 기입해주세요"></textarea> </td>
+       <td>
+       <c:if test="${qvo.state == 0}">
+         <input type="submit" value="답변 작성">
+       </c:if>
+       <c:if test="${qvo.state == 1}">
+         <input type="submit" disabled value="답변 작성" id="as_dnt">
+       </c:if>
+       </td>
+      </tr>
+     </table>
+    </td>     
+   </tr> 
+  <c:if test="${qvo.state == 1}"> <!-- 답변이 달렸다면 -->
     <tr> 
       <td> 작성자 </td>
       <td> 답 변 </td>
       <td> 작성일 </td>          
+      <td> 비 고  </td>  
     </tr>
     <tr> 
       <td> 문의 담당자 </td>
       <td> ${avo.content} </td>
-      <td> ${avo.writeday} </td> 
+      <td> ${avo.writeday} </td>  
+      <td>      
+        <input type="button" value="수정" onclick="answer_update(${avo.id}, '${avo.content}', '${avo.userid}')" > <!-- 문자로 된것은 ""('')를 붙여야 한다!->안 그러면 변수로 인식 -->
+        <input type="button" value="삭제" onclick="location='../ad_qna/qna_answer_delete?id=${avo.id}'">         
+     </td>   
     </tr>
-   </table>
-   </c:if> 
-
+   </c:if>
+  </table>
+  </form>
 </body>
 </html>
