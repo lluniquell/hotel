@@ -5,7 +5,7 @@
   <pattern> /login/userid_search </pattern>
    <pattern> /login/pwd_search </pattern>
    <pattern> /mypage/delivery_list</pattern>
-   <pattern> /mypage/delivery_update*</pattern>
+   <pattern> /mypage/delivery_update</pattern>
 
  </excludes>
  <!-- 기본 패턴 -->

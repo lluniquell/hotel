@@ -7,14 +7,8 @@ public class CartwishVO {
 	
 	//goods테이블에있는 필드  g.timg, g.title, g.price,
 	private String timg,title;
-	private int price,deliveryfee;
+	private int price;
 	
-	public int getDeliveryfee() {
-		return deliveryfee;
-	}
-	public void setDeliveryfee(int deliveryfee) {
-		this.deliveryfee = deliveryfee;
-	}
 	public String getTimg() {
 		return timg;
 	}
