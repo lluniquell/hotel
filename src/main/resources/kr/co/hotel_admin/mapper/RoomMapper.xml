@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="kr.co.hotel_admin.mapper.RoomMapper">
+ 	<select id="list" resultType="kr.co.hotel_admin.vo.RoomVO">
+ 		select * from room
+ 	</select>
+ 	
+ 	<insert id="add_room_ok" parameterType="kr.co.hotel_admin.vo.RoomVO">
+ 		insert into room(name, grade, maxperson, price)
+ 		values(#{name},#{grade},#{maxperson},#{price})
+ 	</insert>
+ 	
+ 	<select id="update_room" resultType="kr.co.hotel_admin.vo.RoomVO">
+ 		select * from room where id=#{id}
+ 	</select>
+ 	
+ 	<delete id="del_room">
+ 		delete from room where id=#{id}
+ 	</delete>
+ </mapper>

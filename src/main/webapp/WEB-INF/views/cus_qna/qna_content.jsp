@@ -1,37 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+  <style>
+    section
+    {
+      margin:auto;
+      margin-top:50px;
+      margin-bottom:100px;
+      width:1000px;
+    }
+  </style>
 <script>  
-  function del_chk() /* 삭제시 알림 */
+  function del_chk()
   {	  
 	  if(confirm("아직 문의답변을 받지 않으셨습니다. 문의를 삭제 하시겠습니까?"))
 	   {
 		  location="qna_delete?id=${qvo.id}";
 	   }
   } 
-  
-  function answer_update(id, content, userid)
-  {
-	  document.aform.id.value=id;
-	  document.aform.id.disabled=false;
-	  document.aform.content.value=content;
-	  document.aform.userid.value=userid;
-	  
-	  document.getElementById("as_dnt").disabled=false;
-	  document.getElementById("as_dnt").value="수정하기"
-	  
-	  document.aform.action="answer_update_ok";
-  }
 </script>
+</head>
+
+<body>
+ <section>
+ 
   <table width="400" align="center" border="1">
     <caption> <h3> 1:1 문의 </h3> </caption>
+ 
      <tr>
       <c:choose> 
        <c:when test="${qvo.gubun == 'g0' || qvo.gubun == 'r0'}">
@@ -73,35 +70,31 @@
     </c:choose>
      </tr>
      <tr height="80">
-   <c:if test="${qvo.state == 0}">
+   <c:if test="${qvo.state == 0 || userid == 'admin'}"> <!-- 문의 답받기 전에는 수정 삭제 가능/관리자는 언제든 가능 -->
        <td colspan="2" align="center">
          <input type="button" value="목록" onclick="location='qna_list'">
          <input type="button" value="수정" onclick="location='qna_update?id=${qvo.id}'">
          <input type="button" value="삭제" onclick="del_chk()">
        </td>    
    </c:if>  
-   <c:if test="${qvo.state == 1}">
+   <c:if test="${qvo.state == 1}">  <!-- 문의 답받은 후에는 수정 삭제 불가능 -->
        <td colspan="2" align="center">
          <input type="button" value="목록" onclick="location='qna_list'">
        </td>   
    </c:if>  
      </tr>
+
   </table>
  
-  <c:if test="${qvo.state == 1}"> <!-- 답변이 달렸다면 -->
-  <table align="center" width="400" border="1">
+ <!-- 답변 작성 및 답글 테이블  --> 
+  <table align="">
     <tr> 
-      <td> 작성자 </td>
-      <td> 답 변 </td>
-      <td> 작성일 </td>          
+      <td>
+        
+      </td>
     </tr>
-    <tr> 
-      <td> 문의 담당자 </td>
-      <td> ${avo.content} </td>
-      <td> ${avo.writeday} </td> 
-    </tr>
-   </table>
-   </c:if> 
+  </table>
+
+</section>
 
 </body>
-</html>

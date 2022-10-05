@@ -5,7 +5,6 @@
 <script>
 	function breakfast_price() {
 		var num1 = parseInt(document.getElementById("num1").innerText) * 1;
-		//alert(breakfast);
 		var num = parseInt(document.getElementById("breakfast").value) * 55000
 				* num1;
 		document.getElementById("breakfast_price").innerText = num + " 원";
@@ -13,6 +12,8 @@
 
 		document.getElementsByName("totalprice")[0].innerText = (num + room_price)
 				+ " 원";
+		document.getElementById("str1").innerText = "";
+		document.getElementById("str1").innerHTML = "<input type=hidden name=totalprice value="+(num + room_price)+">";
 	}
 
 	function pay_state(n) {
@@ -98,11 +99,13 @@ input[name="name"] {
 
 <section>
 	<form method="get" action="book3" onsubmit="return pay_check();">
-		<input type="hidden" name="person" value="${bvo.person}"> <input
-			type="hidden" name="room" value="${rvo.name}"> <input
-			type="hidden" name="checkin" value="${bvo.checkin}"> <input
-			type="hidden" name="checkout" value="${bvo.checkout}"> <span
-			id="str"></span>
+		<input type="hidden" name="person" value="${bvo.person}">
+		<input type="hidden" name="room" value="${rvo.name}">
+		<input type="hidden" name="checkin" value="${bvo.checkin}">
+		<input type="hidden" name="checkout" value="${bvo.checkout}">
+		
+		<span id="str"></span>		
+		<span id="str1"></span>
 		<table align="center">
 			<caption>
 				<h2>옵션 선택 및 결제</h2>
