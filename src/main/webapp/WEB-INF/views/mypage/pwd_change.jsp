@@ -68,8 +68,8 @@ font-size: 18px;
 	font-size: 20px;
   }
    section #btn2:hover{
-   background:skyblue;
-   border:1px solid skyblue;
+   background:white;
+   color:black;
   }
   section #end{
   width:100%;

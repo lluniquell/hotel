@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.hotel_admin.mapper.ProductMapper">
+ <select id="pro_write" resultType="kr.co.hotel_admin.vo.CateVO">
+    select * from cate order by code asc
+ </select>
+
+ <select id="getbunho" resultType="Integer">
+    select ifnull(substring(max(pcode),4,3),"0") from product where pcode like concat(#{param1},'%')
+ </select>
+ 
+ <insert id="product_ok" parameterType="kr.co.hotel_admin.vo.ProductVO">
+    insert into product(pcode,pimg1,pimg2,pimg3,cimg,title,price,made,halin,su,baesong,baeday,writeday)
+    values(#{pcode},#{pimg1},#{pimg2},#{pimg3},#{cimg},#{title},#{price},#{made},#{halin},#{su},#{baesong},#{baeday},now())
+  </insert>
+
+  <select id="pro_list" resultType="kr.co.hotel_admin.vo.ProductVO">
+    select * , adddate(curdate(),baeday) as baeday2 ,
+    dayofweek(adddate(curdate(),baeday)) as yoil 
+    from product where pcode like concat(#{param1},'%') limit 30
+  </select>
+
+  <select id="pro_content" resultType="kr.co.hotel_admin.vo.ProductVO">
+     select * , adddate(curdate(),baeday) as baeday2 ,
+     dayofweek(adddate(curdate(),baeday)) as yoil 
+     from product where pcode=#{param1}
+  </select>
+
+  <select id="pro_edit_list" resultType="kr.co.hotel_admin.vo.ProductVO">
+       select * from product order by pcode asc
+  </select>
+  <select id="pro_edit" resultType="kr.co.hotel_admin.vo.ProductVO">
+    select * from product where pcode=#{param1}
+  </select>
+
+   <update id="pro_edit_ok" parameterType="kr.co.hotel_admin.vo.ProductVO">
+      update product set pimg1=#{pimg1},pimg2=#{pimg2},pimg3=#{pimg3},cimg=#{cimg},title=#{title},price=#{price},made=#{made},halin=#{halin},su=#{su},baesong=#{baesong},baeday=#{baeday} where pcode=#{pcode}
+   </update>
+   </mapper>

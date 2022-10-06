@@ -137,7 +137,7 @@
 <section>
 
   <form name="ht" method="post" action="qna_write_ok" >
-  <input type="hidden" name="userid" value="${userid}">  <!-- session생기면 삭제하기 ${userid} -->
+  <input type="hidden" name="userid" value="123">  <!-- session생기면 삭제하기 ${userid} -->
   <input type="hidden" name="gubun">
   
   <table width="830" align="center">
@@ -151,7 +151,7 @@
     <tr>
       <td align="center" width="150"> 성 명  </td>
       <td>
-        <input id="qna_name" type="text" name="name" value="${name}" readonly> <%-- value="${name}" --%>
+        <input id="qna_name" type="text" name="name" value="123" readonly> <%-- value="${name}" --%>
       </td>
     </tr>
     <tr>

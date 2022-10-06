@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+
+<mapper namespace="kr.co.teampro.mapper.TeamproMapper_ad">
+   
+<!-- 1:1 문의    -->
+       
+    <!-- 문의 리스트 -->
+    <!-- 관리자용 -->
+   <select id="qna_list_ad" resultType="kr.co.teampro.vo.QnaVo">
+     select * from cusask order by id desc limit #{param1},10
+   </select>
+   
+   <!-- 문의 리스트: 총페이지수  -->
+    <!-- 관리자용 -->
+   <select id="getchong_ad" resultType="Integer">
+     select ceil(count(*)/10) from cusask 
+   </select>  
+   
+    <!-- 문의 내용/ content& update -->
+   <select id="qna_content" resultType="kr.co.teampro.vo.QnaVo">
+    select * from cusask where id=#{param1}
+   </select>
+    <!-- 문의 삭제 -->
+   <delete id="qna_delete">
+     delete from cusask where id=#{param1}
+   </delete>    
+   
+   <!-- 문의 답변 작성 및 content에 출력 -->
+   <insert id="qna_answer_ok">
+     insert into answer(userid, content, qid, writeday) values(#{userid}, #{content}, #{qid}, now())
+   </insert>
+   <select id="qna_answer" resultType="kr.co.teampro.vo.AnswerVo">
+     select * from answer where qid=#{param1}
+   </select> 
+  
+  <!-- cusask 테이블의 상태  0 => 1 로 변경 (답변 완료상태) -->
+   <update id="change_state">
+     update cusask set state=1 where id=#{param1}
+   </update>
+   
+  <!-- 문의 답변 수정하기  -->
+   <update id="answer_update" parameterType="kr.co.teampro.vo.AnswerVo">
+     update answer set content=#{content}, userid=#{userid} where id=#{id}
+   </update>
+   
+<!-- faq 자주묻는 질문    -->
+   <!-- 자주묻는 질문 작성/저장 -->
+    <insert id="faq_write_ok" parameterType="kr.co.teampro.vo.FaqVo">
+      insert into faq(userid, question, answer, gubun, writeday)
+      values(#{userid}, #{question}, #{answer}, #{gubun}, now())
+    </insert>
+   <!-- 자주묻는 질문 목록_all--> 
+    <select id="faq_list" resultType="kr.co.teampro.vo.FaqVo">
+      select * from faq order by id desc
+    </select>
+   <!-- 자주묻는 질문 목록_예약--> 
+    <select id="faq_re" resultType="kr.co.teampro.vo.FaqVo">
+      select * from faq where gubun=0 order by id desc
+    </select>
+   <!-- 자주묻는 질문 목록_서비스--> 
+    <select id="faq_ser" resultType="kr.co.teampro.vo.FaqVo">
+      select * from faq where gubun=1 order by id desc
+    </select>
+   <!-- 자주묻는 질문 목록_회원--> 
+    <select id="faq_mem" resultType="kr.co.teampro.vo.FaqVo">
+      select * from faq where gubun=2 order by id desc
+    </select>
+   <!-- 자주묻는 질문 목록_기타--> 
+    <select id="faq_etc" resultType="kr.co.teampro.vo.FaqVo">
+      select * from faq where gubun=3 order by id desc
+    </select>
+   <!-- 자주묻는 질문 수정 -->
+    <select id="faq_update" resultType="kr.co.teampro.vo.FaqVo">
+     select * from faq where id=#{param1}
+    </select>
+   <!-- 자주묻는 질문 수정 완료 -->
+    <update id="faq_update_ok">
+      update faq set question=#{question}, answer=#{answer}, gubun=#{gubun} where id=#{id}
+    </update> 
+   <!-- 자주묻는 질문 삭제 -->
+    <delete id="faq_delete">
+      delete from faq where id=#{param1}
+    </delete>
+    
+<!-- 이용 후기   -->
+
+  <!-- 이용 후기 목록 -->
+   <select id="hugi_list" resultType="kr.co.teampro.vo.HugiVo">
+     select *,length(fname)-length(replace(fname,",","")) as cnt, substr(fname,1,instr(fname,",")-1) as img from hugi order by id desc limit #{param1},12
+   </select>
+  <!-- 이용 후기 목록페이지  -->
+   <select id="getchong_hugi_ad" resultType="Integer">
+     select ceil(count(*)/10) from hugi 
+   </select>
+ 
+  <!-- 이용 후기 조회수 -->
+   <update id="hugi_readnum">
+     update hugi set readnum=readnum+1 where id=#{param1}
+   </update>
+  <!-- 이용 후기 본문 -->
+   <select id="hugi_content" resultType="kr.co.teampro.vo.HugiVo">
+     select *,length(fname)-length(replace(fname,",","")) as cnt, substr(fname,1,instr(fname,",")-1) as img from hugi where id=#{param1}
+   </select> 
+  <!-- 이용 후기 파일명 불러오기 -->
+   <select id="getfname" resultType="String">
+     select fname from hugi where id=#{param1}
+   </select>
+  <!-- 이용 후기 삭제 --> 
+   <delete id="hugi_delete">
+     delete from hugi where id=#{param1}
+   </delete>
+   
+<!-- 상품 리뷰 작성 -->
+
+  <!-- 리뷰 페이징 총페이지 -->
+   <select id="getchong_review" resultType="Integer">
+     select ceil(count(*)/10) from review
+   </select>
+  <!-- 별점별 갯수 -->
+   <select id="getstarsu" resultType="String">
+     select count(*) from review where star=#{param1}
+   </select>
+  <!-- 배송 평가별 갯수 -->
+   <select id="getbeasu" resultType="String">
+     select count(*) from review where bea_ev=#{param1}
+   </select>
+  <!-- 디자인 평가별 갯수 -->
+   <select id="getdesu" resultType="String">
+     select count(*) from review where de_ev=#{param1}
+   </select>
+  <!-- 내구성 평가별 갯수 -->
+   <select id="getdusu" resultType="String">
+     select count(*) from review where du_ev=#{param1}
+   </select>
+  <!--  리뷰상태 변환(in 구매 테이블)  -->
+   <update id="review_state">
+     update gumae(구매정보 테이블) set hugi=1 where id=#{param1}
+   </update>
+  <!-- 리뷰 리스트 -> 나중에 메개변수에 pcode=#{param1}넣어주기!! -->
+   <select id="review_list" resultType="kr.co.teampro.vo.ReviewVo">
+     select *, length(fname)-length(replace(fname,",","")) as fcnt,substr(fname,1,instr(fname,",")-1) as img 
+     from review where pcode='pcode' order by ${param1} id desc limit #{param2},10
+   </select>
+  <!-- 해당 상품 리뷰 총 갯수 -> 나중에 메개변수에 pcode=#{param1}넣어주기!! -->
+   <select id="getcnt_review" resultType="Integer">
+     select count(*) as cnt from review where pcode='pcode'
+   </select>
+  <!-- 해당 상품 리뷰 별점 평균 -> 나중에 메개변수에 pcode=#{param1}넣어주기!! -->
+   <select id="getavg_review" resultType="Double">
+     select avg(star) as avg from review where pcode='pcode'
+   </select>
+  <!-- 리뷰 수정 -->
+   <select id="review_update" resultType="kr.co.teampro.vo.ReviewVo">
+     select *, length(fname)-length(replace(fname,",","")) as fcnt from review where id=#{param1}
+   </select>
+  <!-- 리뷰 수정 완료 -->  
+   <update id="review_update_ok" parameterType="kr.co.teampro.vo.ReviewVo">
+     update review set title=#{title}, content=#{content}, star=#{star}, bea_ev=#{bea_ev}, de_ev=#{de_ev}, du_ev=#{du_ev}, fname=#{fname} where id=#{id}
+   </update>
+   <select id="getfname_review" resultType="String">
+     select fname from review where id=#{param1}
+   </select>
+   <delete id="review_delete">
+     delete from review where id=#{param1}
+   </delete>
+  <!-- 좋아요 -->
+   <update id="goodup">
+     update review set good=good+1 where id=#{param1}
+   </update>
+   
+<!-- 상품 qna -->
+  <!-- 상품 제목 값불러오기 -->
+   <select id="getptitle" resultType="String">
+     select ptitle from product where pcode=#{param1}
+   </select>
+  <!-- 싱품 qna 질문 작성 완료  -->
+   <insert id="pqna_write_ok" parameterType="kr.co.teampro.vo.PqnaVo">
+     insert into pqna(achk, gubun, bimil, question, ptitle, pcode, userid,writeday)
+     values(#{achk}, #{gubun}, #{bimil}, #{question}, #{ptitle}, #{pcode}, #{userid},now())
+   </insert>
+  <!-- 상품 qna 목록 -->
+   <select id="pqna_list" resultType="kr.co.teampro.vo.PqnaVo">
+     select * from pqna order by id desc limit #{param1},10 <!-- where pcode=#{param1}/limit #{param2} // order 앞에 기입-->
+   </select>
+  <!-- 상품 qna 페이징 총페이지 -->
+   <select id="getchong_pqna" resultType="Integer">
+     select ceil(count(*)/10) from pqna
+   </select> 
+  <!-- 상품 qna 질문 수정 --> 
+   <select id="pqna_update" resultType="kr.co.teampro.vo.PqnaVo">
+     select * from pqna where id=#{param}
+   </select>
+  <!-- 상품 qna 수정 완료 -->
+   <update id="pqna_update_ok" parameterType="kr.co.teampro.vo.PqnaVo">
+     update pqna set gubun=#{gubun}, bimil=#{bimil}, question=#{question} where id=#{id}
+   </update>
+  <!-- 상품 qna 삭제 -->
+   <delete id="pqna_delete">
+     delete from pqna where id=#{param1}
+   </delete>
+  <!-- 상품 qna 답변 완료    -->
+   <update id="pqna_answer_ok" parameterType="kr.co.teampro.vo.PqnaVo">
+     update pqna set achk=#{achk},answer=#{answer},awriteday=now() where id=#{id}
+   </update>
+  <!--  -->
+   <update id="qanswer_update_ok" parameterType="kr.co.teampro.vo.PqnaVo">
+     update pqna set answer=#{answer} where id=#{id}
+   </update>
+   
+    
+</mapper>

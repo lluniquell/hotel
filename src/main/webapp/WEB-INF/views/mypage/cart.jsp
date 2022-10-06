@@ -100,11 +100,7 @@ section {
        width:60%;
      float:right;
      }
-     #end{
-     margin-top:20px;
-      heigh:40px;
-      width:100%;
-     }
+    
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
@@ -259,16 +255,38 @@ function maincheck(ck) // ck=> true, false
     <td><b class="price"> \<fmt:formatNumber value="${gvo.price*gvo.cqty}"/>원</b></td>
    </tr> 
   </c:forEach>
+   <tr>
+    <td> 
+    <input id="mainchk" type="checkbox" onclick="maincheck(this.checked)"> <p><b>전체선택</b> 
+    </td>
+   <td colspan="4">   
+   <div id="box" onclick="sel_del()">선택삭제 </div>  
+    <div id="box" onclick="gumae()">상품구매</div>   
+    
+    </td>
+  </tr>
   </table>
   </div>
-  
-  <div id="end"> 
-     <span ><input id="mainchk" type="checkbox" onclick="maincheck(this.checked)"> 전체선택 
-     |<span onclick="sel_del()">선택삭제</span>
-     |<span onclick="gumae()"> 상품구매 </span>
-     </span>
-     </div>
-  
+ 
 </section>
+<style>
+ #box{
+  text-align:center;
+  float:left;
+  width:120px;
+  height:20px;
+  padding:8px;
+  border-radius:30px;
+ background:#068484;
+ color: white;
+ margin-left:50px;
+ display: inline-block;
+  }
+  #box:hover {
+  border:1px solid #068484;
+	background:white;
+	color:black;
+}
+</style>
 </body>
 </html>

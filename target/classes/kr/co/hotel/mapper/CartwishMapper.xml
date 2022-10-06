@@ -11,7 +11,7 @@
   
 
   <update id="move_cart">
-   update cartwish set state=1 where userid=#{param1} and goodscode=#{param2}
+   update cartwish set state=1 where userid=#{param1} and id=#{param2}
   </update>
   
   <select id="cart" resultType="kr.co.hotel.vo.GoodsVO">

@@ -88,6 +88,30 @@ nav {
 	margin: auto;
 }
 
+nav .menu .a1{  /* 회원관리 ul태그 */
+
+ position:relative;
+}
+nav .menu .a1 li{
+list-style-type:none;
+}
+nav .menu .a1 .mem{ /* 회원관리 li태그 */
+     position:absolute;
+      padding-left:0px;
+      border:1px solid #cccccc;
+      display:none;
+      background:white;
+    left:17px;
+      top:26px;
+      padding-left:0px;
+      padding-top:5px;
+      width:150px;
+      height:80px;
+      font-weight:bold;
+      font-size:18px;
+}
+
+
 
 nav .menu>li { 
 	list-style-type: none;
@@ -106,40 +130,77 @@ footer {
 	margin: auto;
 }
 </style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(function()
+{
+	 $("nav .a1").mouseover(function()
+	 {
+		$("nav .mem").show();
+	 });
+	 $("nav .a1").mouseout(function()
+			 {
+				$("nav .mem").hide();
+			 });
+});
+
+		   
+</script>
 <decorator:head/>
 
 </head>
 <body>
 
-	<div id="message">
-		<!-- 간단메세지 -->
-		<div id="left">최상단 배너</div>
-		<div id="right">X</div>
-	</div>
-
 	<header> <!--  로고, 로그인, 회원가입 -->
-	<div id="left"> <a href="../main/index">?? 호텔 </a></div>
+	<div id="left"><a href="../main/index">?? 호텔 </a></div>
 	<div id="right">
 		<c:if test="${userid != null}">
-			<b style="color:blue">${userid}(${name})</b> 님  
-			<a href="../logout">로그아웃</a> |
-			<a href="../mypage/myinfo">회원정보</a> 
+			${userid}(${name}) 님 반갑습니다  
+			<a href="../member/logout">로그아웃</a> |
+			<a href="../member/myinfo">회원정보</a> 
  		</c:if>
  		<c:if test="${userid == null }">
-		<a href="/hotel/login/login">로그인</a> | <a href="/hotel/member/member_input">회원가입</a>
+		<a href="../member/login">관리자 로그인</a> 
 		</c:if>
-		
+
 	</div>
 	</header>
 
 	<nav> <!-- 메뉴및 링크 -->
 	<ul class="menu">
-		<li>공지사항</li>
-		<li>객실소개</li>
-		<li><a href="/hotel/book/book">예약하기</a></li>
-		<li>FAQ</li>
-		<li>이용후기</li>
-		<li>호텔 몰</li>
+		<li class="a1"><a href="../member/member_list">회원관리
+		  <ul class="mem">
+		    <li><a href="../member/member_list">회원리스트</a></li>
+		    <li><a href="../member/qna_list">1:1문의관리</a></li>
+		    <li><a href="../member/member_list">예약관리</a></li>
+		  </ul>
+		</li>		
+		<li class="a1">예약관리
+		  <ul class="mem">
+		    <li><a href="../book/sales">매출관리</a></li>
+		    <li><a href="../book/list">예약관리</a></li>
+		    <li><a href="../room/list">객실관리</a></li>
+		  </ul>
+		</li>		
+		
+		<li>게시판관리
+		  <ul class="noti">
+		   <li><a href="../notice/notice_list?page=1">공지게시판</a></li>
+		  </ul>
+		</li>
+		<li>쇼핑몰관리
+		   <ul class="pro">
+		    <li>상품등록</li>
+		    <li><a href="../product/pro_edit_list">상품관리</a></li>
+		   </ul>
+		  </li>
+		<li class="a1">주문관리
+		  <ul class="mem">
+		    <li><a href="">매출관리</a></li>
+		    <li><a href="../orderlist/list">주문관리</a></li>
+		    <li><a href="">배송관리</a></li>
+		  </ul>
+		</li>		
 		
 	</ul>
 	</nav>

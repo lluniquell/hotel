@@ -56,10 +56,25 @@ section {
   background:#eeeeee;
    height:50px;
  }
-
  section #content{
   margin-top:50px;
  }
+ #box{
+  float:left;
+  width:120px;
+  height:20px;
+  padding:8px;
+  border-radius:30px;
+ background:#068484;
+ color: white;
+ margin-left:50px;
+ display: inline-block;
+  }
+  #box:hover {
+  border:1px solid #068484;
+	background:white;
+	color:black;
+}
 </style>
 
 <script>
@@ -120,18 +135,18 @@ function maincheck(ck) // ck=> true, false
  }
  function move_cart()
  {
-	   var gcode=""; // 하나이상이 존재
+	   var id=""; // 하나이상이 존재
 	  
 	   var len=document.getElementsByClassName("subchk").length;
 	   for(i=0;i<len;i++)
 	   {
 		   if(document.getElementsByClassName("subchk")[i].checked)
 			   {
-			   gcode=gcode+document.getElementsByClassName("gcode")[i].value+",";
+			   id=id+document.getElementsByClassName("id")[i].value+",";
 			   }
 	   }	    
 	  
-	   location="move_cart?goodscode="+gcode;
+	   location="move_cart?id="+id;
  }
  
  onload=function(){
@@ -161,7 +176,7 @@ function maincheck(ck) // ck=> true, false
    <td width="200"></td>
   </tr>
  <c:forEach items="${wlist}" var="wish">
- <input type="hidden" class="gcode" value="${wish.goodscode}">
+ <input type="hidden" class="id" value="${wish.id}">
  <tr>
  <td ><input type="checkbox" class="subchk" onclick="subcheck()" value="${wish.id}"></td>
  <td  width="140"><img src="../resources/img/${wish.timg}" width="135" height="95"></td>
@@ -171,24 +186,24 @@ function maincheck(ck) // ck=> true, false
  
  <td>\<fmt:formatNumber value="${wish.price}"/>원</td>
  <td>
- <div class="cartadd"><a href="move_cart?goodscode=${wish.goodscode}">장바구니 담기</a></div><p>
- <div class="wishdel"><a href="wish_del?id=${wish.id}">삭제</a></div></td>
+ <div class="cartadd" onclick="location='move_cart?id=${wish.id}'">장바구니 담기</div><p>
+ <div class="wishdel" onclick="location='wish_del?id=${wish.id}'">삭제</div></td>
  </tr>
   </c:forEach>
   <tr>
-    <td colspan="2" align="center"> 
-    <input id="mainchk" type="checkbox" onclick="maincheck(this.checked)"> 전체선택 
-    <b onclick="sel_del()">/선택삭제 </b><br>
-    <b onclick="move_cart()">장바구니 담기</b>
+    <td> 
+    <input id="mainchk" type="checkbox" onclick="maincheck(this.checked)"> <p><b>전체선택</b> 
     </td>
-    <td colspan="3">
-        << < > >>
+   <td colspan="4">   
+   <div id="box" onclick="sel_del()">선택삭제 </div>  
+    <div id="box"onclick="move_cart()">장바구니 담기</div>   
+    
     </td>
   </tr>
  </table>
  </div>
-
- 
  </section>
+  
 </body>
+
 </html>

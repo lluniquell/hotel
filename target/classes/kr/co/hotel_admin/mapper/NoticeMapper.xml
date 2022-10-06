@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="kr.co.hotel_admin.mapper.NoticeMapper">
+
+  <select id="notice_list" resultType="kr.co.hotel_admin.vo.NoticeVO">
+    SELECT * FROM notice WHERE ${param1} like CONCAT('%',#{param2},'%') ORDER BY state DESC,id DESC  LIMIT #{param3}, 10
+
+  </select>
+  <select id="getChongpage" resultType="Integer">
+      select ceil(count(*)/10) from notice where ${param1} like concat('%',#{param2},'%')
+  </select>
+
+  <update id="notice_readnum">
+    update notice set readnum=readnum+1 where id=#{param1}
+  </update>
+
+  <select id="notice_content" resultType="kr.co.hotel_admin.vo.NoticeVO">
+    select * from notice where id=#{param1}
+  </select>
+
+  <insert id="notice_write_ok" parameterType="kr.co.hotel_admin.vo.NoticeVO">
+    insert into notice(title,content,writeday,fname,state)
+    values(#{title},#{content},now(),#{fname},#{state})
+  </insert>
+  <delete id="notice_delete">
+    delete from notice where id=#{param1}
+  </delete>
+
+  <update id="notice_update_ok" parameterType="kr.co.hotel_admin.vo.NoticeVO">
+    update notice set title=#{title},content=#{content},fname=#{fname},state=#{state} where id=#{id}
+  </update>
+
+
+ </mapper>
