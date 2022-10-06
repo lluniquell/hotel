@@ -16,14 +16,19 @@
     text-decoration:none;
     color:black;    
   }
-  section > a:hover
+  section > a:hover  {
+    color:green;  }
+  section .plink
   {
-    color:green;
+    font-size:18px;
+    text-decoration:none;
+    color:black; 
   }
+  section .plink:hover  {
+    color:#8BBCFF;  }
  </style>
  
-</head>
- 
+</head> 
 <body>
 
  <section>
@@ -70,7 +75,44 @@
        </td>   
      </tr>
   </c:forEach>
-
+     <tr id="page_btn" height="50">
+       <td colspan="4" align="center">
+        <c:if test="${pstart==1}">
+          ≪
+        </c:if>
+        <c:if test="${pstart!=1}">
+          <a href="../cus_qna/qna_list?page=${pstart-1}"> ≪ </a>
+        </c:if>
+        <c:if test="${pstart==1}">
+          ＜
+        </c:if>
+        <c:if test="${pstart!=1}">
+          <a href="../cus_qna/qna_list?page=${page-1}">＜ </a>
+        </c:if>
+        
+         <c:forEach begin="${pstart}" end="${pend}" var="i">
+          <c:if test="${page==i}">
+            <a class="plink" href="../cus_qna/qna_list?page=${i}" style="font-weight:bold;color:#3162C7;">${i}</a>
+          </c:if>
+          <c:if test="${page!=i}">
+            <a class="plink" href="../cus_qna/qna_list?page=${i}">${i}</a>
+          </c:if>
+         </c:forEach>
+         
+        <c:if test="${page == chong}">
+          ＞
+        </c:if>
+        <c:if test="${page != chong}">
+          <a href="../cus_qna/qna_list?page=${page+1}">＞ </a>
+        </c:if>
+        <c:if test="${pend == chong}">
+          ≫
+        </c:if>
+        <c:if test="${pend != chong}">
+          <a href="../cus_qna/qna_list?page=${pend+1}"> ≫ </a>
+        </c:if>
+       </td>
+     </tr>
      <tr>
       <td colspan="4" align="right" height="100">
         <input type="button" value="문의하기" onclick="location='../cus_qna/qna_write'">

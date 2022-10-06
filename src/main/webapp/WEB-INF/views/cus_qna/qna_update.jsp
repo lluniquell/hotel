@@ -99,7 +99,6 @@
 	   
 	   // 저장할 문의 구분 값
 	   document.ht.gubun.value=gubun;
-	   //alert(document.ht.gubun.value);
 	 }
 	 else
 	  {
@@ -153,7 +152,6 @@
 
   <form name="ht" method="post" action="qna_update_ok" >
   <input type="hidden" name="id" value="${qvo.id}">
-  <input type="hidden" name="userid" value="123">  <!-- session생기면 삭제하기 ${userid} -->
   <input type="hidden" name="gubun" value="${qvo.gubun}">
 
   <table width="830" align="center">
@@ -166,7 +164,7 @@
     <tr>
       <td align="center" width="150"> 성 명  </td>
       <td>
-        <input id="qna_name" type="text" name="name" value="123" readonly> <%-- value="${name}" --%>
+        <input id="qna_name" type="text" name="name" value="${name}" readonly>
       </td>
     </tr>
     <tr>
@@ -204,7 +202,7 @@
   
   <div id="msg_b">  
    <div id="check_msg"> 
-      <h3> 123님 <%-- ${name}님 --%>  <!--  나중에 session값  -->
+      <h3> ${name}님  
        <br>아래내용으로 문의를  변경 하시겠습니까? :)
       </h3>
       <span style="font-size:10px;color:#cccccc;margin-top:-20px;"> - 문의 내역은 마이 페이지에서 확인이 가능합니다. -  </span> <p>
@@ -213,7 +211,6 @@
       <input type="button" onclick="msg_clo()" value="닫기">
    </div>
   </div>
-
  </form> 
 
 </section>  

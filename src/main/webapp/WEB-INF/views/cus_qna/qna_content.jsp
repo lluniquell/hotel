@@ -20,15 +20,26 @@
 		  location="qna_delete?id=${qvo.id}";
 	   }
   } 
+  function answer_update(id, content, userid)
+  {
+	  document.aform.id.value=id;
+	  document.aform.id.disabled=false;
+	  document.aform.content.value=content;
+	  document.aform.userid.value=userid;
+	  
+	  document.getElementById("as_dnt").disabled=false;
+	  document.getElementById("as_dnt").value="수정하기"
+	  
+	  document.aform.action="answer_update_ok";
+  }
 </script>
 </head>
 
 <body>
  <section>
  
-  <table width="400" align="center" border="1">
+    <table width="400" align="center" border="1">
     <caption> <h3> 1:1 문의 </h3> </caption>
- 
      <tr>
       <c:choose> 
        <c:when test="${qvo.gubun == 'g0' || qvo.gubun == 'r0'}">
@@ -70,30 +81,35 @@
     </c:choose>
      </tr>
      <tr height="80">
-   <c:if test="${qvo.state == 0 || userid == 'admin'}"> <!-- 문의 답받기 전에는 수정 삭제 가능/관리자는 언제든 가능 -->
+   <c:if test="${qvo.state == 0}">
        <td colspan="2" align="center">
          <input type="button" value="목록" onclick="location='qna_list'">
          <input type="button" value="수정" onclick="location='qna_update?id=${qvo.id}'">
          <input type="button" value="삭제" onclick="del_chk()">
        </td>    
    </c:if>  
-   <c:if test="${qvo.state == 1}">  <!-- 문의 답받은 후에는 수정 삭제 불가능 -->
+   <c:if test="${qvo.state == 1}">
        <td colspan="2" align="center">
          <input type="button" value="목록" onclick="location='qna_list'">
        </td>   
    </c:if>  
      </tr>
-
   </table>
  
- <!-- 답변 작성 및 답글 테이블  --> 
-  <table align="">
+  <c:if test="${qvo.state == 1}"> <!-- 답변이 달렸다면 -->
+  <table align="center" width="400" border="1">
     <tr> 
-      <td>
-        
-      </td>
+      <td> 작성자 </td>
+      <td> 답 변 </td>
+      <td> 작성일 </td>          
     </tr>
-  </table>
+    <tr> 
+      <td> 문의 담당자 </td>
+      <td> ${avo.content} </td>
+      <td> ${avo.writeday} </td> 
+    </tr>
+   </table>
+   </c:if>
 
 </section>
 
