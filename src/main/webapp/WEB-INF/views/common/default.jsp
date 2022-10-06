@@ -345,7 +345,7 @@
      </label>       
     
     <div id="logo"> <!-- 로고 -->
-       <img src="resources/img/logo.gif" width="100"> 
+       <img src="../resources/img/logo.gif" width="100"> 
     </div>
     <div id="login_area"> <!-- 로그인 -->
       <div id="loginicon"> 로그 </div>
