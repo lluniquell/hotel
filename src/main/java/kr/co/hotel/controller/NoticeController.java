@@ -11,5 +11,5 @@ public class NoticeController {
 
 	@Autowired
 	@Qualifier("ns")
-	private NoticeService service;
+	private NoticeService service
 }
