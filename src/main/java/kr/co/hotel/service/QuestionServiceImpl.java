@@ -118,16 +118,7 @@ public class QuestionServiceImpl implements QuestionService{
 		return "redirect:/cus_qna/qna_content?id="+id;
 	}
 
-	@Override
-	public String qna_answer_ok(AnswerVO avo, HttpSession session, Model model) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String answer_update_ok(AnswerVO avo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 		
 }

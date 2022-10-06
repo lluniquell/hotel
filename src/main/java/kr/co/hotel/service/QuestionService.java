@@ -22,8 +22,5 @@ public interface QuestionService {
 		// 문의 수정
 		public String qna_update(HttpServletRequest request, Model model);
 		public String qna_update_ok(QnaVO qvo);		
-		// 문의 답변 작성
-		public String qna_answer_ok(AnswerVO avo, HttpSession session, Model model);
-		// 문의 답변 수정
-		public String answer_update_ok(AnswerVO avo);
+		
 }
