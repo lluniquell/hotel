@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import kr.co.hotel.vo.CaskVO;
 
 public interface CaskService {
-
 	public String qna_write_ok(HttpSession session, CaskVO cvo);
 	public String qna_list(HttpSession session, Model model, HttpServletRequest request);
 	public String qna_content(HttpServletRequest request, Model model);

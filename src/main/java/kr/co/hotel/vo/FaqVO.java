@@ -2,7 +2,19 @@ package kr.co.hotel.vo;
 
 public class FaqVO {
 	int id, gubun;
-	String title, content, writeday;
+	String title, content, writeday, answer, question;
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	public String getQuestion() {
+		return question;
+	}
+	public void setQuestion(String question) {
+		this.question = question;
+	}
 	public int getId() {
 		return id;
 	}
