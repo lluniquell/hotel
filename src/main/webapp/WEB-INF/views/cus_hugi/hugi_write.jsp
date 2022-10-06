@@ -15,10 +15,8 @@
       margin-top:50px;
       margin-bottom:50px;
     }
-    section h2
-    {
-      position:relative;;
-    }
+    section h2    {
+      position:relative;    }
     section h2:after
     {
       content:'';
@@ -30,10 +28,6 @@
       margin-left:-15px;
       height:1px;
       background:#cccccc;
-    }
-    section div
-    {
-       
     }
     section #rt
     {
@@ -50,10 +44,8 @@
       font-size:13px;
       color:#1264a3;
     }
-    section textarea
-    {
-      padding:5px;
-    }
+    section textarea    {
+      padding:5px;    }
 
     
   </style>
@@ -93,8 +85,6 @@
          }
     	
     	document.getElementById("star").value=n+1;
-        
-    	// alert(document.getElementById("star").value);
     }
     
     function check(my)
@@ -110,8 +100,7 @@
     		return false;
     	}
     	else
-    	return true;
-    		
+    	return true;    		
     }
   </script>
 <body>

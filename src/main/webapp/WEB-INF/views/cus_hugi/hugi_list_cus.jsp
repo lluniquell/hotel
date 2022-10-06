@@ -36,9 +36,7 @@
  section .himg
  {
    position:relative;   
-   /* border:1px solid black; */
    margin-bottom:10px;
-   /* padding:5px; */
    cursor:pointer;
    overflow:hidden;
    border-radius:7px;
@@ -90,14 +88,10 @@
   }
  section .plink:hover  {
    color:#068484;  }
- section table tr
- {
-   border-bottom:1px solid black;
- }
- section li:hover
- {
-   color:#3162C7;
- }
+ section table tr {
+   border-bottom:1px solid black; }
+ section li:hover {
+   color:#3162C7; }
 </style>
 <body>
   <section>

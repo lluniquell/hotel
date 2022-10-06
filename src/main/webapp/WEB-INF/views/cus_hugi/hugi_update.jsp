@@ -15,10 +15,8 @@
       margin-top:50px;
       margin-bottom:50px;
     }
-    section h2
-    {
-      position:relative;;
-    }
+    section h2    {
+      position:relative;    }
     section h2:after
     {
       content:'';
@@ -31,16 +29,11 @@
       height:1px;
       background:#cccccc;
     }
-    section div
-    {
-       
-    }
     section #rt
     {
       margin-top:10px;
       display:inline-block;
       margin-right:5px;      
-      /* border:1px solid black; */
       font-size:13px;
       color:#1264a3;
     }
@@ -51,25 +44,14 @@
       font-size:13px;
       color:#1264a3;
     }
-    section textarea
-    {
-      padding:5px;
-    }
+    section textarea    {
+      padding:5px;    }
     
     section #himgs
     {
       margin-top:30px;
       text-align:center;
-    }
-/*     section #rt #grade
-    {
-       outline:none;
-       border:none;
-       font-size:12px;  
-       color:#1264a3;
-       text-align:center;     
-    } */
-    
+    }    
   </style>
   <script>
     var addsu=0;  
@@ -123,8 +105,7 @@
     		len++; 
     		 
     	    var ff="<p class='fname' > <input type='file' name='fname"+len+"'> </p>"
-            document.getElementById("files").innerHTML=document.getElementById("files").innerHTML+ff;
-    	      	   
+            document.getElementById("files").innerHTML=document.getElementById("files").innerHTML+ff;    	      	   
     	 }
     }
     
@@ -148,9 +129,7 @@
     	for(i=n+1;i<len;i++)
     		star[i].src="../resources/img/star2.png";
     	
-    	document.getElementById("star").value=n+1;
-        
-    	// alert(document.getElementById("star").value);
+    	document.getElementById("star").value=n+1;        
     }
     
     function check(upform)

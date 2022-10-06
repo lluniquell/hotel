@@ -15,13 +15,11 @@
      margin:auto;
      margin-top:50px;
      margin-bottom:50px;
-     /*  border:1px solid black;  */  
    }
    section h2
    {
      position:relative;
-     text-align:center;
-     
+     text-align:center;     
    }
    section h2:after
    {
@@ -43,10 +41,8 @@
      margin:auto;
      margin-top:80px;
    }
-   section .slider input[type=radio]
-   {
-      display:none;
-   }
+   section .slider input[type=radio]   {
+      display:none;   }
    section .himgs
    {
      padding:0;
@@ -120,7 +116,6 @@
    {
      width:400px;
      margin:auto;
-     /* border:1px solid black; */
      padding:10px;
      position:relative; 
      margin-top:20px;    
@@ -143,7 +138,7 @@
      color:#068484; 
      padding-top:2px;    
    }
-  section #msg_b /* 확인 메세지 바탕 + 중앙정렬 */
+  section #msg_b 
   {     
      position:absolute;     
      padding:100%;
@@ -155,7 +150,7 @@
      visibility:hidden;
      z-index:10;
   }
-  section #del_msg /* 확인 메세지 */
+  section #del_msg
   {  
      width:300px;
      height:150px;  
@@ -173,7 +168,7 @@
      box-shadow:14px -5px 35px -15px rgba(0,0,0,0.66);
   } 
   
-  section #del_msg > input[type=submit] /* 확인 메세지_ 버튼 */
+  section #del_msg > input[type=submit] 
   {
      align-items:center;
      margin-left:200px;     
@@ -286,7 +281,7 @@
           </c:forEach>
        </div>
        
-       <div style="font-size:20px;padding-top:13px;font-weight:bold;"> ${hvo.title} </div> <!-- 제목 -->
+       <div style="font-size:20px;padding-top:13px;font-weight:bold;"> ${hvo.title} </div> 
        
    <!-- 객실 등급   -->
    <c:if test="${hvo.grade==1}">     
