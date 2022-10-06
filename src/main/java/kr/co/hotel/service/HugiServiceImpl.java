@@ -61,22 +61,19 @@ public class HugiServiceImpl implements HugiService{
 	          
 		    while(file.hasMoreElements())
 		     {
-		    	// System.out.println(file.nextElement().toString());
 		        String fname=file.nextElement().toString();
 			    fnames=fnames+multi.getFilesystemName(fname)+",";
 		     }
 		       
 		    fnames=fnames.replace("null,", "");
 	        
-	        if(fnames.length()==0)  // 사진을 등록하지 않을 경우 호텔 로고가 들어감
-	        	fnames="logo.gif,";
-	        
-	        //System.out.println(fnames);
+	        if(fnames.length()==0)  
+	        	fnames="logo.gif,";	       
 		 	
 			HugiVO hvo=new HugiVO();
 			hvo.setTitle(title);
-			hvo.setName("name"); //name -> 섹션값 받으면 바꾸기
-			hvo.setUserid("userid");  //userid  -> 섹션값 받으면 바꾸기
+			hvo.setName(name); 
+			hvo.setUserid(userid);  
 			hvo.setContent(content);
 			hvo.setGrade(grade);
 			hvo.setBid(bid);
@@ -115,27 +112,25 @@ public class HugiServiceImpl implements HugiService{
 			
 			for(int i=0;i<hlist.size();i++)
 			{
-				// 이름 별표
+				
 				String name=hlist.get(i).getName();
 				char n1=name.charAt(0);
 				char n2=name.charAt(name.length()-1);
-				//System.out.println(n1+" "+n2);
+				
 				String n3="";
 				for(int j=1;j<=name.length()-2;j++)
 				  n3=n3+"*";
 			
 				String nn=n1+n3+n2;
-				//System.out.println(nn);
+				
 				hlist.get(i).setName(nn);
 				
-				// 제목 나머지 ...(8자)
+				
 				if(hlist.get(i).getTitle().length()>15)
 				{
 				   String title=hlist.get(i).getTitle().substring(0, 15)+"···";
 			       hlist.get(i).setTitle(title);
-				}
-				
-				//System.out.println(nn+title);
+				}			
 			}
 			
 			model.addAttribute("hlist", hlist);
@@ -173,30 +168,26 @@ public class HugiServiceImpl implements HugiService{
 				pend=chong;
 					
 			ArrayList<HugiVO> hlist=mapper.hugi_list_cus(userid,index);
-	        //System.out.println(hlist.size());
 			for(int i=0;i<hlist.size();i++)
-			{
-				// 이름 별표
+			{				
 				String name=hlist.get(i).getName();
 				char n1=name.charAt(0);
 				char n2=name.charAt(name.length()-1);
-				//System.out.println(n1+" "+n2);
+				
 				String n3="";
 				for(int j=1;j<=name.length()-2;j++)
 				  n3=n3+"*";
 			
 				String nn=n1+n3+n2;
-				//System.out.println(nn);
+				
 				hlist.get(i).setName(nn);
 				
-				// 제목 나머지 ...(8자)
+				
 				if(hlist.get(i).getTitle().length()>15)
 				{
 				   String title=hlist.get(i).getTitle().substring(0, 15)+"···";
 			       hlist.get(i).setTitle(title);
 				}
-				
-				//System.out.println(nn+title);
 			}
 			
 			model.addAttribute("hlist", hlist);
@@ -235,7 +226,6 @@ public class HugiServiceImpl implements HugiService{
 			  n3=n3+"*";
 		
 			String nn=n1+n3+n2;
-			//System.out.println(nn);
 			hvo.setName(nn);
 					
 			model.addAttribute("hvo", hvo);
@@ -272,14 +262,13 @@ public class HugiServiceImpl implements HugiService{
 	          
 		    while(file.hasMoreElements())
 		     {
-		    	// System.out.println(file.nextElement().toString());
 		        String fname=file.nextElement().toString();
 			    fnames=fnames+multi.getFilesystemName(fname)+",";
 		     }
 			
 		    fnames=fnames.replace("null,", "")+multi.getParameter("str");
 		    
-		    if(fnames.length()==0)  // 사진을 등록하지 않을 경우 호텔 로고가 들어감
+		    if(fnames.length()==0) 
 	        	fnames="logo.gif,";
 		    
 		    String title=multi.getParameter("title");

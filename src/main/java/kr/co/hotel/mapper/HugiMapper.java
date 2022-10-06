@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import kr.co.hotel.vo.HugiVO;
 
 public interface HugiMapper {
+	
 	public int getGrade(String bid); // 예약방의 grade구하기
 	public void hugi_write_ok(HugiVO hvo); // 이용 후기 작성
 	public ArrayList<HugiVO> hugi_list(int index); // 이용 후기 목록

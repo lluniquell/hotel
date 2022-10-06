@@ -18,8 +18,7 @@ public interface HugiService {
 		// 이용 후기 조회수
 		public String hugi_readnum(HttpServletRequest request);
 		// 이용 후기 본문
-		public String hugi_content(HttpServletRequest request, Model model);
-		
+		public String hugi_content(HttpServletRequest request, Model model);		
 		// 이용 후기 수정
 		public String hugi_update(HttpServletRequest request, Model model);
 		// 이용 후기 수정 완료
