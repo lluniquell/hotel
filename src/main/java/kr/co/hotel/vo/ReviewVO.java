@@ -3,6 +3,8 @@ package kr.co.hotel.vo;
 public class ReviewVO {
 	private int id, star, gid, bea_ev, de_ev, du_ev, b1,b2,b3,d1,d2,d3,du1,du2,du3,s1,s2,s3,s4,s5,cnt;
 	private double avg;
+	private String[] fimgs;
+	private String title, content, goodscode, fname, userid, writeday, ordercode, pcode;
 	
 	public int getCnt() {
 		return cnt;
@@ -18,7 +20,7 @@ public class ReviewVO {
 		this.avg = avg;
 	}
 
-	private String[] fimgs;
+
 	
 	public String[] getFimgs() {
 		return fimgs;
@@ -140,7 +142,7 @@ public class ReviewVO {
 	public void setPcode(String pcode) {
 		this.pcode = pcode;
 	}
-	private String title, content, goodscode, fname, userid, writeday, ordercode, pcode;
+
 	public int getId() {
 		return id;
 	}

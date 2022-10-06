@@ -5,4 +5,66 @@
   
  <mapper namespace="kr.co.hotel.mapper.ReviewMapper">
  
+<!-- 상품 리뷰 작성 -->
+  <!-- 리뷰 작성 -->
+   <insert id="review_write_ok">
+     insert into review(pcode,star,title,content,userid,writeday,gid,bea_ev,de_ev,du_ev,fname)
+     values(#{pcode},#{star},#{title},#{content},#{userid},now(),#{gid},#{bea_ev},#{de_ev},#{du_ev},#{fname})
+   </insert>
+  <!-- 리뷰 페이징 총페이지 -->
+   <select id="getchong_review" resultType="Integer">
+     select ceil(count(*)/10) from review
+   </select>
+  <!-- 별점별 갯수 -->
+   <select id="getstarsu" resultType="String">
+     select count(*) from review where star=#{param1}
+   </select>
+  <!-- 배송 평가별 갯수 -->
+   <select id="getbeasu" resultType="String">
+     select count(*) from review where bea_ev=#{param1}
+   </select>
+  <!-- 디자인 평가별 갯수 -->
+   <select id="getdesu" resultType="String">
+     select count(*) from review where de_ev=#{param1}
+   </select>
+  <!-- 내구성 평가별 갯수 -->
+   <select id="getdusu" resultType="String">
+     select count(*) from review where du_ev=#{param1}
+   </select>
+  <!--  리뷰상태 변환(in 구매 테이블)  -->
+   <update id="review_state">
+     update gumae(구매정보 테이블) set hugi=1 where id=#{param1}
+   </update>
+  <!-- 리뷰 리스트 -> 나중에 메개변수에 pcode=#{param1}넣어주기!! -->
+   <select id="review_list" resultType="kr.co.hotel.vo.ReviewVO">
+     select *, length(fname)-length(replace(fname,",","")) as fcnt,substr(fname,1,instr(fname,",")-1) as img 
+     from review where pcode='pcode' order by ${param1} id desc limit #{param2},10
+   </select>
+  <!-- 해당 상품 리뷰 총 갯수 -> 나중에 메개변수에 pcode=#{param1}넣어주기!! -->
+   <select id="getcnt_review" resultType="Integer">
+     select count(*) as cnt from review where pcode='pcode'
+   </select>
+  <!-- 해당 상품 리뷰 별점 평균 -> 나중에 메개변수에 pcode=#{param1}넣어주기!! -->
+   <select id="getavg_review" resultType="Double">
+     select avg(star) as avg from review where pcode='pcode'
+   </select>
+  <!-- 리뷰 수정 -->
+   <select id="review_update" resultType="kr.co.hotel.vo.ReviewVO">
+     select *, length(fname)-length(replace(fname,",","")) as fcnt from review where id=#{param1}
+   </select>
+  <!-- 리뷰 수정 완료 -->  
+   <update id="review_update_ok" parameterType="kr.co.hotel.vo.ReviewVO">
+     update review set title=#{title}, content=#{content}, star=#{star}, bea_ev=#{bea_ev}, de_ev=#{de_ev}, du_ev=#{du_ev}, fname=#{fname} where id=#{id}
+   </update>
+   <select id="getfname_review" resultType="String">
+     select fname from review where id=#{param1}
+   </select>
+   <delete id="review_delete">
+     delete from review where id=#{param1}
+   </delete>
+  <!-- 좋아요 -->
+   <update id="goodup">
+     update review set good=good+1 where id=#{param1}
+   </update>
+   
  </mapper>

@@ -48,16 +48,17 @@
    update member set state=1 where userid=#{param1}
   </update>  
   
+<!-- 
    <select id="qna_list_cus" resultType="kr.co.hotel.vo.CaskVO">
      select * from cusask where userid=#{param1} order by id desc 
    </select>
    
    <select id="qna_content" resultType="kr.co.hotel.vo.CaskVO">
    select * from cusask where id=#{param1}
- </select>
+ </select> -->
  
  <select id="wish" resultType="kr.co.hotel.vo.CartwishVO">
- select g.timg, g.title, g.price,g.deliveryfee, c.* from goods as g, cartwish as c 
+ select g.timg, g.title, g.price, c.* from goods as g, cartwish as c 
  where g.goodscode=c.goodscode and userid=#{param1} and state=0;
  </select>
   </mapper>

@@ -41,7 +41,7 @@
 		</tr>
 
 		<c:forEach items="${blist}" var="bvo">
-		<%-- 	<c:if test="${bvo.chk==0}"> --%>
+		<c:if test="${bvo.chk==0}"> 
 				<form method="post" action="book2">
 				<tr>
 
@@ -50,13 +50,45 @@
 						<input type="hidden" name="checkout" value="${checkout}"> 
 						<input type="hidden" name="person" value="${person}">
 						
+						<c:if test="${bvo.grade==1}">
 						<td id="img" rowspan="3" width="350" height="200">
-							<img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA2MTNfODEg%2FMDAxNjU1MDg1Njk0MzUw.8ZQB3LDcv5v9F1qqI8xJReodG-bgAPUfmPlGsegBLYgg.lkgj3vrwedl9rTr3YiFzNcaEsV6Mk1xN4pyknLc395Yg.JPEG.yerini95n%2Foutput_8464649.jpg&type=a340">
+							<img src="../resources/img/1.jpg">
 						</td>
+						</c:if>
+						<c:if test="${bvo.grade==2}">
+						<td id="img" rowspan="3" width="350" height="200">
+							<img src="../resources/img/2.jpg">						
+						</td>
+						</c:if>
+						<c:if test="${bvo.grade==3}">
+						<td id="img" rowspan="3" width="350" height="200">
+							<img src="../resources/img/3.jpg">
+						</td>
+						</c:if>
+						<c:if test="${bvo.grade==4}">
+						<td id="img" rowspan="3" width="350" height="200">
+							<img src="../resources/img/4.jpg">						
+						</td>
+						</c:if>
+						
+						
 						
 						<td id="roombox">
 						${bvo.name}호<br>
-						객실 등급 ${bvo.grade}
+						객실 등급 	
+						<c:if test="${bvo.grade==1}">						
+							스탠다드
+						</c:if>
+						<c:if test="${bvo.grade==2}">						
+							슈페리어
+						</c:if>
+						<c:if test="${bvo.grade==3}">						
+							디럭스
+						</c:if>
+						<c:if test="${bvo.grade==4}">						
+							스위트
+						</c:if>
+						
 						</td>
 
 
@@ -72,7 +104,7 @@
 						
 				</tr>
 				</form>
-	<%-- 		</c:if> --%>
+			</c:if>
 
 		</c:forEach>
 

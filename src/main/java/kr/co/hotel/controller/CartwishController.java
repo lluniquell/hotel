@@ -60,7 +60,7 @@ public class CartwishController {
 		return service.delivery_update(request,model);
 	}	
 
-/*	@RequestMapping("/mypage/delivery_del")
+	@RequestMapping("/mypage/delivery_del")
 	public String delivery_del(HttpServletRequest request,HttpSession session)
 	{
 		return service.delivery_del(request,session);
@@ -69,5 +69,5 @@ public class CartwishController {
 	public String delivery_update_ok(DeliveryVO dvo,HttpSession session)
 	{
 		return service.delivery_update_ok(dvo,session);
-	}*/
+	}
 }

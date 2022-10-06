@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script>
+	function order_cancel(ordercode) {
+		alert("예약 취소 : " + ordercode);
+		location = ""
+	}
 
+	function review_write(goodscode) {
+		alert("리뷰쓰기: " + goodscode);
+	}
+</script>
 <style>
 section {
 	height: 800px;
@@ -40,7 +49,10 @@ input {
 		<tr>
 			<td>주문코드</td>
 			<td>상품명</td>
-			<td>상태</td>			
+			<td>상태</td>
+			<td>송장번호</td>
+			<td>취소요청</td>
+			<td>리뷰쓰기</td>
 
 		</tr>
 		<c:forEach items="${olist}" var="ovo">
@@ -48,7 +60,11 @@ input {
 				<td><a href="">${ovo.ordercode}</a></td>
 				<td><a href="">${ovo.goodcode} | sql에 상품명 조회 추가해서 상품명으로 바꾸기</a></td>
 				<td><a href="">${ovo.state}</a></td>
-				
+				<td><a href="">${ovo.delivery}</a></td>
+				<td><input type="button" value="주문 취소"
+					onclick="order_cancel('${ovo.ordercode}')"></td>
+				<td><input type="button" value="리뷰 쓰기"
+					onclick="review_write('${bvo.goodscode}')"></td>
 			</tr>
 		</c:forEach>
 	</table>

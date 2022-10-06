@@ -1,59 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<style>
-section {
-	height: 800px;
-}
 
-table {
-	border-top: 2px solid #DADADD;
-	border-bottom: 2px solid #DADADD;
-	border-collapse: collapse;
-	font-size: 14px;
-}
-
-th, td {
-	border-top: 2px solid #DADADD;
-	border-bottom: 2px solid #DADADD;
-	padding: 16px;
-}
-
-input[name="name"],input[name="price"] {
-	display: block;
-	width: 160px;
-	height: 40px;
-	border: 1px solid #1E1852;
-	border-radius: 4px;
-}
-
-select[name="grade"],select[name="maxperson"] {
-	display: block;
-	width: 166px;
-	height: 45px;
-	border: 1px solid #1E1852;
-	border-radius: 4px;
-}
-
-
-input[type="submit"] {
-	font-size: 16px;
-	line-heigth: 24px;
-	color: white;
-	text-decoration: none solid RGB(255, 255, 255);
-	height: 40px;
-	width: 157px;
-	background-color: #007576;
-	border: none;
-	border-radius: 30px;
-}
-
-
-
-</style>
 <section>
 	<form method="post" action="add_room_ok">
-		<table align="center">
-		 	<caption><h2>객실 등록</h2></caption>
+		<table>
 			<tr>
 				<td>객실명</td>
 				<td><input type="text" name="name"></td>
@@ -81,7 +31,7 @@ input[type="submit"] {
 				<td><input type="text" name="price"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" value="등록"></td>
+				<td colspan="2"><input type="submit" value="등록"></td>
 			</tr>
 		</table>
 	</form>

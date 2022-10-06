@@ -132,7 +132,7 @@ public class MemberController {
     	return service.member_out_ok(session,request);
     }
     
-    // qna 관련
+/*    // qna 관련
     @RequestMapping("/mypage/my_qna")
     public String my_qna(HttpSession session,Model model)
     {
@@ -143,7 +143,7 @@ public class MemberController {
     {
     	return service.qna_content(request,model);
     }
-    
+    */
     // 장바구니 , 위시 관련
     
     @RequestMapping("/mypage/wish")

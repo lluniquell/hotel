@@ -7,30 +7,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
- <link href="<c:url value="/resources/css/util.css" />" rel="stylesheet"> <!--  css 불러오기 -->
- 
-<c:set var="height" value="${list.size()*55+700}"/> <!-- 래코드 늘어날수록  세로증가 -->
 <style>
 section {
-    margin-top:50px;
 	width: 1000px;
-	height:${height}px;
+	height: 600px;
 	margin: auto;
+
+    
 }
  section a{
   text-decoration:none;
   color:black;
  }
- section #tb
- {
-  margin:auto;
-  width:80%;
-  text-align:center;
- }
+ .myTab{
+ margin-top:50px;
+ margin-left:0px;
+ width:800px;
+  position:relative;
+ 
+  }
  .main li{
   list-style-type:none;
   display:inline-block;
-  width:180px;
+  width:150px;
   height:30px;
   border:1px solid #cccccc;
   border-left:0px;
@@ -40,47 +39,41 @@ section {
     padding-bottom:5px;
     font-weight:bold;
  }
-
  .main .sub3
  { 
   background:skyblue;
  }
+ #tb
+ {
+  margin-top:0px;
+  width:700px;
+  height:400px;
+  position:absolute;
+  text-align:center;
+ }
  #tb table{
- margin-top:50px;
    border-spacing: 0 10px;
-   border-top: 1px solid black;
-   border-bottom: 1px solid black;
-   padding-bottom:50px;
-   padding-top:30px;
-   width:100%;
  }
  
- #tb table td:first-child{
-   width:150px;
+ #tb table tr:first-child > td{
+   border-bottom:2px solid skyblue;
+   
    font-weight:bold;
   
- }
+ }+
  table td{
   padding-top:5px;
   height:30px;
-  border-bottom:1px solid #eeeeee;
  }
- table tr{
-  height: 50px;
- }
+
 </style>
-<script>
-  onload=function(){
-	  document.getElementsByClassName("categori")[2].style.marginBottom="35px";
-  }
-</script>
 </head>
 <body>
 <section>
-<div class="myTab">
+ <div class="myTab">
   <ul class="main">
- <li class="categori" onclick="location='../mypage/myinfo'">회원정보수정</li><li class="categori" onclick="location='../book/list'">예약조회</li><li class="categori" onclick="location='../mypage/my_qna'">문의내역</li><li class="categori" onclick="location='../mypage/wish'">나의 찜한 상품</li><li class="categori" onclick="location='../mypage/cart'">나의 장바구니</li>
-</ul>
+   <li class="sub1"><a href="myinfo">회원정보수정</a></li><li class="sub2"><a href="reserve_info">예약조회</a></li><li class="sub3"><a href="my_qna">문의내역</a></li>
+  </ul>
   </div>
  <div id="tb"> 
  

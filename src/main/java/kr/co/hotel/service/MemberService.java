@@ -26,9 +26,9 @@ public interface MemberService {
 	public String my_update_ok(MemberVO mvo,HttpSession session);
 	public String member_out_ok(HttpSession session,HttpServletRequest request);
 	
-	//1:1상담 qna부분
+/*	//1:1상담 qna부분
     public String my_qna(HttpSession session,Model model);
-    public String qna_content(HttpServletRequest request,Model model);
+    public String qna_content(HttpServletRequest request,Model model);*/
 
 	
     public String wish(HttpSession session,Model model);

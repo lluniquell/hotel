@@ -2,56 +2,63 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
- <mapper namespace="kr.co.hotel.mapper.CartwishMapper">
- 
-  <delete id="wish_del">
-   delete from cartwish where id=#{param1}
-  </delete>
-  
 
-  <update id="move_cart">
-   update cartwish set state=1 where userid=#{param1} and id=#{param2}
-  </update>
-  
-  <select id="cart" resultType="kr.co.hotel.vo.GoodsVO">
-  select g.*,c.id as cid,c.qty as cqty from goods as g,cartwish as c 
-  where g.goodscode=c.goodscode and userid=#{param1} and state=1 
-  </select>
-  
-  <delete id="cart_del">
-   delete from cartwish where id=#{param1}
-  </delete>
- 
-  <select id="goods_order" resultType="kr.co.hotel.vo.GoodsVO">
-    select * from goods where goodscode=#{param1}
-  </select>
-   
-   <select id="getDelivery" resultType="kr.co.hotel.vo.DeliveryVO">
-    select * from delivery where userid=#{param1} order by id desc limit 1
-   </select>
-  <select id="getmember" resultType="kr.co.hotel.vo.MemberVO">
-    select * from member where userid=#{param1}
-  </select>
-  
-  
-  
-  <select id="delivery_list" resultType="kr.co.hotel.vo.DeliveryVO">
-   select * from delivery where userid=#{param1}
-  </select>
-  <insert id="del_add_ok">
-   insert into delivery(name,zip,juso,juso_etc,phone,userid,state) 
-   values(#{name},#{zip},#{juso},#{juso_etc},#{phone},#{userid},#{state})
-  </insert>
-  <delete id="delivery_del">
-   delete from delivery where id=#{param1} and userid=#{param2}
-  </delete>
-  
-  <select id="delivery_update" resultType="kr.co.hotel.vo.DeliveryVO">
-   select * from delivery where id=#{param1}
-  </select>
-  <update id="delivery_update_ok">
-   update delivery set name=#{name}, zip=#{zip}, juso=#{juso}, juso_etc=#{juso_etc},
-   phone=#{phone},userid=#{userid},state=#{state} where id=#{id} and userid=#{userid}
-  </update>
- </mapper>
+<mapper namespace="kr.co.hotel.mapper.CartwishMapper">
+
+	<delete id="wish_del">
+		delete from cartwish where id=#{param1}
+	</delete>
+
+
+	<update id="move_cart">
+		update cartwish set state=1 where userid=#{param1} and goodscode=#{param2}
+	</update>
+
+	<select id="cart" resultType="kr.co.hotel.vo.GoodsVO">
+		select g.*,c.id as cid,c.qty as cqty from goods as g,cartwish as c
+		where g.goodscode=c.goodscode and userid=#{param1} and state=1
+	</select>
+
+	<delete id="cart_del">
+		delete from cartwish where id=#{param1}
+	</delete>
+
+	<select id="goods_order" resultType="kr.co.hotel.vo.GoodsVO">
+		select * from goods where goodscode=#{param1}
+	</select>
+
+	<select id="getDelivery" resultType="kr.co.hotel.vo.DeliveryVO">
+		select * from delivery where userid=#{param1} order by id desc limit 1
+	</select>
+	<select id="getmember" resultType="kr.co.hotel.vo.MemberVO">
+		select * from member where userid=#{param1}
+	</select>
+
+
+
+	<select id="delivery_list" resultType="kr.co.hotel.vo.DeliveryVO">
+		select * from delivery where userid=#{param1}
+	</select>
+	<insert id="del_add_ok">
+		insert into delivery(name,zip,juso,juso_etc,phone,userid,state)
+		values(#{name},#{zip},#{juso},#{juso_etc},#{phone},#{userid},#{state})
+	</insert>
+
+	<delete id="delivery_del">
+		delete from delivery where id=#{param1} and userid=#{param2}
+	</delete>
+
+	<select id="delivery_update" resultType="kr.co.hotel.vo.DeliveryVO">
+
+		select * from delivery where id=#{param1}
+	</select>
+
+
+	<update id="delivery_update_ok">
+
+		update delivery set name=#{name}, zip=#{zip}, juso=#{juso},
+		juso_etc=#{juso_etc},
+		phone=#{phone},userid=#{userid},state=#{state} where id=#{id} and userid=#{userid}
+	</update>
+
+</mapper>
