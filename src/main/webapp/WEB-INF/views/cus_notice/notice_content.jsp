@@ -78,7 +78,7 @@ $("img").error(function () {
             </tr>
             <tr>
               <td id="btn" colspan="5" align="center" style="padding-top:20px;">
-                <input  type="button" value="목록" onclick="location.href='/hotel/notice/notice_list?page=1'">
+                <input  type="button" value="목록" onclick="location.href='../cus_notice/notice_list?page=1'">
               </td>
             </tr>
          </table>

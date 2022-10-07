@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import kr.co.hotel.mapper.AdminMapper;
+
 import kr.co.hotel.mapper.QuestionMapper;
 import kr.co.hotel.vo.AnswerVO;
 import kr.co.hotel.vo.QnaVO;

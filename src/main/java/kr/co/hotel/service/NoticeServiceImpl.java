@@ -24,7 +24,12 @@ public class NoticeServiceImpl implements NoticeService{
 	public String notice_list(Model model,HttpServletRequest request) {
 		// 페이징 처리 추가 
 
-		int page=Integer.parseInt(request.getParameter("page"));
+		int page;
+		if(request.getParameter("page")==null || request.getParameter("page")=="")
+			page=1;
+		else
+		  page=Integer.parseInt(request.getParameter("page"));
+				
 		int index=(page-1)*10;
 
 		int pstart,pend,chongpage;
@@ -66,7 +71,7 @@ public class NoticeServiceImpl implements NoticeService{
 		model.addAttribute("sel", sel);
 		model.addAttribute("sword", sword);
 		
-		return "/notice/notice_list";
+		return "/cus_notice/notice_list";
 	}
 
 	@Override
@@ -78,7 +83,7 @@ public class NoticeServiceImpl implements NoticeService{
 		sword=URLEncoder.encode(sword);
 		mapper.notice_readnum(id);
 
-		return "redirect:/notice/notice_content?id="+id+"&page="+page+"&sel="+sel+"&sword="+sword;
+		return "redirect:/cus_notice/notice_content?id="+id+"&page="+page+"&sel="+sel+"&sword="+sword;
 	}
 
 	@Override
@@ -92,6 +97,6 @@ public class NoticeServiceImpl implements NoticeService{
 		model.addAttribute("page", page);
 		model.addAttribute("sel", sel);
 		model.addAttribute("sword", sword);
-		return "/notice/notice_content";
+		return "/cus_notice/notice_content";
 	} 	
 }

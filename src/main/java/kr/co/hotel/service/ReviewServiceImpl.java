@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import kr.co.hotel.mapper.AdminMapper;
+
 import kr.co.hotel.mapper.ReviewMapper;
 import kr.co.hotel.vo.ReviewVO;
 

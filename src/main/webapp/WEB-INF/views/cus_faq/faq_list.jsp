@@ -2,11 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
+
  <style>
    section
    {
@@ -214,18 +212,6 @@
      }
      
    }
-/*   function tabs_chk1(n)
-  {
-     document.getElementsByClassName("tabs")[n].style.height="31px";
-	 document.getElementsByClassName("tabs")[n].style.background="#eaedf5";
-	 document.getElementsByClassName("tabs")[n].style.color="#4375DB";
-  }
-  function tabs_chk2(n)
-  {
-	 document.getElementsByClassName("tabs")[n].style.height="30px";
-	 document.getElementsByClassName("tabs")[n].style.background="white";
-	 document.getElementsByClassName("tabs")[n].style.color="#A6A6A6";  	  
-  } */
   
  $(function()
     {
@@ -234,64 +220,13 @@
 	    	$(this).next(".ans").stop().slideToggle(600);	    	
 	    	$(this).toggleClass("on").siblings().removeClass("on");	 
 	    	$(this).next(".ans").siblings(".ans").slideUp(600);
-	    });
-	    
-/* 	    $(".tabs").hover(function()
-	    {
-	    	$(this).css("background","#eaedf5");
-	    	$(this).css("color","#4375DB");
-	    	$(this).css("height","31px");
-	    },
-	    function()
-	    {
-	    	$(this).css("background","white");
-	    	$(this).css("color","#A6A6A6");
-	    	$(this).css("height","30px");
-	    }); */
-	    
-	    
-    	/* $("#faq_all").accordion(
-    	{
-    		active:true, 
-    	    animate:400,
-    	    collapsible:true,
-    	    //activate:function(){} 	    		
-    	});
-    	
-    	$("#faq_re").accordion(
-    	{
-    		active:true, 
-    	    animate:400,
-    	    collapsible:true,   		
-    	});
-    	
-    	
-    	$("#faq_ser").accordion(
-    	{
-    	    active:true, 
-    	    animate:400,
-    	    collapsible:true,
-    	});
-    	
-    	$("#faq_mem").accordion(
-    	{
-    	    active:true, 
-    	    animate:400,
-    	    collapsible:true,
-    	});
-    	
-    	$("#faq_etc").accordion(
-    	{
-    	    active:true, 
-    	    animate:400,
-    	    collapsible:true,
-    	}); */    	
+	    });    	
 
     	 
     });    
 
   </script>
-
+   </head>
 <body>
  
   <section>

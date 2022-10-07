@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import kr.co.hotel.mapper.AdminMapper;
+
 import kr.co.hotel.mapper.OrderlistMapper;
 import kr.co.hotel.vo.OrderlistVO;
 
