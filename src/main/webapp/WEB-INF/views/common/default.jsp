@@ -7,10 +7,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style>
+
+  <style>
    body
    {
      margin:0px;
+   }
+   footer{
+    margin-top:150px;
+   }
+  #login_area a{
+    text-decoration: none;
+    color:white;
    }
  /* 간단 팝업창 */
    #message  /*  간단메시지 */ 
@@ -138,17 +146,19 @@
      background:#1e1852;
      width:auto;
      height:auto;
-     padding:5px;
-     padding-left:10px;
-     padding-right:10px;   
+     padding:10px;
+     padding-left:20px;
+     padding-right:20px;   
      border-radius:30px;  
    }
    header #login_area > div
    {
       display:inline-block;
-      width:25px;
-      height:25px;
-      font-size:10px;
+      width:auto;
+      height:auto;
+      padding:5px;
+      
+      font-size:12px;
       border:1px solid white;
       margin:3px;
       color:white;
@@ -185,6 +195,7 @@
    nav .menu_ul, .smenu_ul /* 메뉴 ul */
    {
       list-style-type:none;
+      color:white;
       /* border:1px solid red; */
    }
    nav .menu_ul /* 메인메뉴 ul */
@@ -238,25 +249,9 @@
    }
    footer
    {
-     height:350px;
-	 background-color:#050033;
-	 color:#FFFFFF;
-	 text-align:center;
-	 font-size:14px;
+   
    }
    
-   footer > a
-   {
- 	 font-color:#FFFFFF;
-	 text-align:center;
-	 font-size:14px;
-   }
-   footer > hr
-   {
- 	 width:900px;
-	 height:0.5px;
-	 background-color:#FFFFFF;
-   }
   </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>  
   <script>
@@ -326,9 +321,9 @@
    
    
   </script>
-</head>
-<decorator:head/>
+<decorator:head/> 
 
+</head>
 <body>
    <div id="message"> <!-- 간단 팝업창 -->
      <div id="mleft"> 우리 호텔을 이용해 주셔서 감사합니다 </div>
@@ -345,14 +340,24 @@
      </label>       
     
     <div id="logo"> <!-- 로고 -->
-       <img src="../resources/img/logo.gif" width="100"> 
+     <a href="../main/index"><img src="../resources/img/logo.gif" width="100"></a>
     </div>
+    
+   	<c:if test="${userid == null }">
     <div id="login_area"> <!-- 로그인 -->
-      <div id="loginicon"> 로그 </div>
-      <div id="joinicon"> 가입 </div>
-      <div id="reicon"> 예약 </div>
-      <div id="cusicon"> 고객 </div>
+      <div id="loginicon"><a href="../login/login">로그인</a> </div>
+      <div id="joinicon"> <a href="../member/member_input">가입</a></div>  
+      <div id="reicon"><a href="/hotel/book/book">예약하기</a> </div>
+
     </div>   
+    </c:if>
+     	<c:if test="${userid != null }">
+    <div id="login_area"> <!-- 로그인 -->
+      <div><a href="../logout">로그아웃</a></div>
+      <div id="cusicon"><a href="../mypage/myinfo">회원정보</a> </div>      
+      <div id="reicon"><a href="/hotel/book/book">예약하기</a> </div>
+    </div>   
+    </c:if>
    </header>
       
    <nav> <!-- 메뉴및 링크 -->    
@@ -377,21 +382,43 @@
     </div>     
    </nav>
 
-  <div id="main_img" style="width:1000px;height:1000px"></div>
-	
-	<decorator:body/>
-	
-	<footer>
-		<br>
-        <hr>
-         <img src="../resources/img/logo.PNG">
-         <p>
-                   서비스 일반 약관      멤버십 약관     개인정보   쿠키     법적 고지<p>
- 
-        N6 HOTEL   |   대표자 : |  사업자등록번호  123-45-67890 <p>
-                  경기도 고양시 일산동구 어딘가<p>
-        COPYRIGHT @ 2022 N6 HOTEL. ALL RIGHT RESERVED.
-	</footer>
-	<!-- 사이트 관련 하단부  -->
+
+<decorator:body/>
+<style>
+footer a{
+	font-color:#FFFFFF;
+	text-align:center;
+	font-size:14px;
+}
+footer{
+	height:350px;
+	background-color:#050033;
+	color:#FFFFFF;
+	text-align:center;
+	font-size:14px;
+}
+
+hr{
+	width:900px;
+	height:0.5px;
+	background-color:#FFFFFF;
+}
+
+
+
+</style>
+  <footer> <!-- 사이트 관련 하단부  -->
+  <br>
+<hr>
+<img src="../resources/img/logo.PNG">
+<p>
+서비스 일반 약관      멤버십 약관     개인정보   쿠키     법적 고지<p>
+
+N6 HOTEL   |   대표자 : |  사업자등록번호  123-45-67890 <p>
+경기도 고양시 일산동구 어딘가<p>
+COPYRIGHT @ 2022 N6 HOTEL. ALL RIGHT RESERVED.
+  
+  </footer>
+  
 </body>
 </html>

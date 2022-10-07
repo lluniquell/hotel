@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import kr.co.hotel.mapper.MemberMapper;
+import kr.co.hotel.vo.CaskVO;
 import kr.co.hotel.vo.MemberVO;
 
 @Service
@@ -22,7 +23,8 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper mapper;
 
 	@Override
-	public String member_input_ok(MemberVO mvo) 	{
+	public String member_input_ok(MemberVO mvo) 
+	{
 		
 		 mapper.member_input_ok(mvo);
 		return "redirect:/member/member_input_final"; // 나중에 /login/login 따로만들기
@@ -168,7 +170,7 @@ public class MemberServiceImpl implements MemberService {
 		 
 	}
  
-/*	// qna 부분
+	// qna 부분
 	@Override
 	public String my_qna(HttpSession session, Model model) {
 		String userid=session.getAttribute("userid").toString();
@@ -186,7 +188,7 @@ public class MemberServiceImpl implements MemberService {
 		 }
 		 model.addAttribute("cvo",cvo);
 		return "/mypage/qna_content";
-	}*/
+	}
 
 	// 장바구니  ,wish
 	@Override

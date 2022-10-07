@@ -10,11 +10,11 @@
       select r.grade from room as r, book as b where b.id=11 and r.name=b.room
     </select>
    <!-- 이용 후기 작성 -->
-   <insert id="hugi_write_ok" parameterType="kr.co.teampro.vo.HugiVO">
+   <insert id="hugi_write_ok" parameterType="kr.co.hotel.vo.HugiVO">
      insert into hugi(title,userid,name,content,grade,bid,fname,star,writeday) values(#{title},#{userid},#{name},#{content},#{grade},#{bid},#{fname},#{star},now())
    </insert>
   <!-- 이용 후기 목록 -->
-   <select id="hugi_list" resultType="kr.co.teampro.vo.HugiVO">
+   <select id="hugi_list" resultType="kr.co.hotel.vo.HugiVO">
      select *,length(fname)-length(replace(fname,",","")) as cnt, substr(fname,1,instr(fname,",")-1) as img from hugi order by id desc limit #{param1},12
    </select>
   <!-- 이용 후기 목록페이지  -->
@@ -22,7 +22,7 @@
      select ceil(count(*)/10) from hugi 
    </select>
   <!-- 이용 후기 목록 (개인)-->
-   <select id="hugi_list_cus" resultType="kr.co.teampro.vo.HugiVO">
+   <select id="hugi_list_cus" resultType="kr.co.hotel.vo.HugiVO">
      select *,length(fname)-length(replace(fname,",","")) as cnt, substr(fname,1,instr(fname,",")-1) as img from hugi where userid=#{param1} order by id desc limit #{param1},12
    </select>  
   <!-- 이용 후기 목록 페이지(개인)  -->
@@ -34,11 +34,11 @@
      update hugi set readnum=readnum+1 where id=#{param1}
    </update>
   <!-- 이용 후기 본문 -->
-   <select id="hugi_content" resultType="kr.co.teampro.vo.HugiVO">
+   <select id="hugi_content" resultType="kr.co.hotel.vo.HugiVO">
      select *,length(fname)-length(replace(fname,",","")) as cnt, substr(fname,1,instr(fname,",")-1) as img from hugi where id=#{param1}
    </select> 
   <!-- 이용 후기 수정 완료 -->
-   <update id="hugi_update_ok" parameterType="kr.co.teampro.vo.HugiVO">
+   <update id="hugi_update_ok" parameterType="kr.co.hotel.vo.HugiVO">
      update hugi set title=#{title}, content=#{content}, fname=#{fname}, star=#{star} where id=#{id}
    </update>
   <!-- 이용 후기 파일멸 불러오기 -->

@@ -3,6 +3,7 @@ package kr.co.hotel.mapper;
 import java.util.ArrayList;
 
 import kr.co.hotel.vo.CartwishVO;
+import kr.co.hotel.vo.CaskVO;
 import kr.co.hotel.vo.MemberVO;
 
 public interface MemberMapper {
@@ -23,9 +24,9 @@ public interface MemberMapper {
     public int check_member(String userid,String pwd);
     public void member_state1(String userid);
     
-/*    //qna관련
+    //qna관련
     public ArrayList<CaskVO> qna_list_cus(String userid);
-	public CaskVO qna_content(String id);*/
+	public CaskVO qna_content(String id);
 
 	//wish 장바구니
 	public ArrayList<CartwishVO> wish(String userid);

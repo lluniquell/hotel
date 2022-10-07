@@ -7,23 +7,23 @@
    <!-- faq 자주묻는 질문    -->
    
    <!-- 자주묻는 질문 목록_all--> 
-    <select id="faq_list" resultType="kr.co.teampro.vo.FaqVO">
+    <select id="faq_list" resultType="kr.co.hotel.vo.FaqVO">
       select * from faq order by id desc
     </select>
    <!-- 자주묻는 질문 목록_예약--> 
-    <select id="faq_re" resultType="kr.co.teampro.vo.FaqVO">
+    <select id="faq_re" resultType="kr.co.hotel.vo.FaqVO">
       select * from faq where gubun=0 order by id desc
     </select>
    <!-- 자주묻는 질문 목록_서비스--> 
-    <select id="faq_ser" resultType="kr.co.teampro.vo.FaqVO">
+    <select id="faq_ser" resultType="kr.co.hotel.vo.FaqVO">
       select * from faq where gubun=1 order by id desc
     </select>
    <!-- 자주묻는 질문 목록_회원--> 
-    <select id="faq_mem" resultType="kr.co.teampro.vo.FaqVO">
+    <select id="faq_mem" resultType="kr.co.hotel.vo.FaqVO">
       select * from faq where gubun=2 order by id desc
     </select>
    <!-- 자주묻는 질문 목록_기타--> 
-    <select id="faq_etc" resultType="kr.co.teampro.vo.FaqVO">
+    <select id="faq_etc" resultType="kr.co.hotel.vo.FaqVO">
       select * from faq where gubun=3 order by id desc
     </select>
  </mapper>
