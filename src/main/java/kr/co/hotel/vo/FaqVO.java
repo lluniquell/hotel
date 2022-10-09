@@ -1,34 +1,42 @@
 package kr.co.hotel.vo;
 
 public class FaqVO {
-	int id, gubun;
-	String title, content, writeday;
+	
+	private int id, gubun;
+	private String userid, question, answer, writeday;
+	
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public int getGubun() {
 		return gubun;
 	}
-	public void setGubun(int gubun) {
-		this.gubun = gubun;
+	public String getUserid() {
+		return userid;
 	}
-	public String getTitle() {
-		return title;
+	public String getQuestion() {
+		return question;
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
+	public String getAnswer() {
+		return answer;
 	}
 	public String getWriteday() {
 		return writeday;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setGubun(int gubun) {
+		this.gubun = gubun;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 	public void setWriteday(String writeday) {
 		this.writeday = writeday;

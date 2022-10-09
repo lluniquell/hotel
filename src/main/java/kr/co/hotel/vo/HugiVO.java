@@ -1,58 +1,85 @@
 package kr.co.hotel.vo;
 
 public class HugiVO {
-	int id, readnum, roomtype;
-	String titlem, name, content, pwd, fname, writeday;
+	private int id, star, readnum, cnt;
+	private String title, userid, name, content, fname, writeday, img;
+	
+	private int bid, grade;  // bid=예약 아이디
+	
+	public int getBid() {
+		return bid;
+	}
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public int getStar() {
+		return star;
 	}
 	public int getReadnum() {
 		return readnum;
 	}
-	public void setReadnum(int readnum) {
-		this.readnum = readnum;
+	public String getTitle() {
+		return title;
 	}
-	public int getRoomtype() {
-		return roomtype;
-	}
-	public void setRoomtype(int roomtype) {
-		this.roomtype = roomtype;
-	}
-	public String getTitlem() {
-		return titlem;
-	}
-	public void setTitlem(String titlem) {
-		this.titlem = titlem;
+	public String getUserid() {
+		return userid;
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getContent() {
 		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
 	}
 	public String getFname() {
 		return fname;
 	}
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
 	public String getWriteday() {
 		return writeday;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setStar(int star) {
+		this.star = star;
+	}
+	public void setReadnum(int readnum) {
+		this.readnum = readnum;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
 	}
 	public void setWriteday(String writeday) {
 		this.writeday = writeday;

@@ -5,4 +5,42 @@
   
  <mapper namespace="kr.co.hotel.mapper.GoodsMapper">
  
+<!-- 상품 qna -->
+  <!-- 상품 제목 값불러오기 -->
+   <select id="getptitle" resultType="String">
+     select ptitle from product where pcode=#{param1}
+   </select>
+  <!-- 싱품 qna 질문 작성 완료  -->
+   <insert id="pqna_write_ok" parameterType="kr.co.hotel.vo.PqnaVO">
+     insert into pqna(achk, gubun, bimil, question, ptitle, pcode, userid,writeday)
+     values(#{achk}, #{gubun}, #{bimil}, #{question}, #{ptitle}, #{pcode}, #{userid},now())
+   </insert>
+  <!-- 상품 qna 목록 -->
+   <select id="pqna_list" resultType="kr.co.hotel.vo.PqnaVO">
+     select * from pqna order by id desc limit #{param1},10 <!-- where pcode=#{param1}/limit #{param2} // order 앞에 기입-->
+   </select>
+  <!-- 상품 qna 페이징 총페이지 -->
+   <select id="getchong_pqna" resultType="Integer">
+     select ceil(count(*)/10) from pqna
+   </select> 
+  <!-- 상품 qna 질문 수정 --> 
+   <select id="pqna_update" resultType="kr.co.hotel.vo.PqnaVO">
+     select * from pqna where id=#{param}
+   </select>
+  <!-- 상품 qna 수정 완료 -->
+   <update id="pqna_update_ok" parameterType="kr.co.hotel.vo.PqnaVO">
+     update pqna set gubun=#{gubun}, bimil=#{bimil}, question=#{question} where id=#{id}
+   </update>
+  <!-- 상품 qna 삭제 -->
+   <delete id="pqna_delete">
+     delete from pqna where id=#{param1}
+   </delete>
+  <!-- 상품 qna 답변 완료    -->
+   <update id="pqna_answer_ok" parameterType="kr.co.hotel.vo.PqnaVO">
+     update pqna set achk=#{achk},answer=#{answer},awriteday=now() where id=#{id}
+   </update>
+  <!--  -->
+   <update id="qanswer_update_ok" parameterType="kr.co.hotel.vo.PqnaVO">
+     update pqna set answer=#{answer} where id=#{id}
+   </update>
  </mapper>
